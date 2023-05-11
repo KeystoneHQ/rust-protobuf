@@ -1,4 +1,6 @@
-use std::f64;
+use alloc::borrow::ToOwned;
+use alloc::string::String;
+use core::f64;
 
 #[derive(Debug)]
 pub enum ProtobufFloatParseError {

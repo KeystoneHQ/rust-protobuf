@@ -23,8 +23,8 @@
 #[cfg_attr(feature = "with-serde", derive(::serde::Serialize, ::serde::Deserialize))]
 pub struct Any {
     // message fields
-    pub type_url: ::std::string::String,
-    pub value: ::std::vec::Vec<u8>,
+    pub type_url: ::alloc::string::String,
+    pub value: ::alloc::vec::Vec<u8>,
     // special fields
     #[cfg_attr(feature = "with-serde", serde(skip))]
     pub unknown_fields: crate::UnknownFields,
@@ -32,7 +32,7 @@ pub struct Any {
     pub cached_size: crate::CachedSize,
 }
 
-impl<'a> ::std::default::Default for &'a Any {
+impl<'a> ::core::default::Default for &'a Any {
     fn default() -> &'a Any {
         <Any as crate::Message>::default_instance()
     }
@@ -40,7 +40,7 @@ impl<'a> ::std::default::Default for &'a Any {
 
 impl Any {
     pub fn new() -> Any {
-        ::std::default::Default::default()
+        ::core::default::Default::default()
     }
 
     // string type_url = 1;
@@ -54,19 +54,19 @@ impl Any {
     }
 
     // Param is passed by value, moved
-    pub fn set_type_url(&mut self, v: ::std::string::String) {
+    pub fn set_type_url(&mut self, v: ::alloc::string::String) {
         self.type_url = v;
     }
 
     // Mutable pointer to the field.
     // If field is not initialized, it is initialized with default value first.
-    pub fn mut_type_url(&mut self) -> &mut ::std::string::String {
+    pub fn mut_type_url(&mut self) -> &mut ::alloc::string::String {
         &mut self.type_url
     }
 
     // Take field
-    pub fn take_type_url(&mut self) -> ::std::string::String {
-        ::std::mem::replace(&mut self.type_url, ::std::string::String::new())
+    pub fn take_type_url(&mut self) -> ::alloc::string::String {
+        ::core::mem::replace(&mut self.type_url, ::alloc::string::String::new())
     }
 
     // bytes value = 2;
@@ -80,19 +80,19 @@ impl Any {
     }
 
     // Param is passed by value, moved
-    pub fn set_value(&mut self, v: ::std::vec::Vec<u8>) {
+    pub fn set_value(&mut self, v: ::alloc::vec::Vec<u8>) {
         self.value = v;
     }
 
     // Mutable pointer to the field.
     // If field is not initialized, it is initialized with default value first.
-    pub fn mut_value(&mut self) -> &mut ::std::vec::Vec<u8> {
+    pub fn mut_value(&mut self) -> &mut ::alloc::vec::Vec<u8> {
         &mut self.value
     }
 
     // Take field
-    pub fn take_value(&mut self) -> ::std::vec::Vec<u8> {
-        ::std::mem::replace(&mut self.value, ::std::vec::Vec::new())
+    pub fn take_value(&mut self) -> ::alloc::vec::Vec<u8> {
+        ::core::mem::replace(&mut self.value, ::alloc::vec::Vec::new())
     }
 }
 
@@ -116,7 +116,7 @@ impl crate::Message for Any {
                 },
             };
         }
-        ::std::result::Result::Ok(())
+        ::core::result::Result::Ok(())
     }
 
     // Compute sizes of nested messages
@@ -142,7 +142,7 @@ impl crate::Message for Any {
             os.write_bytes(2, &self.value)?;
         }
         os.write_unknown_fields(self.get_unknown_fields())?;
-        ::std::result::Result::Ok(())
+        ::core::result::Result::Ok(())
     }
 
     fn get_cached_size(&self) -> u32 {
@@ -157,13 +157,13 @@ impl crate::Message for Any {
         &mut self.unknown_fields
     }
 
-    fn as_any(&self) -> &dyn (::std::any::Any) {
-        self as &dyn (::std::any::Any)
+    fn as_any(&self) -> &dyn (::core::any::Any) {
+        self as &dyn (::core::any::Any)
     }
-    fn as_any_mut(&mut self) -> &mut dyn (::std::any::Any) {
-        self as &mut dyn (::std::any::Any)
+    fn as_any_mut(&mut self) -> &mut dyn (::core::any::Any) {
+        self as &mut dyn (::core::any::Any)
     }
-    fn into_any(self: ::std::boxed::Box<Self>) -> ::std::boxed::Box<dyn (::std::any::Any)> {
+    fn into_any(self: ::alloc::boxed::Box<Self>) -> ::alloc::boxed::Box<dyn (::core::any::Any)> {
         self
     }
 
@@ -178,7 +178,7 @@ impl crate::Message for Any {
     fn descriptor_static() -> &'static crate::reflect::MessageDescriptor {
         static descriptor: crate::rt::LazyV2<crate::reflect::MessageDescriptor> = crate::rt::LazyV2::INIT;
         descriptor.get(|| {
-            let mut fields = ::std::vec::Vec::new();
+            let mut fields = ::alloc::vec::Vec::new();
             fields.push(crate::reflect::accessor::make_simple_field_accessor::<_, crate::types::ProtobufTypeString>(
                 "type_url",
                 |m: &Any| { &m.type_url },
@@ -211,8 +211,8 @@ impl crate::Clear for Any {
     }
 }
 
-impl ::std::fmt::Debug for Any {
-    fn fmt(&self, f: &mut ::std::fmt::Formatter<'_>) -> ::std::fmt::Result {
+impl ::core::fmt::Debug for Any {
+    fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
         crate::text_format::fmt(self, f)
     }
 }

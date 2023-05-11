@@ -1,3 +1,5 @@
+use alloc::string::String;
+use alloc::vec::Vec;
 #[cfg(feature = "bytes")]
 use bytes::Bytes;
 

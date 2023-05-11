@@ -5,7 +5,9 @@ use crate::descriptorx::find_enum_by_rust_name;
 use crate::reflect::find_message_or_enum::find_message_or_enum;
 use crate::reflect::find_message_or_enum::MessageOrEnum;
 use crate::ProtobufEnum;
-use std::collections::HashMap;
+use alloc::collections::btree_map::BTreeMap;
+use alloc::string::{String, ToString};
+use alloc::vec::Vec;
 
 /// Description for enum variant.
 ///
@@ -36,8 +38,8 @@ pub struct EnumDescriptor {
     proto: &'static EnumDescriptorProto,
     values: Vec<EnumValueDescriptor>,
 
-    index_by_name: HashMap<String, usize>,
-    index_by_number: HashMap<i32, usize>,
+    index_by_name: BTreeMap<String, usize>,
+    index_by_number: BTreeMap<i32, usize>,
 }
 
 impl EnumDescriptor {
@@ -60,8 +62,8 @@ impl EnumDescriptor {
     )]
     pub fn new(rust_name: &'static str, file: &'static FileDescriptorProto) -> EnumDescriptor {
         let proto = find_enum_by_rust_name(file, rust_name);
-        let mut index_by_name = HashMap::new();
-        let mut index_by_number = HashMap::new();
+        let mut index_by_name = BTreeMap::new();
+        let mut index_by_number = BTreeMap::new();
         for (i, v) in proto.en.get_value().iter().enumerate() {
             index_by_number.insert(v.get_number(), i);
             index_by_name.insert(v.get_name().to_string(), i);
@@ -94,8 +96,8 @@ impl EnumDescriptor {
             (_, MessageOrEnum::Message(_)) => panic!("not an enum"),
         };
 
-        let mut index_by_name = HashMap::new();
-        let mut index_by_number = HashMap::new();
+        let mut index_by_name = BTreeMap::new();
+        let mut index_by_number = BTreeMap::new();
         for (i, v) in proto.get_value().iter().enumerate() {
             index_by_number.insert(v.get_number(), i);
             index_by_name.insert(v.get_name().to_string(), i);

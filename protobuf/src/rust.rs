@@ -1,3 +1,5 @@
+use alloc::string::String;
+
 #[cfg_attr(rustfmt, rustfmt_skip)]
 static RUST_KEYWORDS: &'static [&'static str] = &[
     "as",

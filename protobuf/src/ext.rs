@@ -4,7 +4,8 @@
 //!
 //! [exts]: https://developers.google.com/protocol-buffers/docs/proto#extensions
 
-use std::marker::PhantomData;
+use alloc::vec::Vec;
+use core::marker::PhantomData;
 
 use crate::message::Message;
 use crate::types::ProtobufType;

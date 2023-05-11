@@ -1,8 +1,8 @@
 #![cfg(feature = "bytes")]
 
-use std::fmt;
-use std::ops::Deref;
-use std::str;
+use core::fmt;
+use core::ops::Deref;
+use alloc::str;
 
 use bytes::Bytes;
 

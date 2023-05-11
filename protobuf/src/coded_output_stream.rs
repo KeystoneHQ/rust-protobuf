@@ -9,9 +9,10 @@ use crate::ProtobufEnum;
 use crate::ProtobufResult;
 use crate::UnknownFields;
 use crate::UnknownValueRef;
-use std::io;
-use std::io::Write;
-use std::mem;
+use core2::io;
+use core2::io::Write;
+use core::mem;
+use alloc::vec::Vec;
 
 /// Equal to the default buffer size of `BufWriter`, so when
 /// `CodedOutputStream` wraps `BufWriter`, it often skips double buffering.
@@ -532,13 +533,14 @@ impl<'a> Write for CodedOutputStream<'a> {
 
 #[cfg(test)]
 mod test {
+    use alloc::vec::Vec;
+    use core::iter;
     use crate::coded_output_stream::CodedOutputStream;
     use crate::hex::decode_hex;
     use crate::hex::encode_hex;
     use crate::wire_format;
     use crate::ProtobufResult;
-    use std::io::Write;
-    use std::iter;
+    use core2::io::Write;
 
     fn test_write<F>(expected: &str, mut gen: F)
     where

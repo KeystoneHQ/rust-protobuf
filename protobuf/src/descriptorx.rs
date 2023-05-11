@@ -1,6 +1,8 @@
 // Should not be a part of public API
 #![doc(hidden)]
 
+use alloc::string::{String, ToString};
+use alloc::vec::Vec;
 use crate::descriptor::DescriptorProto;
 use crate::descriptor::EnumDescriptorProto;
 use crate::descriptor::EnumValueDescriptorProto;

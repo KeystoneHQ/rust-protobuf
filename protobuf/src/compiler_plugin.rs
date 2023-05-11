@@ -4,9 +4,9 @@
 use crate::descriptor::FileDescriptorProto;
 use crate::plugin::*;
 use crate::Message;
-use std::io::stdin;
-use std::io::stdout;
-use std::str;
+use alloc::str;
+use alloc::string::{String, ToString};
+use alloc::vec::Vec;
 
 pub struct GenRequest<'a> {
     pub file_descriptors: &'a [FileDescriptorProto],
@@ -19,6 +19,7 @@ pub struct GenResult {
     pub content: Vec<u8>,
 }
 
+#[cfg(feature = "std")]
 pub fn plugin_main<F>(gen: F)
 where
     F: Fn(&[FileDescriptorProto], &[String]) -> Vec<GenResult>,
@@ -26,11 +27,12 @@ where
     plugin_main_2(|r| gen(r.file_descriptors, r.files_to_generate))
 }
 
+#[cfg(feature = "std")]
 pub fn plugin_main_2<F>(gen: F)
 where
     F: Fn(&GenRequest) -> Vec<GenResult>,
 {
-    let req = CodeGeneratorRequest::parse_from_reader(&mut stdin()).unwrap();
+    let req = CodeGeneratorRequest::parse_from_reader(&mut std::id::stdin()).unwrap();
     let result = gen(&GenRequest {
         file_descriptors: &req.get_proto_file(),
         files_to_generate: &req.get_file_to_generate(),
@@ -48,5 +50,5 @@ where
             })
             .collect(),
     );
-    resp.write_to_writer(&mut stdout()).unwrap();
+    resp.write_to_writer(&mut std::io::stdout()).unwrap();
 }

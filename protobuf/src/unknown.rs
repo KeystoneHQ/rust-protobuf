@@ -1,15 +1,14 @@
+use alloc::boxed::Box;
 use crate::clear::Clear;
 use crate::wire_format;
 use crate::zigzag::encode_zig_zag_32;
 use crate::zigzag::encode_zig_zag_64;
-use std::collections::hash_map;
-use std::collections::hash_map::DefaultHasher;
-use std::collections::HashMap;
-use std::default::Default;
-use std::hash::BuildHasherDefault;
-use std::hash::Hash;
-use std::hash::Hasher;
-use std::slice;
+use hashbrown::HashMap;
+use hashbrown::hash_map;
+use core::slice;
+use core::hash::{BuildHasher, BuildHasherDefault, Hash, Hasher};
+use alloc::vec::Vec;
+use hashbrown::hash_map::DefaultHashBuilder;
 
 /// Unknown value.
 ///
@@ -182,7 +181,7 @@ pub struct UnknownFields {
     // and Google Protobuf Java uses tree map to store unknown fields
     // (which is more expensive than hashmap).
     // TODO: hide
-    pub fields: Option<Box<HashMap<u32, UnknownValues, BuildHasherDefault<DefaultHasher>>>>,
+    pub fields: Option<Box<HashMap<u32, UnknownValues, BuildHasherDefault<ahash::AHasher>>>>,
 }
 
 /// Very simple hash implementation of `Hash` for `UnknownFields`.
@@ -194,7 +193,8 @@ impl Hash for UnknownFields {
             if !map.is_empty() {
                 let mut hash: u64 = 0;
                 for (k, v) in &**map {
-                    let mut entry_hasher = DefaultHasher::new();
+                    let hash_builder = BuildHasherDefault::<ahash::AHasher>::default();
+                    let mut entry_hasher = hash_builder.build_hasher();
                     Hash::hash(&(k, v), &mut entry_hasher);
                     hash = hash.wrapping_add(entry_hasher.finish());
                 }
@@ -311,10 +311,11 @@ impl<'s> Iterator for UnknownFieldsIter<'s> {
 
 #[cfg(test)]
 mod test {
+    use alloc::vec::Vec;
+    use core::hash::Hash;
     use super::UnknownFields;
-    use std::collections::hash_map::DefaultHasher;
-    use std::hash::Hash;
-    use std::hash::Hasher;
+    use core::hash::Hash;
+    use core::hash::Hasher;
 
     #[test]
     fn unknown_fields_hash() {

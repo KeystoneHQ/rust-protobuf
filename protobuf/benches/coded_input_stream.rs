@@ -5,9 +5,9 @@
 extern crate protobuf;
 extern crate test;
 
-use std::io;
-use std::io::Read;
-
+use core2::io;
+use core2::io::Read;
+use alloc::vec::Vec;
 use protobuf::CodedInputStream;
 
 use self::test::Bencher;

@@ -1,8 +1,9 @@
+use alloc::string::{FromUtf8Error, String};
 use super::lexer_impl::Lexer;
 use super::lexer_impl::LexerError;
 use crate::text_format::lexer::ParserLanguage;
-use std::fmt;
-use std::string::FromUtf8Error;
+use core::fmt;
+use alloc::vec::Vec;
 
 #[derive(Debug)]
 pub enum StrLitDecodeError {
@@ -20,7 +21,7 @@ impl fmt::Display for StrLitDecodeError {
     }
 }
 
-impl std::error::Error for StrLitDecodeError {}
+impl core::error::Error for StrLitDecodeError {}
 
 impl From<LexerError> for StrLitDecodeError {
     fn from(_: LexerError) -> Self {
@@ -69,6 +70,7 @@ impl StrLit {
 
 #[cfg(test)]
 mod test {
+    use alloc::borrow::ToOwned;
     use crate::text_format::lexer::StrLit;
 
     #[test]

@@ -1,9 +1,11 @@
-use std::char;
-use std::convert::TryFrom;
-use std::f64;
-use std::fmt;
-use std::num::ParseFloatError;
-use std::num::ParseIntError;
+use alloc::borrow::ToOwned;
+use alloc::string::String;
+use core::convert::TryFrom;
+use core::char;
+use core::f64;
+use core::fmt;
+use core::num::ParseFloatError;
+use core::num::ParseIntError;
 
 use super::float;
 use super::loc::Loc;
@@ -54,7 +56,7 @@ impl fmt::Display for LexerError {
     }
 }
 
-impl std::error::Error for LexerError {}
+impl core::error::Error for LexerError {}
 
 pub type LexerResult<T> = Result<T, LexerError>;
 

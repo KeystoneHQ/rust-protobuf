@@ -1,3 +1,5 @@
+use alloc::string::String;
+
 /// Implementation must match exactly
 /// `ToJsonName()` function in C++ `descriptor.cc`.
 pub fn json_name(input: &str) -> String {

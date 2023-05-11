@@ -1,4 +1,6 @@
-use std::any::Any;
+use alloc::string::String;
+use alloc::vec::Vec;
+use core::any::Any;
 
 #[cfg(feature = "bytes")]
 use crate::chars::Chars;

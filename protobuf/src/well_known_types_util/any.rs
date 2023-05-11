@@ -1,3 +1,5 @@
+use alloc::boxed::Box;
+use alloc::string::String;
 use crate::reflect::MessageDescriptor;
 use crate::well_known_types::Any;
 use crate::Message;

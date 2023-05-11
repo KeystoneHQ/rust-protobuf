@@ -1,5 +1,5 @@
-use std::sync::atomic::AtomicUsize;
-use std::sync::atomic::Ordering;
+use core::sync::atomic::AtomicUsize;
+use core::sync::atomic::Ordering;
 
 /// Cached size field used in generated code.
 /// It is always equal to itself to simplify generated code.

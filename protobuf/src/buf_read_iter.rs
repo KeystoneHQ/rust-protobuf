@@ -1,9 +1,9 @@
-use std::cmp;
-use std::io::BufRead;
-use std::io::BufReader;
-use std::io::Read;
-use std::mem;
-use std::u64;
+use core::cmp;
+use core2::io::{BufRead, Read};
+use core2::io::BufReader;
+use core::mem;
+use core::u64;
+use alloc::vec::Vec;
 
 #[cfg(feature = "bytes")]
 use bytes::buf::UninitSlice;
@@ -30,7 +30,7 @@ const NO_LIMIT: u64 = u64::MAX;
 /// Hold all possible combinations of input source
 enum InputSource<'a> {
     BufRead(&'a mut dyn BufRead),
-    Read(BufReader<&'a mut dyn Read>),
+    Read(BufReader<&'a mut dyn Read, INPUT_STREAM_BUFFER_SIZE>),
     Slice(&'a [u8]),
     #[cfg(feature = "bytes")]
     Bytes(&'a Bytes),
@@ -74,10 +74,7 @@ impl<'a> Drop for BufReadIter<'a> {
 impl<'ignore> BufReadIter<'ignore> {
     pub fn from_read<'a>(read: &'a mut dyn Read) -> BufReadIter<'a> {
         BufReadIter {
-            input_source: InputSource::Read(BufReader::with_capacity(
-                INPUT_STREAM_BUFFER_SIZE,
-                read,
-            )),
+            input_source: InputSource::Read(BufReader::new(read)),
             buf: &[],
             pos_within_buf: 0,
             limit_within_buf: 0,
@@ -319,7 +316,7 @@ impl<'ignore> BufReadIter<'ignore> {
 
     #[cfg(feature = "bytes")]
     unsafe fn uninit_slice_as_mut_slice(slice: &mut UninitSlice) -> &mut [u8] {
-        use std::slice;
+        use core::slice;
         slice::from_raw_parts_mut(slice.as_mut_ptr(), slice.len())
     }
 
@@ -434,7 +431,7 @@ impl<'ignore> BufReadIter<'ignore> {
 #[cfg(all(test, feature = "bytes"))]
 mod test_bytes {
     use super::*;
-    use std::io::Write;
+    use core2::io::Write;
 
     fn make_long_string(len: usize) -> Vec<u8> {
         let mut s = Vec::new();
@@ -468,9 +465,9 @@ mod test_bytes {
 #[cfg(test)]
 mod test {
     use super::*;
-    use std::io;
-    use std::io::BufRead;
-    use std::io::Read;
+    use core2::io;
+    use core2::BufRead;
+    use core2::io::Read;
 
     #[test]
     fn eof_at_limit() {

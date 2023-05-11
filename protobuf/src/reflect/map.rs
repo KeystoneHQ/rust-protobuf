@@ -1,10 +1,11 @@
-use std::collections::hash_map;
-use std::collections::HashMap;
-use std::hash::Hash;
+use alloc::boxed::Box;
+use alloc::collections::btree_map;
+use alloc::collections::btree_map::BTreeMap;
+use core::hash::Hash;
 
 use super::value::ProtobufValue;
 
-/// Implemented for `HashMap` with appropriate keys and values
+/// Implemented for `BTreeMap` with appropriate keys and values
 pub trait ReflectMap: 'static {
     fn reflect_iter(&self) -> ReflectMapIter;
 
@@ -12,7 +13,7 @@ pub trait ReflectMap: 'static {
 }
 
 impl<K: ProtobufValue + Eq + Hash + 'static, V: ProtobufValue + 'static> ReflectMap
-    for HashMap<K, V>
+    for BTreeMap<K, V>
 {
     fn reflect_iter<'a>(&'a self) -> ReflectMapIter<'a> {
         ReflectMapIter {
@@ -21,7 +22,7 @@ impl<K: ProtobufValue + Eq + Hash + 'static, V: ProtobufValue + 'static> Reflect
     }
 
     fn len(&self) -> usize {
-        HashMap::len(self)
+        BTreeMap::len(self)
     }
 }
 
@@ -30,7 +31,7 @@ trait ReflectMapIterTrait<'a> {
 }
 
 struct ReflectMapIterImpl<'a, K: Eq + Hash + 'static, V: 'static> {
-    iter: hash_map::Iter<'a, K, V>,
+    iter: btree_map::Iter<'a, K, V>,
 }
 
 impl<'a, K: ProtobufValue + Eq + Hash + 'static, V: ProtobufValue + 'static> ReflectMapIterTrait<'a>

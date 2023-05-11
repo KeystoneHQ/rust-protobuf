@@ -2,9 +2,11 @@
 
 //! Version 1 reflection accessors.
 
-use std::collections::HashMap;
-use std::fmt;
-use std::hash::Hash;
+use alloc::boxed::Box;
+use alloc::collections::BTreeMap;
+use alloc::string::String;
+use core::fmt;
+use core::hash::Hash;
 
 use crate::enums::ProtobufEnum;
 use crate::message::message_down_cast;
@@ -24,6 +26,7 @@ use crate::reflect::rt::FieldAccessor;
 use crate::repeated::RepeatedField;
 use crate::singular::SingularField;
 use crate::singular::SingularPtrField;
+use alloc::vec::Vec;
 
 /// this trait should not be used directly, use `FieldDescriptor` instead
 pub trait FieldAccessorTrait: Sync + 'static {
@@ -756,7 +759,7 @@ where
     )
 }
 
-impl<M, K, V> FieldAccessor2<M, dyn ReflectMap> for MessageGetMut<M, HashMap<K, V>>
+impl<M, K, V> FieldAccessor2<M, dyn ReflectMap> for MessageGetMut<M, BTreeMap<K, V>>
 where
     M: Message + 'static,
     K: ProtobufValue + 'static,
@@ -774,8 +777,8 @@ where
 
 pub fn make_map_accessor<M, K, V>(
     name: &'static str,
-    get_field: for<'a> fn(&'a M) -> &'a HashMap<K::Value, V::Value>,
-    mut_field: for<'a> fn(&'a mut M) -> &'a mut HashMap<K::Value, V::Value>,
+    get_field: for<'a> fn(&'a M) -> &'a BTreeMap<K::Value, V::Value>,
+    mut_field: for<'a> fn(&'a mut M) -> &'a mut BTreeMap<K::Value, V::Value>,
 ) -> FieldAccessor
 where
     M: Message + 'static,
@@ -785,7 +788,7 @@ where
 {
     FieldAccessor::new_v1(
         name,
-        FieldAccessorFunctions::Map(Box::new(MessageGetMut::<M, HashMap<K::Value, V::Value>> {
+        FieldAccessorFunctions::Map(Box::new(MessageGetMut::<M, BTreeMap<K::Value, V::Value>> {
             get_field,
             mut_field,
         })),

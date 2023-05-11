@@ -1,7 +1,10 @@
 //! Library to read and write protocol buffers data.
-
-#![deny(missing_docs)]
-#![deny(broken_intra_doc_links)]
+#![no_std]
+#![feature(error_in_core)]
+#![feature(sync_unsafe_cell)]
+#[macro_use]
+extern crate alloc;
+extern crate core;
 
 #[cfg(feature = "bytes")]
 extern crate bytes;
@@ -98,4 +101,5 @@ pub const VERSION: &str = "";
 #[cfg(never)]
 #[doc(hidden)]
 pub const VERSION_IDENT: &str = "";
+#[cfg(feature = "std")]
 include!(concat!(env!("OUT_DIR"), "/version.rs"));

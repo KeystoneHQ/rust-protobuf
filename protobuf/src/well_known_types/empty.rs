@@ -29,7 +29,7 @@ pub struct Empty {
     pub cached_size: crate::CachedSize,
 }
 
-impl<'a> ::std::default::Default for &'a Empty {
+impl<'a> ::core::default::Default for &'a Empty {
     fn default() -> &'a Empty {
         <Empty as crate::Message>::default_instance()
     }
@@ -37,7 +37,7 @@ impl<'a> ::std::default::Default for &'a Empty {
 
 impl Empty {
     pub fn new() -> Empty {
-        ::std::default::Default::default()
+        ::core::default::Default::default()
     }
 }
 
@@ -55,7 +55,7 @@ impl crate::Message for Empty {
                 },
             };
         }
-        ::std::result::Result::Ok(())
+        ::core::result::Result::Ok(())
     }
 
     // Compute sizes of nested messages
@@ -69,7 +69,7 @@ impl crate::Message for Empty {
 
     fn write_to_with_cached_sizes(&self, os: &mut crate::CodedOutputStream<'_>) -> crate::ProtobufResult<()> {
         os.write_unknown_fields(self.get_unknown_fields())?;
-        ::std::result::Result::Ok(())
+        ::core::result::Result::Ok(())
     }
 
     fn get_cached_size(&self) -> u32 {
@@ -84,13 +84,13 @@ impl crate::Message for Empty {
         &mut self.unknown_fields
     }
 
-    fn as_any(&self) -> &dyn (::std::any::Any) {
-        self as &dyn (::std::any::Any)
+    fn as_any(&self) -> &dyn (::core::any::Any) {
+        self as &dyn (::core::any::Any)
     }
-    fn as_any_mut(&mut self) -> &mut dyn (::std::any::Any) {
-        self as &mut dyn (::std::any::Any)
+    fn as_any_mut(&mut self) -> &mut dyn (::core::any::Any) {
+        self as &mut dyn (::core::any::Any)
     }
-    fn into_any(self: ::std::boxed::Box<Self>) -> ::std::boxed::Box<dyn (::std::any::Any)> {
+    fn into_any(self: ::alloc::boxed::Box<Self>) -> ::alloc::boxed::Box<dyn (::core::any::Any)> {
         self
     }
 
@@ -105,7 +105,7 @@ impl crate::Message for Empty {
     fn descriptor_static() -> &'static crate::reflect::MessageDescriptor {
         static descriptor: crate::rt::LazyV2<crate::reflect::MessageDescriptor> = crate::rt::LazyV2::INIT;
         descriptor.get(|| {
-            let fields = ::std::vec::Vec::new();
+            let fields = ::alloc::vec::Vec::new();
             crate::reflect::MessageDescriptor::new_pb_name::<Empty>(
                 "Empty",
                 fields,
@@ -126,8 +126,8 @@ impl crate::Clear for Empty {
     }
 }
 
-impl ::std::fmt::Debug for Empty {
-    fn fmt(&self, f: &mut ::std::fmt::Formatter<'_>) -> ::std::fmt::Result {
+impl ::core::fmt::Debug for Empty {
+    fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
         crate::text_format::fmt(self, f)
     }
 }

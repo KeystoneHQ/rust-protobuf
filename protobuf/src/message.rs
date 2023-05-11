@@ -1,11 +1,11 @@
-use std::any::Any;
-use std::any::TypeId;
-use std::fmt;
-use std::io::Read;
-use std::io::Write;
+use alloc::boxed::Box;
+use core::fmt;
+use alloc::vec::Vec;
+use core::any::{Any, TypeId};
 
 #[cfg(feature = "bytes")]
 use bytes::Bytes;
+use core2::io::{Read, Write};
 
 use crate::clear::Clear;
 use crate::coded_input_stream::CodedInputStream;

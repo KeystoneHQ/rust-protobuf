@@ -23,7 +23,7 @@
 #[cfg_attr(feature = "with-serde", derive(::serde::Serialize, ::serde::Deserialize))]
 pub struct SourceContext {
     // message fields
-    pub file_name: ::std::string::String,
+    pub file_name: ::alloc::string::String,
     // special fields
     #[cfg_attr(feature = "with-serde", serde(skip))]
     pub unknown_fields: crate::UnknownFields,
@@ -31,7 +31,7 @@ pub struct SourceContext {
     pub cached_size: crate::CachedSize,
 }
 
-impl<'a> ::std::default::Default for &'a SourceContext {
+impl<'a> ::core::default::Default for &'a SourceContext {
     fn default() -> &'a SourceContext {
         <SourceContext as crate::Message>::default_instance()
     }
@@ -39,7 +39,7 @@ impl<'a> ::std::default::Default for &'a SourceContext {
 
 impl SourceContext {
     pub fn new() -> SourceContext {
-        ::std::default::Default::default()
+        ::core::default::Default::default()
     }
 
     // string file_name = 1;
@@ -53,19 +53,19 @@ impl SourceContext {
     }
 
     // Param is passed by value, moved
-    pub fn set_file_name(&mut self, v: ::std::string::String) {
+    pub fn set_file_name(&mut self, v: ::alloc::string::String) {
         self.file_name = v;
     }
 
     // Mutable pointer to the field.
     // If field is not initialized, it is initialized with default value first.
-    pub fn mut_file_name(&mut self) -> &mut ::std::string::String {
+    pub fn mut_file_name(&mut self) -> &mut ::alloc::string::String {
         &mut self.file_name
     }
 
     // Take field
-    pub fn take_file_name(&mut self) -> ::std::string::String {
-        ::std::mem::replace(&mut self.file_name, ::std::string::String::new())
+    pub fn take_file_name(&mut self) -> ::alloc::string::String {
+        ::core::mem::replace(&mut self.file_name, ::alloc::string::String::new())
     }
 }
 
@@ -86,7 +86,7 @@ impl crate::Message for SourceContext {
                 },
             };
         }
-        ::std::result::Result::Ok(())
+        ::core::result::Result::Ok(())
     }
 
     // Compute sizes of nested messages
@@ -106,7 +106,7 @@ impl crate::Message for SourceContext {
             os.write_string(1, &self.file_name)?;
         }
         os.write_unknown_fields(self.get_unknown_fields())?;
-        ::std::result::Result::Ok(())
+        ::core::result::Result::Ok(())
     }
 
     fn get_cached_size(&self) -> u32 {
@@ -121,13 +121,13 @@ impl crate::Message for SourceContext {
         &mut self.unknown_fields
     }
 
-    fn as_any(&self) -> &dyn (::std::any::Any) {
-        self as &dyn (::std::any::Any)
+    fn as_any(&self) -> &dyn (::core::any::Any) {
+        self as &dyn (::core::any::Any)
     }
-    fn as_any_mut(&mut self) -> &mut dyn (::std::any::Any) {
-        self as &mut dyn (::std::any::Any)
+    fn as_any_mut(&mut self) -> &mut dyn (::core::any::Any) {
+        self as &mut dyn (::core::any::Any)
     }
-    fn into_any(self: ::std::boxed::Box<Self>) -> ::std::boxed::Box<dyn (::std::any::Any)> {
+    fn into_any(self: ::alloc::boxed::Box<Self>) -> ::alloc::boxed::Box<dyn (::core::any::Any)> {
         self
     }
 
@@ -142,7 +142,7 @@ impl crate::Message for SourceContext {
     fn descriptor_static() -> &'static crate::reflect::MessageDescriptor {
         static descriptor: crate::rt::LazyV2<crate::reflect::MessageDescriptor> = crate::rt::LazyV2::INIT;
         descriptor.get(|| {
-            let mut fields = ::std::vec::Vec::new();
+            let mut fields = ::alloc::vec::Vec::new();
             fields.push(crate::reflect::accessor::make_simple_field_accessor::<_, crate::types::ProtobufTypeString>(
                 "file_name",
                 |m: &SourceContext| { &m.file_name },
@@ -169,8 +169,8 @@ impl crate::Clear for SourceContext {
     }
 }
 
-impl ::std::fmt::Debug for SourceContext {
-    fn fmt(&self, f: &mut ::std::fmt::Formatter<'_>) -> ::std::fmt::Result {
+impl ::core::fmt::Debug for SourceContext {
+    fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
         crate::text_format::fmt(self, f)
     }
 }

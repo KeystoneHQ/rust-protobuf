@@ -1,3 +1,4 @@
+use alloc::string::String;
 use crate::descriptor::DescriptorProto;
 use crate::descriptor::EnumDescriptorProto;
 use crate::descriptor::FileDescriptorProto;

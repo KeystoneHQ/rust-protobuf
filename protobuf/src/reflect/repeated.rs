@@ -1,4 +1,7 @@
-use std::slice;
+use alloc::boxed::Box;
+use alloc::string::String;
+use core::slice;
+use alloc::vec::Vec;
 
 use super::value::ProtobufValue;
 use super::value::ReflectValueRef;

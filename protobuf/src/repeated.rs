@@ -1,20 +1,20 @@
+use alloc::vec;
+use alloc::vec::Vec;
+use core::borrow::Borrow;
+use core::cmp::Ordering;
 #[cfg(feature = "with-serde")]
 use serde;
 
-use std::borrow::Borrow;
-use std::cmp::Ordering;
-use std::default::Default;
-use std::fmt;
-use std::hash::Hash;
-use std::hash::Hasher;
-use std::iter::FromIterator;
-use std::iter::IntoIterator;
-use std::ops::Deref;
-use std::ops::DerefMut;
-use std::ops::Index;
-use std::ops::IndexMut;
-use std::slice;
-use std::vec;
+use core::default::Default;
+use core::fmt;
+use core::hash::Hash;
+use core::hash::Hasher;
+use core::iter::FromIterator;
+use core::ops::Deref;
+use core::ops::DerefMut;
+use core::ops::Index;
+use core::ops::IndexMut;
+use core::slice;
 
 use crate::clear::Clear;
 
@@ -515,6 +515,7 @@ impl<'de, T: serde::Deserialize<'de> + Default> serde::Deserialize<'de> for Repe
 
 #[cfg(test)]
 mod test {
+    use alloc::string::ToString;
     use super::RepeatedField;
 
     #[test]

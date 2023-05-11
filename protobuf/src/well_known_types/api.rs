@@ -23,10 +23,10 @@
 #[cfg_attr(feature = "with-serde", derive(::serde::Serialize, ::serde::Deserialize))]
 pub struct Api {
     // message fields
-    pub name: ::std::string::String,
+    pub name: ::alloc::string::String,
     pub methods: crate::RepeatedField<Method>,
     pub options: crate::RepeatedField<crate::well_known_types::Option>,
-    pub version: ::std::string::String,
+    pub version: ::alloc::string::String,
     pub source_context: crate::SingularPtrField<crate::well_known_types::SourceContext>,
     pub mixins: crate::RepeatedField<Mixin>,
     pub syntax: crate::well_known_types::Syntax,
@@ -37,7 +37,7 @@ pub struct Api {
     pub cached_size: crate::CachedSize,
 }
 
-impl<'a> ::std::default::Default for &'a Api {
+impl<'a> ::core::default::Default for &'a Api {
     fn default() -> &'a Api {
         <Api as crate::Message>::default_instance()
     }
@@ -45,7 +45,7 @@ impl<'a> ::std::default::Default for &'a Api {
 
 impl Api {
     pub fn new() -> Api {
-        ::std::default::Default::default()
+        ::core::default::Default::default()
     }
 
     // string name = 1;
@@ -59,19 +59,19 @@ impl Api {
     }
 
     // Param is passed by value, moved
-    pub fn set_name(&mut self, v: ::std::string::String) {
+    pub fn set_name(&mut self, v: ::alloc::string::String) {
         self.name = v;
     }
 
     // Mutable pointer to the field.
     // If field is not initialized, it is initialized with default value first.
-    pub fn mut_name(&mut self) -> &mut ::std::string::String {
+    pub fn mut_name(&mut self) -> &mut ::alloc::string::String {
         &mut self.name
     }
 
     // Take field
-    pub fn take_name(&mut self) -> ::std::string::String {
-        ::std::mem::replace(&mut self.name, ::std::string::String::new())
+    pub fn take_name(&mut self) -> ::alloc::string::String {
+        ::core::mem::replace(&mut self.name, ::alloc::string::String::new())
     }
 
     // repeated .google.protobuf.Method methods = 2;
@@ -96,7 +96,7 @@ impl Api {
 
     // Take field
     pub fn take_methods(&mut self) -> crate::RepeatedField<Method> {
-        ::std::mem::replace(&mut self.methods, crate::RepeatedField::new())
+        ::core::mem::replace(&mut self.methods, crate::RepeatedField::new())
     }
 
     // repeated .google.protobuf.Option options = 3;
@@ -121,7 +121,7 @@ impl Api {
 
     // Take field
     pub fn take_options(&mut self) -> crate::RepeatedField<crate::well_known_types::Option> {
-        ::std::mem::replace(&mut self.options, crate::RepeatedField::new())
+        ::core::mem::replace(&mut self.options, crate::RepeatedField::new())
     }
 
     // string version = 4;
@@ -135,19 +135,19 @@ impl Api {
     }
 
     // Param is passed by value, moved
-    pub fn set_version(&mut self, v: ::std::string::String) {
+    pub fn set_version(&mut self, v: ::alloc::string::String) {
         self.version = v;
     }
 
     // Mutable pointer to the field.
     // If field is not initialized, it is initialized with default value first.
-    pub fn mut_version(&mut self) -> &mut ::std::string::String {
+    pub fn mut_version(&mut self) -> &mut ::alloc::string::String {
         &mut self.version
     }
 
     // Take field
-    pub fn take_version(&mut self) -> ::std::string::String {
-        ::std::mem::replace(&mut self.version, ::std::string::String::new())
+    pub fn take_version(&mut self) -> ::alloc::string::String {
+        ::core::mem::replace(&mut self.version, ::alloc::string::String::new())
     }
 
     // .google.protobuf.SourceContext source_context = 5;
@@ -205,7 +205,7 @@ impl Api {
 
     // Take field
     pub fn take_mixins(&mut self) -> crate::RepeatedField<Mixin> {
-        ::std::mem::replace(&mut self.mixins, crate::RepeatedField::new())
+        ::core::mem::replace(&mut self.mixins, crate::RepeatedField::new())
     }
 
     // .google.protobuf.Syntax syntax = 7;
@@ -279,7 +279,7 @@ impl crate::Message for Api {
                 },
             };
         }
-        ::std::result::Result::Ok(())
+        ::core::result::Result::Ok(())
     }
 
     // Compute sizes of nested messages
@@ -347,7 +347,7 @@ impl crate::Message for Api {
             os.write_enum(7, crate::ProtobufEnum::value(&self.syntax))?;
         }
         os.write_unknown_fields(self.get_unknown_fields())?;
-        ::std::result::Result::Ok(())
+        ::core::result::Result::Ok(())
     }
 
     fn get_cached_size(&self) -> u32 {
@@ -362,13 +362,13 @@ impl crate::Message for Api {
         &mut self.unknown_fields
     }
 
-    fn as_any(&self) -> &dyn (::std::any::Any) {
-        self as &dyn (::std::any::Any)
+    fn as_any(&self) -> &dyn (::core::any::Any) {
+        self as &dyn (::core::any::Any)
     }
-    fn as_any_mut(&mut self) -> &mut dyn (::std::any::Any) {
-        self as &mut dyn (::std::any::Any)
+    fn as_any_mut(&mut self) -> &mut dyn (::core::any::Any) {
+        self as &mut dyn (::core::any::Any)
     }
-    fn into_any(self: ::std::boxed::Box<Self>) -> ::std::boxed::Box<dyn (::std::any::Any)> {
+    fn into_any(self: ::alloc::boxed::Box<Self>) -> ::alloc::boxed::Box<dyn (::core::any::Any)> {
         self
     }
 
@@ -383,7 +383,7 @@ impl crate::Message for Api {
     fn descriptor_static() -> &'static crate::reflect::MessageDescriptor {
         static descriptor: crate::rt::LazyV2<crate::reflect::MessageDescriptor> = crate::rt::LazyV2::INIT;
         descriptor.get(|| {
-            let mut fields = ::std::vec::Vec::new();
+            let mut fields = ::alloc::vec::Vec::new();
             fields.push(crate::reflect::accessor::make_simple_field_accessor::<_, crate::types::ProtobufTypeString>(
                 "name",
                 |m: &Api| { &m.name },
@@ -446,8 +446,8 @@ impl crate::Clear for Api {
     }
 }
 
-impl ::std::fmt::Debug for Api {
-    fn fmt(&self, f: &mut ::std::fmt::Formatter<'_>) -> ::std::fmt::Result {
+impl ::core::fmt::Debug for Api {
+    fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
         crate::text_format::fmt(self, f)
     }
 }
@@ -462,10 +462,10 @@ impl crate::reflect::ProtobufValue for Api {
 #[cfg_attr(feature = "with-serde", derive(::serde::Serialize, ::serde::Deserialize))]
 pub struct Method {
     // message fields
-    pub name: ::std::string::String,
-    pub request_type_url: ::std::string::String,
+    pub name: ::alloc::string::String,
+    pub request_type_url: ::alloc::string::String,
     pub request_streaming: bool,
-    pub response_type_url: ::std::string::String,
+    pub response_type_url: ::alloc::string::String,
     pub response_streaming: bool,
     pub options: crate::RepeatedField<crate::well_known_types::Option>,
     pub syntax: crate::well_known_types::Syntax,
@@ -476,7 +476,7 @@ pub struct Method {
     pub cached_size: crate::CachedSize,
 }
 
-impl<'a> ::std::default::Default for &'a Method {
+impl<'a> ::core::default::Default for &'a Method {
     fn default() -> &'a Method {
         <Method as crate::Message>::default_instance()
     }
@@ -484,7 +484,7 @@ impl<'a> ::std::default::Default for &'a Method {
 
 impl Method {
     pub fn new() -> Method {
-        ::std::default::Default::default()
+        ::core::default::Default::default()
     }
 
     // string name = 1;
@@ -498,19 +498,19 @@ impl Method {
     }
 
     // Param is passed by value, moved
-    pub fn set_name(&mut self, v: ::std::string::String) {
+    pub fn set_name(&mut self, v: ::alloc::string::String) {
         self.name = v;
     }
 
     // Mutable pointer to the field.
     // If field is not initialized, it is initialized with default value first.
-    pub fn mut_name(&mut self) -> &mut ::std::string::String {
+    pub fn mut_name(&mut self) -> &mut ::alloc::string::String {
         &mut self.name
     }
 
     // Take field
-    pub fn take_name(&mut self) -> ::std::string::String {
-        ::std::mem::replace(&mut self.name, ::std::string::String::new())
+    pub fn take_name(&mut self) -> ::alloc::string::String {
+        ::core::mem::replace(&mut self.name, ::alloc::string::String::new())
     }
 
     // string request_type_url = 2;
@@ -524,19 +524,19 @@ impl Method {
     }
 
     // Param is passed by value, moved
-    pub fn set_request_type_url(&mut self, v: ::std::string::String) {
+    pub fn set_request_type_url(&mut self, v: ::alloc::string::String) {
         self.request_type_url = v;
     }
 
     // Mutable pointer to the field.
     // If field is not initialized, it is initialized with default value first.
-    pub fn mut_request_type_url(&mut self) -> &mut ::std::string::String {
+    pub fn mut_request_type_url(&mut self) -> &mut ::alloc::string::String {
         &mut self.request_type_url
     }
 
     // Take field
-    pub fn take_request_type_url(&mut self) -> ::std::string::String {
-        ::std::mem::replace(&mut self.request_type_url, ::std::string::String::new())
+    pub fn take_request_type_url(&mut self) -> ::alloc::string::String {
+        ::core::mem::replace(&mut self.request_type_url, ::alloc::string::String::new())
     }
 
     // bool request_streaming = 3;
@@ -565,19 +565,19 @@ impl Method {
     }
 
     // Param is passed by value, moved
-    pub fn set_response_type_url(&mut self, v: ::std::string::String) {
+    pub fn set_response_type_url(&mut self, v: ::alloc::string::String) {
         self.response_type_url = v;
     }
 
     // Mutable pointer to the field.
     // If field is not initialized, it is initialized with default value first.
-    pub fn mut_response_type_url(&mut self) -> &mut ::std::string::String {
+    pub fn mut_response_type_url(&mut self) -> &mut ::alloc::string::String {
         &mut self.response_type_url
     }
 
     // Take field
-    pub fn take_response_type_url(&mut self) -> ::std::string::String {
-        ::std::mem::replace(&mut self.response_type_url, ::std::string::String::new())
+    pub fn take_response_type_url(&mut self) -> ::alloc::string::String {
+        ::core::mem::replace(&mut self.response_type_url, ::alloc::string::String::new())
     }
 
     // bool response_streaming = 5;
@@ -617,7 +617,7 @@ impl Method {
 
     // Take field
     pub fn take_options(&mut self) -> crate::RepeatedField<crate::well_known_types::Option> {
-        ::std::mem::replace(&mut self.options, crate::RepeatedField::new())
+        ::core::mem::replace(&mut self.options, crate::RepeatedField::new())
     }
 
     // .google.protobuf.Syntax syntax = 7;
@@ -658,7 +658,7 @@ impl crate::Message for Method {
                 },
                 3 => {
                     if wire_type != crate::wire_format::WireTypeVarint {
-                        return ::std::result::Result::Err(crate::rt::unexpected_wire_type(wire_type));
+                        return ::core::result::Result::Err(crate::rt::unexpected_wire_type(wire_type));
                     }
                     let tmp = is.read_bool()?;
                     self.request_streaming = tmp;
@@ -668,7 +668,7 @@ impl crate::Message for Method {
                 },
                 5 => {
                     if wire_type != crate::wire_format::WireTypeVarint {
-                        return ::std::result::Result::Err(crate::rt::unexpected_wire_type(wire_type));
+                        return ::core::result::Result::Err(crate::rt::unexpected_wire_type(wire_type));
                     }
                     let tmp = is.read_bool()?;
                     self.response_streaming = tmp;
@@ -684,7 +684,7 @@ impl crate::Message for Method {
                 },
             };
         }
-        ::std::result::Result::Ok(())
+        ::core::result::Result::Ok(())
     }
 
     // Compute sizes of nested messages
@@ -743,7 +743,7 @@ impl crate::Message for Method {
             os.write_enum(7, crate::ProtobufEnum::value(&self.syntax))?;
         }
         os.write_unknown_fields(self.get_unknown_fields())?;
-        ::std::result::Result::Ok(())
+        ::core::result::Result::Ok(())
     }
 
     fn get_cached_size(&self) -> u32 {
@@ -758,13 +758,13 @@ impl crate::Message for Method {
         &mut self.unknown_fields
     }
 
-    fn as_any(&self) -> &dyn (::std::any::Any) {
-        self as &dyn (::std::any::Any)
+    fn as_any(&self) -> &dyn (::core::any::Any) {
+        self as &dyn (::core::any::Any)
     }
-    fn as_any_mut(&mut self) -> &mut dyn (::std::any::Any) {
-        self as &mut dyn (::std::any::Any)
+    fn as_any_mut(&mut self) -> &mut dyn (::core::any::Any) {
+        self as &mut dyn (::core::any::Any)
     }
-    fn into_any(self: ::std::boxed::Box<Self>) -> ::std::boxed::Box<dyn (::std::any::Any)> {
+    fn into_any(self: ::alloc::boxed::Box<Self>) -> ::alloc::boxed::Box<dyn (::core::any::Any)> {
         self
     }
 
@@ -779,7 +779,7 @@ impl crate::Message for Method {
     fn descriptor_static() -> &'static crate::reflect::MessageDescriptor {
         static descriptor: crate::rt::LazyV2<crate::reflect::MessageDescriptor> = crate::rt::LazyV2::INIT;
         descriptor.get(|| {
-            let mut fields = ::std::vec::Vec::new();
+            let mut fields = ::alloc::vec::Vec::new();
             fields.push(crate::reflect::accessor::make_simple_field_accessor::<_, crate::types::ProtobufTypeString>(
                 "name",
                 |m: &Method| { &m.name },
@@ -842,8 +842,8 @@ impl crate::Clear for Method {
     }
 }
 
-impl ::std::fmt::Debug for Method {
-    fn fmt(&self, f: &mut ::std::fmt::Formatter<'_>) -> ::std::fmt::Result {
+impl ::core::fmt::Debug for Method {
+    fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
         crate::text_format::fmt(self, f)
     }
 }
@@ -858,8 +858,8 @@ impl crate::reflect::ProtobufValue for Method {
 #[cfg_attr(feature = "with-serde", derive(::serde::Serialize, ::serde::Deserialize))]
 pub struct Mixin {
     // message fields
-    pub name: ::std::string::String,
-    pub root: ::std::string::String,
+    pub name: ::alloc::string::String,
+    pub root: ::alloc::string::String,
     // special fields
     #[cfg_attr(feature = "with-serde", serde(skip))]
     pub unknown_fields: crate::UnknownFields,
@@ -867,7 +867,7 @@ pub struct Mixin {
     pub cached_size: crate::CachedSize,
 }
 
-impl<'a> ::std::default::Default for &'a Mixin {
+impl<'a> ::core::default::Default for &'a Mixin {
     fn default() -> &'a Mixin {
         <Mixin as crate::Message>::default_instance()
     }
@@ -875,7 +875,7 @@ impl<'a> ::std::default::Default for &'a Mixin {
 
 impl Mixin {
     pub fn new() -> Mixin {
-        ::std::default::Default::default()
+        ::core::default::Default::default()
     }
 
     // string name = 1;
@@ -889,19 +889,19 @@ impl Mixin {
     }
 
     // Param is passed by value, moved
-    pub fn set_name(&mut self, v: ::std::string::String) {
+    pub fn set_name(&mut self, v: ::alloc::string::String) {
         self.name = v;
     }
 
     // Mutable pointer to the field.
     // If field is not initialized, it is initialized with default value first.
-    pub fn mut_name(&mut self) -> &mut ::std::string::String {
+    pub fn mut_name(&mut self) -> &mut ::alloc::string::String {
         &mut self.name
     }
 
     // Take field
-    pub fn take_name(&mut self) -> ::std::string::String {
-        ::std::mem::replace(&mut self.name, ::std::string::String::new())
+    pub fn take_name(&mut self) -> ::alloc::string::String {
+        ::core::mem::replace(&mut self.name, ::alloc::string::String::new())
     }
 
     // string root = 2;
@@ -915,19 +915,19 @@ impl Mixin {
     }
 
     // Param is passed by value, moved
-    pub fn set_root(&mut self, v: ::std::string::String) {
+    pub fn set_root(&mut self, v: ::alloc::string::String) {
         self.root = v;
     }
 
     // Mutable pointer to the field.
     // If field is not initialized, it is initialized with default value first.
-    pub fn mut_root(&mut self) -> &mut ::std::string::String {
+    pub fn mut_root(&mut self) -> &mut ::alloc::string::String {
         &mut self.root
     }
 
     // Take field
-    pub fn take_root(&mut self) -> ::std::string::String {
-        ::std::mem::replace(&mut self.root, ::std::string::String::new())
+    pub fn take_root(&mut self) -> ::alloc::string::String {
+        ::core::mem::replace(&mut self.root, ::alloc::string::String::new())
     }
 }
 
@@ -951,7 +951,7 @@ impl crate::Message for Mixin {
                 },
             };
         }
-        ::std::result::Result::Ok(())
+        ::core::result::Result::Ok(())
     }
 
     // Compute sizes of nested messages
@@ -977,7 +977,7 @@ impl crate::Message for Mixin {
             os.write_string(2, &self.root)?;
         }
         os.write_unknown_fields(self.get_unknown_fields())?;
-        ::std::result::Result::Ok(())
+        ::core::result::Result::Ok(())
     }
 
     fn get_cached_size(&self) -> u32 {
@@ -992,13 +992,13 @@ impl crate::Message for Mixin {
         &mut self.unknown_fields
     }
 
-    fn as_any(&self) -> &dyn (::std::any::Any) {
-        self as &dyn (::std::any::Any)
+    fn as_any(&self) -> &dyn (::core::any::Any) {
+        self as &dyn (::core::any::Any)
     }
-    fn as_any_mut(&mut self) -> &mut dyn (::std::any::Any) {
-        self as &mut dyn (::std::any::Any)
+    fn as_any_mut(&mut self) -> &mut dyn (::core::any::Any) {
+        self as &mut dyn (::core::any::Any)
     }
-    fn into_any(self: ::std::boxed::Box<Self>) -> ::std::boxed::Box<dyn (::std::any::Any)> {
+    fn into_any(self: ::alloc::boxed::Box<Self>) -> ::alloc::boxed::Box<dyn (::core::any::Any)> {
         self
     }
 
@@ -1013,7 +1013,7 @@ impl crate::Message for Mixin {
     fn descriptor_static() -> &'static crate::reflect::MessageDescriptor {
         static descriptor: crate::rt::LazyV2<crate::reflect::MessageDescriptor> = crate::rt::LazyV2::INIT;
         descriptor.get(|| {
-            let mut fields = ::std::vec::Vec::new();
+            let mut fields = ::alloc::vec::Vec::new();
             fields.push(crate::reflect::accessor::make_simple_field_accessor::<_, crate::types::ProtobufTypeString>(
                 "name",
                 |m: &Mixin| { &m.name },
@@ -1046,8 +1046,8 @@ impl crate::Clear for Mixin {
     }
 }
 
-impl ::std::fmt::Debug for Mixin {
-    fn fmt(&self, f: &mut ::std::fmt::Formatter<'_>) -> ::std::fmt::Result {
+impl ::core::fmt::Debug for Mixin {
+    fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
         crate::text_format::fmt(self, f)
     }
 }

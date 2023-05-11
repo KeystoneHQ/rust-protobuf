@@ -1,9 +1,14 @@
 //! Protobuf error type
 
-use std::error::Error;
-use std::fmt;
-use std::io;
-use std::str;
+
+use alloc::borrow::ToOwned;
+use core::error::Error;
+use core::fmt;
+use core2::io;
+use alloc::str;
+use alloc::boxed::Box;
+use alloc::string::ToString;
+use core::convert::TryInto;
 
 use crate::wire_format::WireType;
 
@@ -94,7 +99,7 @@ impl Error for ProtobufError {
     fn description(&self) -> &str {
         match self {
             // not sure that cause should be included in message
-            &ProtobufError::IoError(ref e) => e.description(),
+            &ProtobufError::IoError(ref e) => "io error",
             &ProtobufError::WireError(ref e) => match *e {
                 WireError::Utf8Error => "invalid UTF-8 sequence",
                 WireError::UnexpectedWireType(..) => "unexpected wire type",
@@ -114,7 +119,7 @@ impl Error for ProtobufError {
 
     fn cause(&self) -> Option<&dyn Error> {
         match self {
-            &ProtobufError::IoError(ref e) => Some(e),
+            &ProtobufError::IoError(ref e) => None,
             &ProtobufError::Utf8(ref e) => Some(e),
             &ProtobufError::WireError(..) => None,
             &ProtobufError::MessageNotInitialized { .. } => None,
@@ -139,13 +144,13 @@ impl From<ProtobufError> for io::Error {
         match err {
             ProtobufError::IoError(e) => e,
             ProtobufError::WireError(e) => {
-                io::Error::new(io::ErrorKind::InvalidData, ProtobufError::WireError(e))
+                io::Error::new(io::ErrorKind::InvalidData, "write error")
             }
             ProtobufError::MessageNotInitialized { message: msg } => io::Error::new(
                 io::ErrorKind::InvalidInput,
-                ProtobufError::MessageNotInitialized { message: msg },
+                "message not initialized",
             ),
-            e => io::Error::new(io::ErrorKind::Other, Box::new(e)),
+            e => io::Error::new(io::ErrorKind::Other, "other error"),
         }
     }
 }

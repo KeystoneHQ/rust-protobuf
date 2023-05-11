@@ -31,7 +31,7 @@ pub struct DoubleValue {
     pub cached_size: crate::CachedSize,
 }
 
-impl<'a> ::std::default::Default for &'a DoubleValue {
+impl<'a> ::core::default::Default for &'a DoubleValue {
     fn default() -> &'a DoubleValue {
         <DoubleValue as crate::Message>::default_instance()
     }
@@ -39,7 +39,7 @@ impl<'a> ::std::default::Default for &'a DoubleValue {
 
 impl DoubleValue {
     pub fn new() -> DoubleValue {
-        ::std::default::Default::default()
+        ::core::default::Default::default()
     }
 
     // double value = 1;
@@ -69,7 +69,7 @@ impl crate::Message for DoubleValue {
             match field_number {
                 1 => {
                     if wire_type != crate::wire_format::WireTypeFixed64 {
-                        return ::std::result::Result::Err(crate::rt::unexpected_wire_type(wire_type));
+                        return ::core::result::Result::Err(crate::rt::unexpected_wire_type(wire_type));
                     }
                     let tmp = is.read_double()?;
                     self.value = tmp;
@@ -79,7 +79,7 @@ impl crate::Message for DoubleValue {
                 },
             };
         }
-        ::std::result::Result::Ok(())
+        ::core::result::Result::Ok(())
     }
 
     // Compute sizes of nested messages
@@ -99,7 +99,7 @@ impl crate::Message for DoubleValue {
             os.write_double(1, self.value)?;
         }
         os.write_unknown_fields(self.get_unknown_fields())?;
-        ::std::result::Result::Ok(())
+        ::core::result::Result::Ok(())
     }
 
     fn get_cached_size(&self) -> u32 {
@@ -114,13 +114,13 @@ impl crate::Message for DoubleValue {
         &mut self.unknown_fields
     }
 
-    fn as_any(&self) -> &dyn (::std::any::Any) {
-        self as &dyn (::std::any::Any)
+    fn as_any(&self) -> &dyn (::core::any::Any) {
+        self as &dyn (::core::any::Any)
     }
-    fn as_any_mut(&mut self) -> &mut dyn (::std::any::Any) {
-        self as &mut dyn (::std::any::Any)
+    fn as_any_mut(&mut self) -> &mut dyn (::core::any::Any) {
+        self as &mut dyn (::core::any::Any)
     }
-    fn into_any(self: ::std::boxed::Box<Self>) -> ::std::boxed::Box<dyn (::std::any::Any)> {
+    fn into_any(self: ::alloc::boxed::Box<Self>) -> ::alloc::boxed::Box<dyn (::core::any::Any)> {
         self
     }
 
@@ -135,7 +135,7 @@ impl crate::Message for DoubleValue {
     fn descriptor_static() -> &'static crate::reflect::MessageDescriptor {
         static descriptor: crate::rt::LazyV2<crate::reflect::MessageDescriptor> = crate::rt::LazyV2::INIT;
         descriptor.get(|| {
-            let mut fields = ::std::vec::Vec::new();
+            let mut fields = ::alloc::vec::Vec::new();
             fields.push(crate::reflect::accessor::make_simple_field_accessor::<_, crate::types::ProtobufTypeDouble>(
                 "value",
                 |m: &DoubleValue| { &m.value },
@@ -162,8 +162,8 @@ impl crate::Clear for DoubleValue {
     }
 }
 
-impl ::std::fmt::Debug for DoubleValue {
-    fn fmt(&self, f: &mut ::std::fmt::Formatter<'_>) -> ::std::fmt::Result {
+impl ::core::fmt::Debug for DoubleValue {
+    fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
         crate::text_format::fmt(self, f)
     }
 }
@@ -186,7 +186,7 @@ pub struct FloatValue {
     pub cached_size: crate::CachedSize,
 }
 
-impl<'a> ::std::default::Default for &'a FloatValue {
+impl<'a> ::core::default::Default for &'a FloatValue {
     fn default() -> &'a FloatValue {
         <FloatValue as crate::Message>::default_instance()
     }
@@ -194,7 +194,7 @@ impl<'a> ::std::default::Default for &'a FloatValue {
 
 impl FloatValue {
     pub fn new() -> FloatValue {
-        ::std::default::Default::default()
+        ::core::default::Default::default()
     }
 
     // float value = 1;
@@ -224,7 +224,7 @@ impl crate::Message for FloatValue {
             match field_number {
                 1 => {
                     if wire_type != crate::wire_format::WireTypeFixed32 {
-                        return ::std::result::Result::Err(crate::rt::unexpected_wire_type(wire_type));
+                        return ::core::result::Result::Err(crate::rt::unexpected_wire_type(wire_type));
                     }
                     let tmp = is.read_float()?;
                     self.value = tmp;
@@ -234,7 +234,7 @@ impl crate::Message for FloatValue {
                 },
             };
         }
-        ::std::result::Result::Ok(())
+        ::core::result::Result::Ok(())
     }
 
     // Compute sizes of nested messages
@@ -254,7 +254,7 @@ impl crate::Message for FloatValue {
             os.write_float(1, self.value)?;
         }
         os.write_unknown_fields(self.get_unknown_fields())?;
-        ::std::result::Result::Ok(())
+        ::core::result::Result::Ok(())
     }
 
     fn get_cached_size(&self) -> u32 {
@@ -269,13 +269,13 @@ impl crate::Message for FloatValue {
         &mut self.unknown_fields
     }
 
-    fn as_any(&self) -> &dyn (::std::any::Any) {
-        self as &dyn (::std::any::Any)
+    fn as_any(&self) -> &dyn (::core::any::Any) {
+        self as &dyn (::core::any::Any)
     }
-    fn as_any_mut(&mut self) -> &mut dyn (::std::any::Any) {
-        self as &mut dyn (::std::any::Any)
+    fn as_any_mut(&mut self) -> &mut dyn (::core::any::Any) {
+        self as &mut dyn (::core::any::Any)
     }
-    fn into_any(self: ::std::boxed::Box<Self>) -> ::std::boxed::Box<dyn (::std::any::Any)> {
+    fn into_any(self: ::alloc::boxed::Box<Self>) -> ::alloc::boxed::Box<dyn (::core::any::Any)> {
         self
     }
 
@@ -290,7 +290,7 @@ impl crate::Message for FloatValue {
     fn descriptor_static() -> &'static crate::reflect::MessageDescriptor {
         static descriptor: crate::rt::LazyV2<crate::reflect::MessageDescriptor> = crate::rt::LazyV2::INIT;
         descriptor.get(|| {
-            let mut fields = ::std::vec::Vec::new();
+            let mut fields = ::alloc::vec::Vec::new();
             fields.push(crate::reflect::accessor::make_simple_field_accessor::<_, crate::types::ProtobufTypeFloat>(
                 "value",
                 |m: &FloatValue| { &m.value },
@@ -317,8 +317,8 @@ impl crate::Clear for FloatValue {
     }
 }
 
-impl ::std::fmt::Debug for FloatValue {
-    fn fmt(&self, f: &mut ::std::fmt::Formatter<'_>) -> ::std::fmt::Result {
+impl ::core::fmt::Debug for FloatValue {
+    fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
         crate::text_format::fmt(self, f)
     }
 }
@@ -341,7 +341,7 @@ pub struct Int64Value {
     pub cached_size: crate::CachedSize,
 }
 
-impl<'a> ::std::default::Default for &'a Int64Value {
+impl<'a> ::core::default::Default for &'a Int64Value {
     fn default() -> &'a Int64Value {
         <Int64Value as crate::Message>::default_instance()
     }
@@ -349,7 +349,7 @@ impl<'a> ::std::default::Default for &'a Int64Value {
 
 impl Int64Value {
     pub fn new() -> Int64Value {
-        ::std::default::Default::default()
+        ::core::default::Default::default()
     }
 
     // int64 value = 1;
@@ -379,7 +379,7 @@ impl crate::Message for Int64Value {
             match field_number {
                 1 => {
                     if wire_type != crate::wire_format::WireTypeVarint {
-                        return ::std::result::Result::Err(crate::rt::unexpected_wire_type(wire_type));
+                        return ::core::result::Result::Err(crate::rt::unexpected_wire_type(wire_type));
                     }
                     let tmp = is.read_int64()?;
                     self.value = tmp;
@@ -389,7 +389,7 @@ impl crate::Message for Int64Value {
                 },
             };
         }
-        ::std::result::Result::Ok(())
+        ::core::result::Result::Ok(())
     }
 
     // Compute sizes of nested messages
@@ -409,7 +409,7 @@ impl crate::Message for Int64Value {
             os.write_int64(1, self.value)?;
         }
         os.write_unknown_fields(self.get_unknown_fields())?;
-        ::std::result::Result::Ok(())
+        ::core::result::Result::Ok(())
     }
 
     fn get_cached_size(&self) -> u32 {
@@ -424,13 +424,13 @@ impl crate::Message for Int64Value {
         &mut self.unknown_fields
     }
 
-    fn as_any(&self) -> &dyn (::std::any::Any) {
-        self as &dyn (::std::any::Any)
+    fn as_any(&self) -> &dyn (::core::any::Any) {
+        self as &dyn (::core::any::Any)
     }
-    fn as_any_mut(&mut self) -> &mut dyn (::std::any::Any) {
-        self as &mut dyn (::std::any::Any)
+    fn as_any_mut(&mut self) -> &mut dyn (::core::any::Any) {
+        self as &mut dyn (::core::any::Any)
     }
-    fn into_any(self: ::std::boxed::Box<Self>) -> ::std::boxed::Box<dyn (::std::any::Any)> {
+    fn into_any(self: ::alloc::boxed::Box<Self>) -> ::alloc::boxed::Box<dyn (::core::any::Any)> {
         self
     }
 
@@ -445,7 +445,7 @@ impl crate::Message for Int64Value {
     fn descriptor_static() -> &'static crate::reflect::MessageDescriptor {
         static descriptor: crate::rt::LazyV2<crate::reflect::MessageDescriptor> = crate::rt::LazyV2::INIT;
         descriptor.get(|| {
-            let mut fields = ::std::vec::Vec::new();
+            let mut fields = ::alloc::vec::Vec::new();
             fields.push(crate::reflect::accessor::make_simple_field_accessor::<_, crate::types::ProtobufTypeInt64>(
                 "value",
                 |m: &Int64Value| { &m.value },
@@ -472,8 +472,8 @@ impl crate::Clear for Int64Value {
     }
 }
 
-impl ::std::fmt::Debug for Int64Value {
-    fn fmt(&self, f: &mut ::std::fmt::Formatter<'_>) -> ::std::fmt::Result {
+impl ::core::fmt::Debug for Int64Value {
+    fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
         crate::text_format::fmt(self, f)
     }
 }
@@ -496,7 +496,7 @@ pub struct UInt64Value {
     pub cached_size: crate::CachedSize,
 }
 
-impl<'a> ::std::default::Default for &'a UInt64Value {
+impl<'a> ::core::default::Default for &'a UInt64Value {
     fn default() -> &'a UInt64Value {
         <UInt64Value as crate::Message>::default_instance()
     }
@@ -504,7 +504,7 @@ impl<'a> ::std::default::Default for &'a UInt64Value {
 
 impl UInt64Value {
     pub fn new() -> UInt64Value {
-        ::std::default::Default::default()
+        ::core::default::Default::default()
     }
 
     // uint64 value = 1;
@@ -534,7 +534,7 @@ impl crate::Message for UInt64Value {
             match field_number {
                 1 => {
                     if wire_type != crate::wire_format::WireTypeVarint {
-                        return ::std::result::Result::Err(crate::rt::unexpected_wire_type(wire_type));
+                        return ::core::result::Result::Err(crate::rt::unexpected_wire_type(wire_type));
                     }
                     let tmp = is.read_uint64()?;
                     self.value = tmp;
@@ -544,7 +544,7 @@ impl crate::Message for UInt64Value {
                 },
             };
         }
-        ::std::result::Result::Ok(())
+        ::core::result::Result::Ok(())
     }
 
     // Compute sizes of nested messages
@@ -564,7 +564,7 @@ impl crate::Message for UInt64Value {
             os.write_uint64(1, self.value)?;
         }
         os.write_unknown_fields(self.get_unknown_fields())?;
-        ::std::result::Result::Ok(())
+        ::core::result::Result::Ok(())
     }
 
     fn get_cached_size(&self) -> u32 {
@@ -579,13 +579,13 @@ impl crate::Message for UInt64Value {
         &mut self.unknown_fields
     }
 
-    fn as_any(&self) -> &dyn (::std::any::Any) {
-        self as &dyn (::std::any::Any)
+    fn as_any(&self) -> &dyn (::core::any::Any) {
+        self as &dyn (::core::any::Any)
     }
-    fn as_any_mut(&mut self) -> &mut dyn (::std::any::Any) {
-        self as &mut dyn (::std::any::Any)
+    fn as_any_mut(&mut self) -> &mut dyn (::core::any::Any) {
+        self as &mut dyn (::core::any::Any)
     }
-    fn into_any(self: ::std::boxed::Box<Self>) -> ::std::boxed::Box<dyn (::std::any::Any)> {
+    fn into_any(self: ::alloc::boxed::Box<Self>) -> ::alloc::boxed::Box<dyn (::core::any::Any)> {
         self
     }
 
@@ -600,7 +600,7 @@ impl crate::Message for UInt64Value {
     fn descriptor_static() -> &'static crate::reflect::MessageDescriptor {
         static descriptor: crate::rt::LazyV2<crate::reflect::MessageDescriptor> = crate::rt::LazyV2::INIT;
         descriptor.get(|| {
-            let mut fields = ::std::vec::Vec::new();
+            let mut fields = ::alloc::vec::Vec::new();
             fields.push(crate::reflect::accessor::make_simple_field_accessor::<_, crate::types::ProtobufTypeUint64>(
                 "value",
                 |m: &UInt64Value| { &m.value },
@@ -627,8 +627,8 @@ impl crate::Clear for UInt64Value {
     }
 }
 
-impl ::std::fmt::Debug for UInt64Value {
-    fn fmt(&self, f: &mut ::std::fmt::Formatter<'_>) -> ::std::fmt::Result {
+impl ::core::fmt::Debug for UInt64Value {
+    fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
         crate::text_format::fmt(self, f)
     }
 }
@@ -651,7 +651,7 @@ pub struct Int32Value {
     pub cached_size: crate::CachedSize,
 }
 
-impl<'a> ::std::default::Default for &'a Int32Value {
+impl<'a> ::core::default::Default for &'a Int32Value {
     fn default() -> &'a Int32Value {
         <Int32Value as crate::Message>::default_instance()
     }
@@ -659,7 +659,7 @@ impl<'a> ::std::default::Default for &'a Int32Value {
 
 impl Int32Value {
     pub fn new() -> Int32Value {
-        ::std::default::Default::default()
+        ::core::default::Default::default()
     }
 
     // int32 value = 1;
@@ -689,7 +689,7 @@ impl crate::Message for Int32Value {
             match field_number {
                 1 => {
                     if wire_type != crate::wire_format::WireTypeVarint {
-                        return ::std::result::Result::Err(crate::rt::unexpected_wire_type(wire_type));
+                        return ::core::result::Result::Err(crate::rt::unexpected_wire_type(wire_type));
                     }
                     let tmp = is.read_int32()?;
                     self.value = tmp;
@@ -699,7 +699,7 @@ impl crate::Message for Int32Value {
                 },
             };
         }
-        ::std::result::Result::Ok(())
+        ::core::result::Result::Ok(())
     }
 
     // Compute sizes of nested messages
@@ -719,7 +719,7 @@ impl crate::Message for Int32Value {
             os.write_int32(1, self.value)?;
         }
         os.write_unknown_fields(self.get_unknown_fields())?;
-        ::std::result::Result::Ok(())
+        ::core::result::Result::Ok(())
     }
 
     fn get_cached_size(&self) -> u32 {
@@ -734,13 +734,13 @@ impl crate::Message for Int32Value {
         &mut self.unknown_fields
     }
 
-    fn as_any(&self) -> &dyn (::std::any::Any) {
-        self as &dyn (::std::any::Any)
+    fn as_any(&self) -> &dyn (::core::any::Any) {
+        self as &dyn (::core::any::Any)
     }
-    fn as_any_mut(&mut self) -> &mut dyn (::std::any::Any) {
-        self as &mut dyn (::std::any::Any)
+    fn as_any_mut(&mut self) -> &mut dyn (::core::any::Any) {
+        self as &mut dyn (::core::any::Any)
     }
-    fn into_any(self: ::std::boxed::Box<Self>) -> ::std::boxed::Box<dyn (::std::any::Any)> {
+    fn into_any(self: ::alloc::boxed::Box<Self>) -> ::alloc::boxed::Box<dyn (::core::any::Any)> {
         self
     }
 
@@ -755,7 +755,7 @@ impl crate::Message for Int32Value {
     fn descriptor_static() -> &'static crate::reflect::MessageDescriptor {
         static descriptor: crate::rt::LazyV2<crate::reflect::MessageDescriptor> = crate::rt::LazyV2::INIT;
         descriptor.get(|| {
-            let mut fields = ::std::vec::Vec::new();
+            let mut fields = ::alloc::vec::Vec::new();
             fields.push(crate::reflect::accessor::make_simple_field_accessor::<_, crate::types::ProtobufTypeInt32>(
                 "value",
                 |m: &Int32Value| { &m.value },
@@ -782,8 +782,8 @@ impl crate::Clear for Int32Value {
     }
 }
 
-impl ::std::fmt::Debug for Int32Value {
-    fn fmt(&self, f: &mut ::std::fmt::Formatter<'_>) -> ::std::fmt::Result {
+impl ::core::fmt::Debug for Int32Value {
+    fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
         crate::text_format::fmt(self, f)
     }
 }
@@ -806,7 +806,7 @@ pub struct UInt32Value {
     pub cached_size: crate::CachedSize,
 }
 
-impl<'a> ::std::default::Default for &'a UInt32Value {
+impl<'a> ::core::default::Default for &'a UInt32Value {
     fn default() -> &'a UInt32Value {
         <UInt32Value as crate::Message>::default_instance()
     }
@@ -814,7 +814,7 @@ impl<'a> ::std::default::Default for &'a UInt32Value {
 
 impl UInt32Value {
     pub fn new() -> UInt32Value {
-        ::std::default::Default::default()
+        ::core::default::Default::default()
     }
 
     // uint32 value = 1;
@@ -844,7 +844,7 @@ impl crate::Message for UInt32Value {
             match field_number {
                 1 => {
                     if wire_type != crate::wire_format::WireTypeVarint {
-                        return ::std::result::Result::Err(crate::rt::unexpected_wire_type(wire_type));
+                        return ::core::result::Result::Err(crate::rt::unexpected_wire_type(wire_type));
                     }
                     let tmp = is.read_uint32()?;
                     self.value = tmp;
@@ -854,7 +854,7 @@ impl crate::Message for UInt32Value {
                 },
             };
         }
-        ::std::result::Result::Ok(())
+        ::core::result::Result::Ok(())
     }
 
     // Compute sizes of nested messages
@@ -874,7 +874,7 @@ impl crate::Message for UInt32Value {
             os.write_uint32(1, self.value)?;
         }
         os.write_unknown_fields(self.get_unknown_fields())?;
-        ::std::result::Result::Ok(())
+        ::core::result::Result::Ok(())
     }
 
     fn get_cached_size(&self) -> u32 {
@@ -889,13 +889,13 @@ impl crate::Message for UInt32Value {
         &mut self.unknown_fields
     }
 
-    fn as_any(&self) -> &dyn (::std::any::Any) {
-        self as &dyn (::std::any::Any)
+    fn as_any(&self) -> &dyn (::core::any::Any) {
+        self as &dyn (::core::any::Any)
     }
-    fn as_any_mut(&mut self) -> &mut dyn (::std::any::Any) {
-        self as &mut dyn (::std::any::Any)
+    fn as_any_mut(&mut self) -> &mut dyn (::core::any::Any) {
+        self as &mut dyn (::core::any::Any)
     }
-    fn into_any(self: ::std::boxed::Box<Self>) -> ::std::boxed::Box<dyn (::std::any::Any)> {
+    fn into_any(self: ::alloc::boxed::Box<Self>) -> ::alloc::boxed::Box<dyn (::core::any::Any)> {
         self
     }
 
@@ -910,7 +910,7 @@ impl crate::Message for UInt32Value {
     fn descriptor_static() -> &'static crate::reflect::MessageDescriptor {
         static descriptor: crate::rt::LazyV2<crate::reflect::MessageDescriptor> = crate::rt::LazyV2::INIT;
         descriptor.get(|| {
-            let mut fields = ::std::vec::Vec::new();
+            let mut fields = ::alloc::vec::Vec::new();
             fields.push(crate::reflect::accessor::make_simple_field_accessor::<_, crate::types::ProtobufTypeUint32>(
                 "value",
                 |m: &UInt32Value| { &m.value },
@@ -937,8 +937,8 @@ impl crate::Clear for UInt32Value {
     }
 }
 
-impl ::std::fmt::Debug for UInt32Value {
-    fn fmt(&self, f: &mut ::std::fmt::Formatter<'_>) -> ::std::fmt::Result {
+impl ::core::fmt::Debug for UInt32Value {
+    fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
         crate::text_format::fmt(self, f)
     }
 }
@@ -961,7 +961,7 @@ pub struct BoolValue {
     pub cached_size: crate::CachedSize,
 }
 
-impl<'a> ::std::default::Default for &'a BoolValue {
+impl<'a> ::core::default::Default for &'a BoolValue {
     fn default() -> &'a BoolValue {
         <BoolValue as crate::Message>::default_instance()
     }
@@ -969,7 +969,7 @@ impl<'a> ::std::default::Default for &'a BoolValue {
 
 impl BoolValue {
     pub fn new() -> BoolValue {
-        ::std::default::Default::default()
+        ::core::default::Default::default()
     }
 
     // bool value = 1;
@@ -999,7 +999,7 @@ impl crate::Message for BoolValue {
             match field_number {
                 1 => {
                     if wire_type != crate::wire_format::WireTypeVarint {
-                        return ::std::result::Result::Err(crate::rt::unexpected_wire_type(wire_type));
+                        return ::core::result::Result::Err(crate::rt::unexpected_wire_type(wire_type));
                     }
                     let tmp = is.read_bool()?;
                     self.value = tmp;
@@ -1009,7 +1009,7 @@ impl crate::Message for BoolValue {
                 },
             };
         }
-        ::std::result::Result::Ok(())
+        ::core::result::Result::Ok(())
     }
 
     // Compute sizes of nested messages
@@ -1029,7 +1029,7 @@ impl crate::Message for BoolValue {
             os.write_bool(1, self.value)?;
         }
         os.write_unknown_fields(self.get_unknown_fields())?;
-        ::std::result::Result::Ok(())
+        ::core::result::Result::Ok(())
     }
 
     fn get_cached_size(&self) -> u32 {
@@ -1044,13 +1044,13 @@ impl crate::Message for BoolValue {
         &mut self.unknown_fields
     }
 
-    fn as_any(&self) -> &dyn (::std::any::Any) {
-        self as &dyn (::std::any::Any)
+    fn as_any(&self) -> &dyn (::core::any::Any) {
+        self as &dyn (::core::any::Any)
     }
-    fn as_any_mut(&mut self) -> &mut dyn (::std::any::Any) {
-        self as &mut dyn (::std::any::Any)
+    fn as_any_mut(&mut self) -> &mut dyn (::core::any::Any) {
+        self as &mut dyn (::core::any::Any)
     }
-    fn into_any(self: ::std::boxed::Box<Self>) -> ::std::boxed::Box<dyn (::std::any::Any)> {
+    fn into_any(self: ::alloc::boxed::Box<Self>) -> ::alloc::boxed::Box<dyn (::core::any::Any)> {
         self
     }
 
@@ -1065,7 +1065,7 @@ impl crate::Message for BoolValue {
     fn descriptor_static() -> &'static crate::reflect::MessageDescriptor {
         static descriptor: crate::rt::LazyV2<crate::reflect::MessageDescriptor> = crate::rt::LazyV2::INIT;
         descriptor.get(|| {
-            let mut fields = ::std::vec::Vec::new();
+            let mut fields = ::alloc::vec::Vec::new();
             fields.push(crate::reflect::accessor::make_simple_field_accessor::<_, crate::types::ProtobufTypeBool>(
                 "value",
                 |m: &BoolValue| { &m.value },
@@ -1092,8 +1092,8 @@ impl crate::Clear for BoolValue {
     }
 }
 
-impl ::std::fmt::Debug for BoolValue {
-    fn fmt(&self, f: &mut ::std::fmt::Formatter<'_>) -> ::std::fmt::Result {
+impl ::core::fmt::Debug for BoolValue {
+    fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
         crate::text_format::fmt(self, f)
     }
 }
@@ -1108,7 +1108,7 @@ impl crate::reflect::ProtobufValue for BoolValue {
 #[cfg_attr(feature = "with-serde", derive(::serde::Serialize, ::serde::Deserialize))]
 pub struct StringValue {
     // message fields
-    pub value: ::std::string::String,
+    pub value: ::alloc::string::String,
     // special fields
     #[cfg_attr(feature = "with-serde", serde(skip))]
     pub unknown_fields: crate::UnknownFields,
@@ -1116,7 +1116,7 @@ pub struct StringValue {
     pub cached_size: crate::CachedSize,
 }
 
-impl<'a> ::std::default::Default for &'a StringValue {
+impl<'a> ::core::default::Default for &'a StringValue {
     fn default() -> &'a StringValue {
         <StringValue as crate::Message>::default_instance()
     }
@@ -1124,7 +1124,7 @@ impl<'a> ::std::default::Default for &'a StringValue {
 
 impl StringValue {
     pub fn new() -> StringValue {
-        ::std::default::Default::default()
+        ::core::default::Default::default()
     }
 
     // string value = 1;
@@ -1138,19 +1138,19 @@ impl StringValue {
     }
 
     // Param is passed by value, moved
-    pub fn set_value(&mut self, v: ::std::string::String) {
+    pub fn set_value(&mut self, v: ::alloc::string::String) {
         self.value = v;
     }
 
     // Mutable pointer to the field.
     // If field is not initialized, it is initialized with default value first.
-    pub fn mut_value(&mut self) -> &mut ::std::string::String {
+    pub fn mut_value(&mut self) -> &mut ::alloc::string::String {
         &mut self.value
     }
 
     // Take field
-    pub fn take_value(&mut self) -> ::std::string::String {
-        ::std::mem::replace(&mut self.value, ::std::string::String::new())
+    pub fn take_value(&mut self) -> ::alloc::string::String {
+        ::core::mem::replace(&mut self.value, ::alloc::string::String::new())
     }
 }
 
@@ -1171,7 +1171,7 @@ impl crate::Message for StringValue {
                 },
             };
         }
-        ::std::result::Result::Ok(())
+        ::core::result::Result::Ok(())
     }
 
     // Compute sizes of nested messages
@@ -1191,7 +1191,7 @@ impl crate::Message for StringValue {
             os.write_string(1, &self.value)?;
         }
         os.write_unknown_fields(self.get_unknown_fields())?;
-        ::std::result::Result::Ok(())
+        ::core::result::Result::Ok(())
     }
 
     fn get_cached_size(&self) -> u32 {
@@ -1206,13 +1206,13 @@ impl crate::Message for StringValue {
         &mut self.unknown_fields
     }
 
-    fn as_any(&self) -> &dyn (::std::any::Any) {
-        self as &dyn (::std::any::Any)
+    fn as_any(&self) -> &dyn (::core::any::Any) {
+        self as &dyn (::core::any::Any)
     }
-    fn as_any_mut(&mut self) -> &mut dyn (::std::any::Any) {
-        self as &mut dyn (::std::any::Any)
+    fn as_any_mut(&mut self) -> &mut dyn (::core::any::Any) {
+        self as &mut dyn (::core::any::Any)
     }
-    fn into_any(self: ::std::boxed::Box<Self>) -> ::std::boxed::Box<dyn (::std::any::Any)> {
+    fn into_any(self: ::alloc::boxed::Box<Self>) -> ::alloc::boxed::Box<dyn (::core::any::Any)> {
         self
     }
 
@@ -1227,7 +1227,7 @@ impl crate::Message for StringValue {
     fn descriptor_static() -> &'static crate::reflect::MessageDescriptor {
         static descriptor: crate::rt::LazyV2<crate::reflect::MessageDescriptor> = crate::rt::LazyV2::INIT;
         descriptor.get(|| {
-            let mut fields = ::std::vec::Vec::new();
+            let mut fields = ::alloc::vec::Vec::new();
             fields.push(crate::reflect::accessor::make_simple_field_accessor::<_, crate::types::ProtobufTypeString>(
                 "value",
                 |m: &StringValue| { &m.value },
@@ -1254,8 +1254,8 @@ impl crate::Clear for StringValue {
     }
 }
 
-impl ::std::fmt::Debug for StringValue {
-    fn fmt(&self, f: &mut ::std::fmt::Formatter<'_>) -> ::std::fmt::Result {
+impl ::core::fmt::Debug for StringValue {
+    fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
         crate::text_format::fmt(self, f)
     }
 }
@@ -1270,7 +1270,7 @@ impl crate::reflect::ProtobufValue for StringValue {
 #[cfg_attr(feature = "with-serde", derive(::serde::Serialize, ::serde::Deserialize))]
 pub struct BytesValue {
     // message fields
-    pub value: ::std::vec::Vec<u8>,
+    pub value: ::alloc::vec::Vec<u8>,
     // special fields
     #[cfg_attr(feature = "with-serde", serde(skip))]
     pub unknown_fields: crate::UnknownFields,
@@ -1278,7 +1278,7 @@ pub struct BytesValue {
     pub cached_size: crate::CachedSize,
 }
 
-impl<'a> ::std::default::Default for &'a BytesValue {
+impl<'a> ::core::default::Default for &'a BytesValue {
     fn default() -> &'a BytesValue {
         <BytesValue as crate::Message>::default_instance()
     }
@@ -1286,7 +1286,7 @@ impl<'a> ::std::default::Default for &'a BytesValue {
 
 impl BytesValue {
     pub fn new() -> BytesValue {
-        ::std::default::Default::default()
+        ::core::default::Default::default()
     }
 
     // bytes value = 1;
@@ -1300,19 +1300,19 @@ impl BytesValue {
     }
 
     // Param is passed by value, moved
-    pub fn set_value(&mut self, v: ::std::vec::Vec<u8>) {
+    pub fn set_value(&mut self, v: ::alloc::vec::Vec<u8>) {
         self.value = v;
     }
 
     // Mutable pointer to the field.
     // If field is not initialized, it is initialized with default value first.
-    pub fn mut_value(&mut self) -> &mut ::std::vec::Vec<u8> {
+    pub fn mut_value(&mut self) -> &mut ::alloc::vec::Vec<u8> {
         &mut self.value
     }
 
     // Take field
-    pub fn take_value(&mut self) -> ::std::vec::Vec<u8> {
-        ::std::mem::replace(&mut self.value, ::std::vec::Vec::new())
+    pub fn take_value(&mut self) -> ::alloc::vec::Vec<u8> {
+        ::core::mem::replace(&mut self.value, ::alloc::vec::Vec::new())
     }
 }
 
@@ -1333,7 +1333,7 @@ impl crate::Message for BytesValue {
                 },
             };
         }
-        ::std::result::Result::Ok(())
+        ::core::result::Result::Ok(())
     }
 
     // Compute sizes of nested messages
@@ -1353,7 +1353,7 @@ impl crate::Message for BytesValue {
             os.write_bytes(1, &self.value)?;
         }
         os.write_unknown_fields(self.get_unknown_fields())?;
-        ::std::result::Result::Ok(())
+        ::core::result::Result::Ok(())
     }
 
     fn get_cached_size(&self) -> u32 {
@@ -1368,13 +1368,13 @@ impl crate::Message for BytesValue {
         &mut self.unknown_fields
     }
 
-    fn as_any(&self) -> &dyn (::std::any::Any) {
-        self as &dyn (::std::any::Any)
+    fn as_any(&self) -> &dyn (::core::any::Any) {
+        self as &dyn (::core::any::Any)
     }
-    fn as_any_mut(&mut self) -> &mut dyn (::std::any::Any) {
-        self as &mut dyn (::std::any::Any)
+    fn as_any_mut(&mut self) -> &mut dyn (::core::any::Any) {
+        self as &mut dyn (::core::any::Any)
     }
-    fn into_any(self: ::std::boxed::Box<Self>) -> ::std::boxed::Box<dyn (::std::any::Any)> {
+    fn into_any(self: ::alloc::boxed::Box<Self>) -> ::alloc::boxed::Box<dyn (::core::any::Any)> {
         self
     }
 
@@ -1389,7 +1389,7 @@ impl crate::Message for BytesValue {
     fn descriptor_static() -> &'static crate::reflect::MessageDescriptor {
         static descriptor: crate::rt::LazyV2<crate::reflect::MessageDescriptor> = crate::rt::LazyV2::INIT;
         descriptor.get(|| {
-            let mut fields = ::std::vec::Vec::new();
+            let mut fields = ::alloc::vec::Vec::new();
             fields.push(crate::reflect::accessor::make_simple_field_accessor::<_, crate::types::ProtobufTypeBytes>(
                 "value",
                 |m: &BytesValue| { &m.value },
@@ -1416,8 +1416,8 @@ impl crate::Clear for BytesValue {
     }
 }
 
-impl ::std::fmt::Debug for BytesValue {
-    fn fmt(&self, f: &mut ::std::fmt::Formatter<'_>) -> ::std::fmt::Result {
+impl ::core::fmt::Debug for BytesValue {
+    fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
         crate::text_format::fmt(self, f)
     }
 }

@@ -1,3 +1,5 @@
+use alloc::string::String;
+
 #[doc(hidden)]
 pub fn quote_bytes_to(bytes: &[u8], buf: &mut String) {
     for &c in bytes {

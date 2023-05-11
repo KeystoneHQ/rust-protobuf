@@ -1,3 +1,5 @@
+use alloc::borrow::ToOwned;
+use alloc::boxed::Box;
 use crate::descriptor::DescriptorProto;
 use crate::descriptor::FileDescriptorProto;
 use crate::descriptorx::find_message_by_rust_name;
@@ -6,8 +8,10 @@ use crate::reflect::find_message_or_enum::find_message_or_enum;
 use crate::reflect::find_message_or_enum::MessageOrEnum;
 use crate::reflect::FieldDescriptor;
 use crate::Message;
-use std::collections::HashMap;
-use std::marker;
+use alloc::collections::BTreeMap;
+use alloc::string::{String, ToString};
+use alloc::vec::Vec;
+use core::marker;
 
 trait MessageFactory: Send + Sync + 'static {
     fn new_instance(&self) -> Box<dyn Message>;
@@ -32,9 +36,9 @@ pub struct MessageDescriptor {
     factory: &'static dyn MessageFactory,
     fields: Vec<FieldDescriptor>,
 
-    index_by_name: HashMap<String, usize>,
-    index_by_name_or_json_name: HashMap<String, usize>,
-    index_by_number: HashMap<u32, usize>,
+    index_by_name: BTreeMap<String, usize>,
+    index_by_name_or_json_name: BTreeMap<String, usize>,
+    index_by_number: BTreeMap<u32, usize>,
 }
 
 impl MessageDescriptor {
@@ -73,14 +77,14 @@ impl MessageDescriptor {
     ) -> MessageDescriptor {
         let proto = find_message_by_rust_name(file, rust_name);
 
-        let mut field_proto_by_name = HashMap::new();
+        let mut field_proto_by_name = BTreeMap::new();
         for field_proto in proto.message.get_field() {
             field_proto_by_name.insert(field_proto.get_name(), field_proto);
         }
 
-        let mut index_by_name = HashMap::new();
-        let mut index_by_name_or_json_name = HashMap::new();
-        let mut index_by_number = HashMap::new();
+        let mut index_by_name = BTreeMap::new();
+        let mut index_by_name_or_json_name = BTreeMap::new();
+        let mut index_by_number = BTreeMap::new();
 
         let mut full_name = file.get_package().to_string();
         if full_name.len() > 0 {
@@ -137,14 +141,14 @@ impl MessageDescriptor {
                 (_, MessageOrEnum::Enum(_)) => panic!("not a message"),
             };
 
-        let mut field_proto_by_name = HashMap::new();
+        let mut field_proto_by_name = BTreeMap::new();
         for field_proto in proto.get_field() {
             field_proto_by_name.insert(field_proto.get_name(), field_proto);
         }
 
-        let mut index_by_name = HashMap::new();
-        let mut index_by_name_or_json_name = HashMap::new();
-        let mut index_by_number = HashMap::new();
+        let mut index_by_name = BTreeMap::new();
+        let mut index_by_name_or_json_name = BTreeMap::new();
+        let mut index_by_number = BTreeMap::new();
 
         let full_name = MessageDescriptor::compute_full_name(
             file_descriptor_proto.get_package(),

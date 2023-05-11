@@ -1,13 +1,15 @@
 //! Lazily initialized data.
 //! Used in generated code.
 
-use std::cell::UnsafeCell;
-use std::sync;
+use alloc::boxed::Box;
+use core::marker::Sync;
+use core::cell::SyncUnsafeCell;
+use spin;
 
 /// Lazily initialized data.
 pub struct LazyV2<T: Sync> {
-    lock: sync::Once,
-    ptr: UnsafeCell<*const T>,
+    lock: spin::Once,
+    ptr: SyncUnsafeCell<*const T>,
 }
 
 unsafe impl<T: Sync> Sync for LazyV2<T> {}
@@ -15,8 +17,8 @@ unsafe impl<T: Sync> Sync for LazyV2<T> {}
 impl<T: Sync> LazyV2<T> {
     /// Uninitialized `Lazy` object.
     pub const INIT: LazyV2<T> = LazyV2 {
-        lock: sync::Once::new(),
-        ptr: UnsafeCell::new(0 as *const T),
+        lock: spin::Once::new(),
+        ptr: SyncUnsafeCell::new(0 as *const T),
     };
 
     /// Get lazy field value, initialize it with given function if not yet.
@@ -33,12 +35,13 @@ impl<T: Sync> LazyV2<T> {
 
 #[cfg(test)]
 mod test {
+    use alloc::borrow::ToOwned;
+    use alloc::string::String;
     use super::LazyV2;
-    use std::sync::atomic::AtomicIsize;
-    use std::sync::atomic::Ordering;
-    use std::sync::Arc;
-    use std::sync::Barrier;
-    use std::thread;
+    use alloc::sync::atomic::AtomicIsize;
+    use alloc::sync::atomic::Ordering;
+    use alloc::sync::Arc;
+    use alloc::sync::Barrier;
 
     #[test]
     fn many_threads_calling_get() {

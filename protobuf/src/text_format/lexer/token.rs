@@ -1,3 +1,4 @@
+use alloc::string::{String, ToString};
 use super::lexer_impl::LexerError;
 use super::lexer_impl::LexerResult;
 use super::loc::Loc;

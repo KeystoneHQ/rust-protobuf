@@ -23,7 +23,7 @@
 #[cfg_attr(feature = "with-serde", derive(::serde::Serialize, ::serde::Deserialize))]
 pub struct FieldMask {
     // message fields
-    pub paths: crate::RepeatedField<::std::string::String>,
+    pub paths: crate::RepeatedField<::alloc::string::String>,
     // special fields
     #[cfg_attr(feature = "with-serde", serde(skip))]
     pub unknown_fields: crate::UnknownFields,
@@ -31,7 +31,7 @@ pub struct FieldMask {
     pub cached_size: crate::CachedSize,
 }
 
-impl<'a> ::std::default::Default for &'a FieldMask {
+impl<'a> ::core::default::Default for &'a FieldMask {
     fn default() -> &'a FieldMask {
         <FieldMask as crate::Message>::default_instance()
     }
@@ -39,13 +39,13 @@ impl<'a> ::std::default::Default for &'a FieldMask {
 
 impl FieldMask {
     pub fn new() -> FieldMask {
-        ::std::default::Default::default()
+        ::core::default::Default::default()
     }
 
     // repeated string paths = 1;
 
 
-    pub fn get_paths(&self) -> &[::std::string::String] {
+    pub fn get_paths(&self) -> &[::alloc::string::String] {
         &self.paths
     }
     pub fn clear_paths(&mut self) {
@@ -53,18 +53,18 @@ impl FieldMask {
     }
 
     // Param is passed by value, moved
-    pub fn set_paths(&mut self, v: crate::RepeatedField<::std::string::String>) {
+    pub fn set_paths(&mut self, v: crate::RepeatedField<::alloc::string::String>) {
         self.paths = v;
     }
 
     // Mutable pointer to the field.
-    pub fn mut_paths(&mut self) -> &mut crate::RepeatedField<::std::string::String> {
+    pub fn mut_paths(&mut self) -> &mut crate::RepeatedField<::alloc::string::String> {
         &mut self.paths
     }
 
     // Take field
-    pub fn take_paths(&mut self) -> crate::RepeatedField<::std::string::String> {
-        ::std::mem::replace(&mut self.paths, crate::RepeatedField::new())
+    pub fn take_paths(&mut self) -> crate::RepeatedField<::alloc::string::String> {
+        ::core::mem::replace(&mut self.paths, crate::RepeatedField::new())
     }
 }
 
@@ -85,7 +85,7 @@ impl crate::Message for FieldMask {
                 },
             };
         }
-        ::std::result::Result::Ok(())
+        ::core::result::Result::Ok(())
     }
 
     // Compute sizes of nested messages
@@ -105,7 +105,7 @@ impl crate::Message for FieldMask {
             os.write_string(1, &v)?;
         };
         os.write_unknown_fields(self.get_unknown_fields())?;
-        ::std::result::Result::Ok(())
+        ::core::result::Result::Ok(())
     }
 
     fn get_cached_size(&self) -> u32 {
@@ -120,13 +120,13 @@ impl crate::Message for FieldMask {
         &mut self.unknown_fields
     }
 
-    fn as_any(&self) -> &dyn (::std::any::Any) {
-        self as &dyn (::std::any::Any)
+    fn as_any(&self) -> &dyn (::core::any::Any) {
+        self as &dyn (::core::any::Any)
     }
-    fn as_any_mut(&mut self) -> &mut dyn (::std::any::Any) {
-        self as &mut dyn (::std::any::Any)
+    fn as_any_mut(&mut self) -> &mut dyn (::core::any::Any) {
+        self as &mut dyn (::core::any::Any)
     }
-    fn into_any(self: ::std::boxed::Box<Self>) -> ::std::boxed::Box<dyn (::std::any::Any)> {
+    fn into_any(self: ::alloc::boxed::Box<Self>) -> ::alloc::boxed::Box<dyn (::core::any::Any)> {
         self
     }
 
@@ -141,7 +141,7 @@ impl crate::Message for FieldMask {
     fn descriptor_static() -> &'static crate::reflect::MessageDescriptor {
         static descriptor: crate::rt::LazyV2<crate::reflect::MessageDescriptor> = crate::rt::LazyV2::INIT;
         descriptor.get(|| {
-            let mut fields = ::std::vec::Vec::new();
+            let mut fields = ::alloc::vec::Vec::new();
             fields.push(crate::reflect::accessor::make_repeated_field_accessor::<_, crate::types::ProtobufTypeString>(
                 "paths",
                 |m: &FieldMask| { &m.paths },
@@ -168,8 +168,8 @@ impl crate::Clear for FieldMask {
     }
 }
 
-impl ::std::fmt::Debug for FieldMask {
-    fn fmt(&self, f: &mut ::std::fmt::Formatter<'_>) -> ::std::fmt::Result {
+impl ::core::fmt::Debug for FieldMask {
+    fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
         crate::text_format::fmt(self, f)
     }
 }

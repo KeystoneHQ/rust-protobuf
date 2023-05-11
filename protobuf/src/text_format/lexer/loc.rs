@@ -1,4 +1,4 @@
-use std::fmt;
+use core::fmt;
 
 pub const FIRST_LINE: u32 = 1;
 pub const FIRST_COL: u32 = 1;

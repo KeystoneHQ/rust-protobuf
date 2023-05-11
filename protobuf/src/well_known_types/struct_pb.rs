@@ -23,7 +23,7 @@
 #[cfg_attr(feature = "with-serde", derive(::serde::Serialize, ::serde::Deserialize))]
 pub struct Struct {
     // message fields
-    pub fields: ::std::collections::HashMap<::std::string::String, Value>,
+    pub fields: ::alloc::collections::BTreeMap<::alloc::string::String, Value>,
     // special fields
     #[cfg_attr(feature = "with-serde", serde(skip))]
     pub unknown_fields: crate::UnknownFields,
@@ -31,7 +31,7 @@ pub struct Struct {
     pub cached_size: crate::CachedSize,
 }
 
-impl<'a> ::std::default::Default for &'a Struct {
+impl<'a> ::core::default::Default for &'a Struct {
     fn default() -> &'a Struct {
         <Struct as crate::Message>::default_instance()
     }
@@ -39,13 +39,13 @@ impl<'a> ::std::default::Default for &'a Struct {
 
 impl Struct {
     pub fn new() -> Struct {
-        ::std::default::Default::default()
+        ::core::default::Default::default()
     }
 
     // repeated .google.protobuf.Struct.FieldsEntry fields = 1;
 
 
-    pub fn get_fields(&self) -> &::std::collections::HashMap<::std::string::String, Value> {
+    pub fn get_fields(&self) -> &::alloc::collections::BTreeMap<::alloc::string::String, Value> {
         &self.fields
     }
     pub fn clear_fields(&mut self) {
@@ -53,18 +53,18 @@ impl Struct {
     }
 
     // Param is passed by value, moved
-    pub fn set_fields(&mut self, v: ::std::collections::HashMap<::std::string::String, Value>) {
+    pub fn set_fields(&mut self, v: ::alloc::collections::BTreeMap<::alloc::string::String, Value>) {
         self.fields = v;
     }
 
     // Mutable pointer to the field.
-    pub fn mut_fields(&mut self) -> &mut ::std::collections::HashMap<::std::string::String, Value> {
+    pub fn mut_fields(&mut self) -> &mut ::alloc::collections::BTreeMap<::alloc::string::String, Value> {
         &mut self.fields
     }
 
     // Take field
-    pub fn take_fields(&mut self) -> ::std::collections::HashMap<::std::string::String, Value> {
-        ::std::mem::replace(&mut self.fields, ::std::collections::HashMap::new())
+    pub fn take_fields(&mut self) -> ::alloc::collections::BTreeMap<::alloc::string::String, Value> {
+        ::core::mem::replace(&mut self.fields, ::alloc::collections::BTreeMap::new())
     }
 }
 
@@ -85,7 +85,7 @@ impl crate::Message for Struct {
                 },
             };
         }
-        ::std::result::Result::Ok(())
+        ::core::result::Result::Ok(())
     }
 
     // Compute sizes of nested messages
@@ -101,7 +101,7 @@ impl crate::Message for Struct {
     fn write_to_with_cached_sizes(&self, os: &mut crate::CodedOutputStream<'_>) -> crate::ProtobufResult<()> {
         crate::rt::write_map_with_cached_sizes::<crate::types::ProtobufTypeString, crate::types::ProtobufTypeMessage<Value>>(1, &self.fields, os)?;
         os.write_unknown_fields(self.get_unknown_fields())?;
-        ::std::result::Result::Ok(())
+        ::core::result::Result::Ok(())
     }
 
     fn get_cached_size(&self) -> u32 {
@@ -116,13 +116,13 @@ impl crate::Message for Struct {
         &mut self.unknown_fields
     }
 
-    fn as_any(&self) -> &dyn (::std::any::Any) {
-        self as &dyn (::std::any::Any)
+    fn as_any(&self) -> &dyn (::core::any::Any) {
+        self as &dyn (::core::any::Any)
     }
-    fn as_any_mut(&mut self) -> &mut dyn (::std::any::Any) {
-        self as &mut dyn (::std::any::Any)
+    fn as_any_mut(&mut self) -> &mut dyn (::core::any::Any) {
+        self as &mut dyn (::core::any::Any)
     }
-    fn into_any(self: ::std::boxed::Box<Self>) -> ::std::boxed::Box<dyn (::std::any::Any)> {
+    fn into_any(self: ::alloc::boxed::Box<Self>) -> ::alloc::boxed::Box<dyn (::core::any::Any)> {
         self
     }
 
@@ -137,7 +137,7 @@ impl crate::Message for Struct {
     fn descriptor_static() -> &'static crate::reflect::MessageDescriptor {
         static descriptor: crate::rt::LazyV2<crate::reflect::MessageDescriptor> = crate::rt::LazyV2::INIT;
         descriptor.get(|| {
-            let mut fields = ::std::vec::Vec::new();
+            let mut fields = ::alloc::vec::Vec::new();
             fields.push(crate::reflect::accessor::make_map_accessor::<_, crate::types::ProtobufTypeString, crate::types::ProtobufTypeMessage<Value>>(
                 "fields",
                 |m: &Struct| { &m.fields },
@@ -164,8 +164,8 @@ impl crate::Clear for Struct {
     }
 }
 
-impl ::std::fmt::Debug for Struct {
-    fn fmt(&self, f: &mut ::std::fmt::Formatter<'_>) -> ::std::fmt::Result {
+impl ::core::fmt::Debug for Struct {
+    fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
         crate::text_format::fmt(self, f)
     }
 }
@@ -180,7 +180,7 @@ impl crate::reflect::ProtobufValue for Struct {
 #[cfg_attr(feature = "with-serde", derive(::serde::Serialize, ::serde::Deserialize))]
 pub struct Value {
     // message oneof groups
-    pub kind: ::std::option::Option<Value_oneof_kind>,
+    pub kind: ::core::option::Option<Value_oneof_kind>,
     // special fields
     #[cfg_attr(feature = "with-serde", serde(skip))]
     pub unknown_fields: crate::UnknownFields,
@@ -188,7 +188,7 @@ pub struct Value {
     pub cached_size: crate::CachedSize,
 }
 
-impl<'a> ::std::default::Default for &'a Value {
+impl<'a> ::core::default::Default for &'a Value {
     fn default() -> &'a Value {
         <Value as crate::Message>::default_instance()
     }
@@ -199,7 +199,7 @@ impl<'a> ::std::default::Default for &'a Value {
 pub enum Value_oneof_kind {
     null_value(NullValue),
     number_value(f64),
-    string_value(::std::string::String),
+    string_value(::alloc::string::String),
     bool_value(bool),
     struct_value(Struct),
     list_value(ListValue),
@@ -207,7 +207,7 @@ pub enum Value_oneof_kind {
 
 impl Value {
     pub fn new() -> Value {
-        ::std::default::Default::default()
+        ::core::default::Default::default()
     }
 
     // .google.protobuf.NullValue null_value = 1;
@@ -215,24 +215,24 @@ impl Value {
 
     pub fn get_null_value(&self) -> NullValue {
         match self.kind {
-            ::std::option::Option::Some(Value_oneof_kind::null_value(v)) => v,
+            ::core::option::Option::Some(Value_oneof_kind::null_value(v)) => v,
             _ => NullValue::NULL_VALUE,
         }
     }
     pub fn clear_null_value(&mut self) {
-        self.kind = ::std::option::Option::None;
+        self.kind = ::core::option::Option::None;
     }
 
     pub fn has_null_value(&self) -> bool {
         match self.kind {
-            ::std::option::Option::Some(Value_oneof_kind::null_value(..)) => true,
+            ::core::option::Option::Some(Value_oneof_kind::null_value(..)) => true,
             _ => false,
         }
     }
 
     // Param is passed by value, moved
     pub fn set_null_value(&mut self, v: NullValue) {
-        self.kind = ::std::option::Option::Some(Value_oneof_kind::null_value(v))
+        self.kind = ::core::option::Option::Some(Value_oneof_kind::null_value(v))
     }
 
     // double number_value = 2;
@@ -240,24 +240,24 @@ impl Value {
 
     pub fn get_number_value(&self) -> f64 {
         match self.kind {
-            ::std::option::Option::Some(Value_oneof_kind::number_value(v)) => v,
+            ::core::option::Option::Some(Value_oneof_kind::number_value(v)) => v,
             _ => 0.,
         }
     }
     pub fn clear_number_value(&mut self) {
-        self.kind = ::std::option::Option::None;
+        self.kind = ::core::option::Option::None;
     }
 
     pub fn has_number_value(&self) -> bool {
         match self.kind {
-            ::std::option::Option::Some(Value_oneof_kind::number_value(..)) => true,
+            ::core::option::Option::Some(Value_oneof_kind::number_value(..)) => true,
             _ => false,
         }
     }
 
     // Param is passed by value, moved
     pub fn set_number_value(&mut self, v: f64) {
-        self.kind = ::std::option::Option::Some(Value_oneof_kind::number_value(v))
+        self.kind = ::core::option::Option::Some(Value_oneof_kind::number_value(v))
     }
 
     // string string_value = 3;
@@ -265,47 +265,47 @@ impl Value {
 
     pub fn get_string_value(&self) -> &str {
         match self.kind {
-            ::std::option::Option::Some(Value_oneof_kind::string_value(ref v)) => v,
+            ::core::option::Option::Some(Value_oneof_kind::string_value(ref v)) => v,
             _ => "",
         }
     }
     pub fn clear_string_value(&mut self) {
-        self.kind = ::std::option::Option::None;
+        self.kind = ::core::option::Option::None;
     }
 
     pub fn has_string_value(&self) -> bool {
         match self.kind {
-            ::std::option::Option::Some(Value_oneof_kind::string_value(..)) => true,
+            ::core::option::Option::Some(Value_oneof_kind::string_value(..)) => true,
             _ => false,
         }
     }
 
     // Param is passed by value, moved
-    pub fn set_string_value(&mut self, v: ::std::string::String) {
-        self.kind = ::std::option::Option::Some(Value_oneof_kind::string_value(v))
+    pub fn set_string_value(&mut self, v: ::alloc::string::String) {
+        self.kind = ::core::option::Option::Some(Value_oneof_kind::string_value(v))
     }
 
     // Mutable pointer to the field.
-    pub fn mut_string_value(&mut self) -> &mut ::std::string::String {
-        if let ::std::option::Option::Some(Value_oneof_kind::string_value(_)) = self.kind {
+    pub fn mut_string_value(&mut self) -> &mut ::alloc::string::String {
+        if let ::core::option::Option::Some(Value_oneof_kind::string_value(_)) = self.kind {
         } else {
-            self.kind = ::std::option::Option::Some(Value_oneof_kind::string_value(::std::string::String::new()));
+            self.kind = ::core::option::Option::Some(Value_oneof_kind::string_value(::alloc::string::String::new()));
         }
         match self.kind {
-            ::std::option::Option::Some(Value_oneof_kind::string_value(ref mut v)) => v,
+            ::core::option::Option::Some(Value_oneof_kind::string_value(ref mut v)) => v,
             _ => panic!(),
         }
     }
 
     // Take field
-    pub fn take_string_value(&mut self) -> ::std::string::String {
+    pub fn take_string_value(&mut self) -> ::alloc::string::String {
         if self.has_string_value() {
             match self.kind.take() {
-                ::std::option::Option::Some(Value_oneof_kind::string_value(v)) => v,
+                ::core::option::Option::Some(Value_oneof_kind::string_value(v)) => v,
                 _ => panic!(),
             }
         } else {
-            ::std::string::String::new()
+            ::alloc::string::String::new()
         }
     }
 
@@ -314,24 +314,24 @@ impl Value {
 
     pub fn get_bool_value(&self) -> bool {
         match self.kind {
-            ::std::option::Option::Some(Value_oneof_kind::bool_value(v)) => v,
+            ::core::option::Option::Some(Value_oneof_kind::bool_value(v)) => v,
             _ => false,
         }
     }
     pub fn clear_bool_value(&mut self) {
-        self.kind = ::std::option::Option::None;
+        self.kind = ::core::option::Option::None;
     }
 
     pub fn has_bool_value(&self) -> bool {
         match self.kind {
-            ::std::option::Option::Some(Value_oneof_kind::bool_value(..)) => true,
+            ::core::option::Option::Some(Value_oneof_kind::bool_value(..)) => true,
             _ => false,
         }
     }
 
     // Param is passed by value, moved
     pub fn set_bool_value(&mut self, v: bool) {
-        self.kind = ::std::option::Option::Some(Value_oneof_kind::bool_value(v))
+        self.kind = ::core::option::Option::Some(Value_oneof_kind::bool_value(v))
     }
 
     // .google.protobuf.Struct struct_value = 5;
@@ -339,34 +339,34 @@ impl Value {
 
     pub fn get_struct_value(&self) -> &Struct {
         match self.kind {
-            ::std::option::Option::Some(Value_oneof_kind::struct_value(ref v)) => v,
+            ::core::option::Option::Some(Value_oneof_kind::struct_value(ref v)) => v,
             _ => <Struct as crate::Message>::default_instance(),
         }
     }
     pub fn clear_struct_value(&mut self) {
-        self.kind = ::std::option::Option::None;
+        self.kind = ::core::option::Option::None;
     }
 
     pub fn has_struct_value(&self) -> bool {
         match self.kind {
-            ::std::option::Option::Some(Value_oneof_kind::struct_value(..)) => true,
+            ::core::option::Option::Some(Value_oneof_kind::struct_value(..)) => true,
             _ => false,
         }
     }
 
     // Param is passed by value, moved
     pub fn set_struct_value(&mut self, v: Struct) {
-        self.kind = ::std::option::Option::Some(Value_oneof_kind::struct_value(v))
+        self.kind = ::core::option::Option::Some(Value_oneof_kind::struct_value(v))
     }
 
     // Mutable pointer to the field.
     pub fn mut_struct_value(&mut self) -> &mut Struct {
-        if let ::std::option::Option::Some(Value_oneof_kind::struct_value(_)) = self.kind {
+        if let ::core::option::Option::Some(Value_oneof_kind::struct_value(_)) = self.kind {
         } else {
-            self.kind = ::std::option::Option::Some(Value_oneof_kind::struct_value(Struct::new()));
+            self.kind = ::core::option::Option::Some(Value_oneof_kind::struct_value(Struct::new()));
         }
         match self.kind {
-            ::std::option::Option::Some(Value_oneof_kind::struct_value(ref mut v)) => v,
+            ::core::option::Option::Some(Value_oneof_kind::struct_value(ref mut v)) => v,
             _ => panic!(),
         }
     }
@@ -375,7 +375,7 @@ impl Value {
     pub fn take_struct_value(&mut self) -> Struct {
         if self.has_struct_value() {
             match self.kind.take() {
-                ::std::option::Option::Some(Value_oneof_kind::struct_value(v)) => v,
+                ::core::option::Option::Some(Value_oneof_kind::struct_value(v)) => v,
                 _ => panic!(),
             }
         } else {
@@ -388,34 +388,34 @@ impl Value {
 
     pub fn get_list_value(&self) -> &ListValue {
         match self.kind {
-            ::std::option::Option::Some(Value_oneof_kind::list_value(ref v)) => v,
+            ::core::option::Option::Some(Value_oneof_kind::list_value(ref v)) => v,
             _ => <ListValue as crate::Message>::default_instance(),
         }
     }
     pub fn clear_list_value(&mut self) {
-        self.kind = ::std::option::Option::None;
+        self.kind = ::core::option::Option::None;
     }
 
     pub fn has_list_value(&self) -> bool {
         match self.kind {
-            ::std::option::Option::Some(Value_oneof_kind::list_value(..)) => true,
+            ::core::option::Option::Some(Value_oneof_kind::list_value(..)) => true,
             _ => false,
         }
     }
 
     // Param is passed by value, moved
     pub fn set_list_value(&mut self, v: ListValue) {
-        self.kind = ::std::option::Option::Some(Value_oneof_kind::list_value(v))
+        self.kind = ::core::option::Option::Some(Value_oneof_kind::list_value(v))
     }
 
     // Mutable pointer to the field.
     pub fn mut_list_value(&mut self) -> &mut ListValue {
-        if let ::std::option::Option::Some(Value_oneof_kind::list_value(_)) = self.kind {
+        if let ::core::option::Option::Some(Value_oneof_kind::list_value(_)) = self.kind {
         } else {
-            self.kind = ::std::option::Option::Some(Value_oneof_kind::list_value(ListValue::new()));
+            self.kind = ::core::option::Option::Some(Value_oneof_kind::list_value(ListValue::new()));
         }
         match self.kind {
-            ::std::option::Option::Some(Value_oneof_kind::list_value(ref mut v)) => v,
+            ::core::option::Option::Some(Value_oneof_kind::list_value(ref mut v)) => v,
             _ => panic!(),
         }
     }
@@ -424,7 +424,7 @@ impl Value {
     pub fn take_list_value(&mut self) -> ListValue {
         if self.has_list_value() {
             match self.kind.take() {
-                ::std::option::Option::Some(Value_oneof_kind::list_value(v)) => v,
+                ::core::option::Option::Some(Value_oneof_kind::list_value(v)) => v,
                 _ => panic!(),
             }
         } else {
@@ -454,53 +454,53 @@ impl crate::Message for Value {
             match field_number {
                 1 => {
                     if wire_type != crate::wire_format::WireTypeVarint {
-                        return ::std::result::Result::Err(crate::rt::unexpected_wire_type(wire_type));
+                        return ::core::result::Result::Err(crate::rt::unexpected_wire_type(wire_type));
                     }
-                    self.kind = ::std::option::Option::Some(Value_oneof_kind::null_value(is.read_enum()?));
+                    self.kind = ::core::option::Option::Some(Value_oneof_kind::null_value(is.read_enum()?));
                 },
                 2 => {
                     if wire_type != crate::wire_format::WireTypeFixed64 {
-                        return ::std::result::Result::Err(crate::rt::unexpected_wire_type(wire_type));
+                        return ::core::result::Result::Err(crate::rt::unexpected_wire_type(wire_type));
                     }
-                    self.kind = ::std::option::Option::Some(Value_oneof_kind::number_value(is.read_double()?));
+                    self.kind = ::core::option::Option::Some(Value_oneof_kind::number_value(is.read_double()?));
                 },
                 3 => {
                     if wire_type != crate::wire_format::WireTypeLengthDelimited {
-                        return ::std::result::Result::Err(crate::rt::unexpected_wire_type(wire_type));
+                        return ::core::result::Result::Err(crate::rt::unexpected_wire_type(wire_type));
                     }
-                    self.kind = ::std::option::Option::Some(Value_oneof_kind::string_value(is.read_string()?));
+                    self.kind = ::core::option::Option::Some(Value_oneof_kind::string_value(is.read_string()?));
                 },
                 4 => {
                     if wire_type != crate::wire_format::WireTypeVarint {
-                        return ::std::result::Result::Err(crate::rt::unexpected_wire_type(wire_type));
+                        return ::core::result::Result::Err(crate::rt::unexpected_wire_type(wire_type));
                     }
-                    self.kind = ::std::option::Option::Some(Value_oneof_kind::bool_value(is.read_bool()?));
+                    self.kind = ::core::option::Option::Some(Value_oneof_kind::bool_value(is.read_bool()?));
                 },
                 5 => {
                     if wire_type != crate::wire_format::WireTypeLengthDelimited {
-                        return ::std::result::Result::Err(crate::rt::unexpected_wire_type(wire_type));
+                        return ::core::result::Result::Err(crate::rt::unexpected_wire_type(wire_type));
                     }
-                    self.kind = ::std::option::Option::Some(Value_oneof_kind::struct_value(is.read_message()?));
+                    self.kind = ::core::option::Option::Some(Value_oneof_kind::struct_value(is.read_message()?));
                 },
                 6 => {
                     if wire_type != crate::wire_format::WireTypeLengthDelimited {
-                        return ::std::result::Result::Err(crate::rt::unexpected_wire_type(wire_type));
+                        return ::core::result::Result::Err(crate::rt::unexpected_wire_type(wire_type));
                     }
-                    self.kind = ::std::option::Option::Some(Value_oneof_kind::list_value(is.read_message()?));
+                    self.kind = ::core::option::Option::Some(Value_oneof_kind::list_value(is.read_message()?));
                 },
                 _ => {
                     crate::rt::read_unknown_or_skip_group(field_number, wire_type, is, self.mut_unknown_fields())?;
                 },
             };
         }
-        ::std::result::Result::Ok(())
+        ::core::result::Result::Ok(())
     }
 
     // Compute sizes of nested messages
     #[allow(unused_variables)]
     fn compute_size(&self) -> u32 {
         let mut my_size = 0;
-        if let ::std::option::Option::Some(ref v) = self.kind {
+        if let ::core::option::Option::Some(ref v) = self.kind {
             match v {
                 &Value_oneof_kind::null_value(v) => {
                     my_size += crate::rt::enum_size(1, v);
@@ -530,7 +530,7 @@ impl crate::Message for Value {
     }
 
     fn write_to_with_cached_sizes(&self, os: &mut crate::CodedOutputStream<'_>) -> crate::ProtobufResult<()> {
-        if let ::std::option::Option::Some(ref v) = self.kind {
+        if let ::core::option::Option::Some(ref v) = self.kind {
             match v {
                 &Value_oneof_kind::null_value(v) => {
                     os.write_enum(1, crate::ProtobufEnum::value(&v))?;
@@ -557,7 +557,7 @@ impl crate::Message for Value {
             };
         }
         os.write_unknown_fields(self.get_unknown_fields())?;
-        ::std::result::Result::Ok(())
+        ::core::result::Result::Ok(())
     }
 
     fn get_cached_size(&self) -> u32 {
@@ -572,13 +572,13 @@ impl crate::Message for Value {
         &mut self.unknown_fields
     }
 
-    fn as_any(&self) -> &dyn (::std::any::Any) {
-        self as &dyn (::std::any::Any)
+    fn as_any(&self) -> &dyn (::core::any::Any) {
+        self as &dyn (::core::any::Any)
     }
-    fn as_any_mut(&mut self) -> &mut dyn (::std::any::Any) {
-        self as &mut dyn (::std::any::Any)
+    fn as_any_mut(&mut self) -> &mut dyn (::core::any::Any) {
+        self as &mut dyn (::core::any::Any)
     }
-    fn into_any(self: ::std::boxed::Box<Self>) -> ::std::boxed::Box<dyn (::std::any::Any)> {
+    fn into_any(self: ::alloc::boxed::Box<Self>) -> ::alloc::boxed::Box<dyn (::core::any::Any)> {
         self
     }
 
@@ -593,7 +593,7 @@ impl crate::Message for Value {
     fn descriptor_static() -> &'static crate::reflect::MessageDescriptor {
         static descriptor: crate::rt::LazyV2<crate::reflect::MessageDescriptor> = crate::rt::LazyV2::INIT;
         descriptor.get(|| {
-            let mut fields = ::std::vec::Vec::new();
+            let mut fields = ::alloc::vec::Vec::new();
             fields.push(crate::reflect::accessor::make_singular_enum_accessor::<_, NullValue>(
                 "null_value",
                 Value::has_null_value,
@@ -640,18 +640,18 @@ impl crate::Message for Value {
 
 impl crate::Clear for Value {
     fn clear(&mut self) {
-        self.kind = ::std::option::Option::None;
-        self.kind = ::std::option::Option::None;
-        self.kind = ::std::option::Option::None;
-        self.kind = ::std::option::Option::None;
-        self.kind = ::std::option::Option::None;
-        self.kind = ::std::option::Option::None;
+        self.kind = ::core::option::Option::None;
+        self.kind = ::core::option::Option::None;
+        self.kind = ::core::option::Option::None;
+        self.kind = ::core::option::Option::None;
+        self.kind = ::core::option::Option::None;
+        self.kind = ::core::option::Option::None;
         self.unknown_fields.clear();
     }
 }
 
-impl ::std::fmt::Debug for Value {
-    fn fmt(&self, f: &mut ::std::fmt::Formatter<'_>) -> ::std::fmt::Result {
+impl ::core::fmt::Debug for Value {
+    fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
         crate::text_format::fmt(self, f)
     }
 }
@@ -674,7 +674,7 @@ pub struct ListValue {
     pub cached_size: crate::CachedSize,
 }
 
-impl<'a> ::std::default::Default for &'a ListValue {
+impl<'a> ::core::default::Default for &'a ListValue {
     fn default() -> &'a ListValue {
         <ListValue as crate::Message>::default_instance()
     }
@@ -682,7 +682,7 @@ impl<'a> ::std::default::Default for &'a ListValue {
 
 impl ListValue {
     pub fn new() -> ListValue {
-        ::std::default::Default::default()
+        ::core::default::Default::default()
     }
 
     // repeated .google.protobuf.Value values = 1;
@@ -707,7 +707,7 @@ impl ListValue {
 
     // Take field
     pub fn take_values(&mut self) -> crate::RepeatedField<Value> {
-        ::std::mem::replace(&mut self.values, crate::RepeatedField::new())
+        ::core::mem::replace(&mut self.values, crate::RepeatedField::new())
     }
 }
 
@@ -733,7 +733,7 @@ impl crate::Message for ListValue {
                 },
             };
         }
-        ::std::result::Result::Ok(())
+        ::core::result::Result::Ok(())
     }
 
     // Compute sizes of nested messages
@@ -756,7 +756,7 @@ impl crate::Message for ListValue {
             v.write_to_with_cached_sizes(os)?;
         };
         os.write_unknown_fields(self.get_unknown_fields())?;
-        ::std::result::Result::Ok(())
+        ::core::result::Result::Ok(())
     }
 
     fn get_cached_size(&self) -> u32 {
@@ -771,13 +771,13 @@ impl crate::Message for ListValue {
         &mut self.unknown_fields
     }
 
-    fn as_any(&self) -> &dyn (::std::any::Any) {
-        self as &dyn (::std::any::Any)
+    fn as_any(&self) -> &dyn (::core::any::Any) {
+        self as &dyn (::core::any::Any)
     }
-    fn as_any_mut(&mut self) -> &mut dyn (::std::any::Any) {
-        self as &mut dyn (::std::any::Any)
+    fn as_any_mut(&mut self) -> &mut dyn (::core::any::Any) {
+        self as &mut dyn (::core::any::Any)
     }
-    fn into_any(self: ::std::boxed::Box<Self>) -> ::std::boxed::Box<dyn (::std::any::Any)> {
+    fn into_any(self: ::alloc::boxed::Box<Self>) -> ::alloc::boxed::Box<dyn (::core::any::Any)> {
         self
     }
 
@@ -792,7 +792,7 @@ impl crate::Message for ListValue {
     fn descriptor_static() -> &'static crate::reflect::MessageDescriptor {
         static descriptor: crate::rt::LazyV2<crate::reflect::MessageDescriptor> = crate::rt::LazyV2::INIT;
         descriptor.get(|| {
-            let mut fields = ::std::vec::Vec::new();
+            let mut fields = ::alloc::vec::Vec::new();
             fields.push(crate::reflect::accessor::make_repeated_field_accessor::<_, crate::types::ProtobufTypeMessage<Value>>(
                 "values",
                 |m: &ListValue| { &m.values },
@@ -819,8 +819,8 @@ impl crate::Clear for ListValue {
     }
 }
 
-impl ::std::fmt::Debug for ListValue {
-    fn fmt(&self, f: &mut ::std::fmt::Formatter<'_>) -> ::std::fmt::Result {
+impl ::core::fmt::Debug for ListValue {
+    fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
         crate::text_format::fmt(self, f)
     }
 }
@@ -842,10 +842,10 @@ impl crate::ProtobufEnum for NullValue {
         *self as i32
     }
 
-    fn from_i32(value: i32) -> ::std::option::Option<NullValue> {
+    fn from_i32(value: i32) -> ::core::option::Option<NullValue> {
         match value {
-            0 => ::std::option::Option::Some(NullValue::NULL_VALUE),
-            _ => ::std::option::Option::None
+            0 => ::core::option::Option::Some(NullValue::NULL_VALUE),
+            _ => ::core::option::Option::None
         }
     }
 
@@ -864,10 +864,10 @@ impl crate::ProtobufEnum for NullValue {
     }
 }
 
-impl ::std::marker::Copy for NullValue {
+impl ::core::marker::Copy for NullValue {
 }
 
-impl ::std::default::Default for NullValue {
+impl ::core::default::Default for NullValue {
     fn default() -> Self {
         NullValue::NULL_VALUE
     }

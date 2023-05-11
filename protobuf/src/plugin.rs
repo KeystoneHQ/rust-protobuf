@@ -23,10 +23,10 @@
 #[cfg_attr(feature = "with-serde", derive(::serde::Serialize, ::serde::Deserialize))]
 pub struct Version {
     // message fields
-    major: ::std::option::Option<i32>,
-    minor: ::std::option::Option<i32>,
-    patch: ::std::option::Option<i32>,
-    suffix: crate::SingularField<::std::string::String>,
+    major: ::core::option::Option<i32>,
+    minor: ::core::option::Option<i32>,
+    patch: ::core::option::Option<i32>,
+    suffix: crate::SingularField<::alloc::string::String>,
     // special fields
     #[cfg_attr(feature = "with-serde", serde(skip))]
     pub unknown_fields: crate::UnknownFields,
@@ -34,7 +34,7 @@ pub struct Version {
     pub cached_size: crate::CachedSize,
 }
 
-impl<'a> ::std::default::Default for &'a Version {
+impl<'a> ::core::default::Default for &'a Version {
     fn default() -> &'a Version {
         <Version as crate::Message>::default_instance()
     }
@@ -42,7 +42,7 @@ impl<'a> ::std::default::Default for &'a Version {
 
 impl Version {
     pub fn new() -> Version {
-        ::std::default::Default::default()
+        ::core::default::Default::default()
     }
 
     // optional int32 major = 1;
@@ -52,7 +52,7 @@ impl Version {
         self.major.unwrap_or(0)
     }
     pub fn clear_major(&mut self) {
-        self.major = ::std::option::Option::None;
+        self.major = ::core::option::Option::None;
     }
 
     pub fn has_major(&self) -> bool {
@@ -61,7 +61,7 @@ impl Version {
 
     // Param is passed by value, moved
     pub fn set_major(&mut self, v: i32) {
-        self.major = ::std::option::Option::Some(v);
+        self.major = ::core::option::Option::Some(v);
     }
 
     // optional int32 minor = 2;
@@ -71,7 +71,7 @@ impl Version {
         self.minor.unwrap_or(0)
     }
     pub fn clear_minor(&mut self) {
-        self.minor = ::std::option::Option::None;
+        self.minor = ::core::option::Option::None;
     }
 
     pub fn has_minor(&self) -> bool {
@@ -80,7 +80,7 @@ impl Version {
 
     // Param is passed by value, moved
     pub fn set_minor(&mut self, v: i32) {
-        self.minor = ::std::option::Option::Some(v);
+        self.minor = ::core::option::Option::Some(v);
     }
 
     // optional int32 patch = 3;
@@ -90,7 +90,7 @@ impl Version {
         self.patch.unwrap_or(0)
     }
     pub fn clear_patch(&mut self) {
-        self.patch = ::std::option::Option::None;
+        self.patch = ::core::option::Option::None;
     }
 
     pub fn has_patch(&self) -> bool {
@@ -99,7 +99,7 @@ impl Version {
 
     // Param is passed by value, moved
     pub fn set_patch(&mut self, v: i32) {
-        self.patch = ::std::option::Option::Some(v);
+        self.patch = ::core::option::Option::Some(v);
     }
 
     // optional string suffix = 4;
@@ -120,13 +120,13 @@ impl Version {
     }
 
     // Param is passed by value, moved
-    pub fn set_suffix(&mut self, v: ::std::string::String) {
+    pub fn set_suffix(&mut self, v: ::alloc::string::String) {
         self.suffix = crate::SingularField::some(v);
     }
 
     // Mutable pointer to the field.
     // If field is not initialized, it is initialized with default value first.
-    pub fn mut_suffix(&mut self) -> &mut ::std::string::String {
+    pub fn mut_suffix(&mut self) -> &mut ::alloc::string::String {
         if self.suffix.is_none() {
             self.suffix.set_default();
         }
@@ -134,8 +134,8 @@ impl Version {
     }
 
     // Take field
-    pub fn take_suffix(&mut self) -> ::std::string::String {
-        self.suffix.take().unwrap_or_else(|| ::std::string::String::new())
+    pub fn take_suffix(&mut self) -> ::alloc::string::String {
+        self.suffix.take().unwrap_or_else(|| ::alloc::string::String::new())
     }
 }
 
@@ -150,24 +150,24 @@ impl crate::Message for Version {
             match field_number {
                 1 => {
                     if wire_type != crate::wire_format::WireTypeVarint {
-                        return ::std::result::Result::Err(crate::rt::unexpected_wire_type(wire_type));
+                        return ::core::result::Result::Err(crate::rt::unexpected_wire_type(wire_type));
                     }
                     let tmp = is.read_int32()?;
-                    self.major = ::std::option::Option::Some(tmp);
+                    self.major = ::core::option::Option::Some(tmp);
                 },
                 2 => {
                     if wire_type != crate::wire_format::WireTypeVarint {
-                        return ::std::result::Result::Err(crate::rt::unexpected_wire_type(wire_type));
+                        return ::core::result::Result::Err(crate::rt::unexpected_wire_type(wire_type));
                     }
                     let tmp = is.read_int32()?;
-                    self.minor = ::std::option::Option::Some(tmp);
+                    self.minor = ::core::option::Option::Some(tmp);
                 },
                 3 => {
                     if wire_type != crate::wire_format::WireTypeVarint {
-                        return ::std::result::Result::Err(crate::rt::unexpected_wire_type(wire_type));
+                        return ::core::result::Result::Err(crate::rt::unexpected_wire_type(wire_type));
                     }
                     let tmp = is.read_int32()?;
-                    self.patch = ::std::option::Option::Some(tmp);
+                    self.patch = ::core::option::Option::Some(tmp);
                 },
                 4 => {
                     crate::rt::read_singular_string_into(wire_type, is, &mut self.suffix)?;
@@ -177,7 +177,7 @@ impl crate::Message for Version {
                 },
             };
         }
-        ::std::result::Result::Ok(())
+        ::core::result::Result::Ok(())
     }
 
     // Compute sizes of nested messages
@@ -215,7 +215,7 @@ impl crate::Message for Version {
             os.write_string(4, &v)?;
         }
         os.write_unknown_fields(self.get_unknown_fields())?;
-        ::std::result::Result::Ok(())
+        ::core::result::Result::Ok(())
     }
 
     fn get_cached_size(&self) -> u32 {
@@ -230,13 +230,13 @@ impl crate::Message for Version {
         &mut self.unknown_fields
     }
 
-    fn as_any(&self) -> &dyn (::std::any::Any) {
-        self as &dyn (::std::any::Any)
+    fn as_any(&self) -> &dyn (::core::any::Any) {
+        self as &dyn (::core::any::Any)
     }
-    fn as_any_mut(&mut self) -> &mut dyn (::std::any::Any) {
-        self as &mut dyn (::std::any::Any)
+    fn as_any_mut(&mut self) -> &mut dyn (::core::any::Any) {
+        self as &mut dyn (::core::any::Any)
     }
-    fn into_any(self: ::std::boxed::Box<Self>) -> ::std::boxed::Box<dyn (::std::any::Any)> {
+    fn into_any(self: ::alloc::boxed::Box<Self>) -> ::alloc::boxed::Box<dyn (::core::any::Any)> {
         self
     }
 
@@ -251,7 +251,7 @@ impl crate::Message for Version {
     fn descriptor_static() -> &'static crate::reflect::MessageDescriptor {
         static descriptor: crate::rt::LazyV2<crate::reflect::MessageDescriptor> = crate::rt::LazyV2::INIT;
         descriptor.get(|| {
-            let mut fields = ::std::vec::Vec::new();
+            let mut fields = ::alloc::vec::Vec::new();
             fields.push(crate::reflect::accessor::make_option_accessor::<_, crate::types::ProtobufTypeInt32>(
                 "major",
                 |m: &Version| { &m.major },
@@ -288,16 +288,16 @@ impl crate::Message for Version {
 
 impl crate::Clear for Version {
     fn clear(&mut self) {
-        self.major = ::std::option::Option::None;
-        self.minor = ::std::option::Option::None;
-        self.patch = ::std::option::Option::None;
+        self.major = ::core::option::Option::None;
+        self.minor = ::core::option::Option::None;
+        self.patch = ::core::option::Option::None;
         self.suffix.clear();
         self.unknown_fields.clear();
     }
 }
 
-impl ::std::fmt::Debug for Version {
-    fn fmt(&self, f: &mut ::std::fmt::Formatter<'_>) -> ::std::fmt::Result {
+impl ::core::fmt::Debug for Version {
+    fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
         crate::text_format::fmt(self, f)
     }
 }
@@ -312,8 +312,8 @@ impl crate::reflect::ProtobufValue for Version {
 #[cfg_attr(feature = "with-serde", derive(::serde::Serialize, ::serde::Deserialize))]
 pub struct CodeGeneratorRequest {
     // message fields
-    pub file_to_generate: crate::RepeatedField<::std::string::String>,
-    parameter: crate::SingularField<::std::string::String>,
+    pub file_to_generate: crate::RepeatedField<::alloc::string::String>,
+    parameter: crate::SingularField<::alloc::string::String>,
     pub proto_file: crate::RepeatedField<crate::descriptor::FileDescriptorProto>,
     pub compiler_version: crate::SingularPtrField<Version>,
     // special fields
@@ -323,7 +323,7 @@ pub struct CodeGeneratorRequest {
     pub cached_size: crate::CachedSize,
 }
 
-impl<'a> ::std::default::Default for &'a CodeGeneratorRequest {
+impl<'a> ::core::default::Default for &'a CodeGeneratorRequest {
     fn default() -> &'a CodeGeneratorRequest {
         <CodeGeneratorRequest as crate::Message>::default_instance()
     }
@@ -331,13 +331,13 @@ impl<'a> ::std::default::Default for &'a CodeGeneratorRequest {
 
 impl CodeGeneratorRequest {
     pub fn new() -> CodeGeneratorRequest {
-        ::std::default::Default::default()
+        ::core::default::Default::default()
     }
 
     // repeated string file_to_generate = 1;
 
 
-    pub fn get_file_to_generate(&self) -> &[::std::string::String] {
+    pub fn get_file_to_generate(&self) -> &[::alloc::string::String] {
         &self.file_to_generate
     }
     pub fn clear_file_to_generate(&mut self) {
@@ -345,18 +345,18 @@ impl CodeGeneratorRequest {
     }
 
     // Param is passed by value, moved
-    pub fn set_file_to_generate(&mut self, v: crate::RepeatedField<::std::string::String>) {
+    pub fn set_file_to_generate(&mut self, v: crate::RepeatedField<::alloc::string::String>) {
         self.file_to_generate = v;
     }
 
     // Mutable pointer to the field.
-    pub fn mut_file_to_generate(&mut self) -> &mut crate::RepeatedField<::std::string::String> {
+    pub fn mut_file_to_generate(&mut self) -> &mut crate::RepeatedField<::alloc::string::String> {
         &mut self.file_to_generate
     }
 
     // Take field
-    pub fn take_file_to_generate(&mut self) -> crate::RepeatedField<::std::string::String> {
-        ::std::mem::replace(&mut self.file_to_generate, crate::RepeatedField::new())
+    pub fn take_file_to_generate(&mut self) -> crate::RepeatedField<::alloc::string::String> {
+        ::core::mem::replace(&mut self.file_to_generate, crate::RepeatedField::new())
     }
 
     // optional string parameter = 2;
@@ -377,13 +377,13 @@ impl CodeGeneratorRequest {
     }
 
     // Param is passed by value, moved
-    pub fn set_parameter(&mut self, v: ::std::string::String) {
+    pub fn set_parameter(&mut self, v: ::alloc::string::String) {
         self.parameter = crate::SingularField::some(v);
     }
 
     // Mutable pointer to the field.
     // If field is not initialized, it is initialized with default value first.
-    pub fn mut_parameter(&mut self) -> &mut ::std::string::String {
+    pub fn mut_parameter(&mut self) -> &mut ::alloc::string::String {
         if self.parameter.is_none() {
             self.parameter.set_default();
         }
@@ -391,8 +391,8 @@ impl CodeGeneratorRequest {
     }
 
     // Take field
-    pub fn take_parameter(&mut self) -> ::std::string::String {
-        self.parameter.take().unwrap_or_else(|| ::std::string::String::new())
+    pub fn take_parameter(&mut self) -> ::alloc::string::String {
+        self.parameter.take().unwrap_or_else(|| ::alloc::string::String::new())
     }
 
     // repeated .google.protobuf.FileDescriptorProto proto_file = 15;
@@ -417,7 +417,7 @@ impl CodeGeneratorRequest {
 
     // Take field
     pub fn take_proto_file(&mut self) -> crate::RepeatedField<crate::descriptor::FileDescriptorProto> {
-        ::std::mem::replace(&mut self.proto_file, crate::RepeatedField::new())
+        ::core::mem::replace(&mut self.proto_file, crate::RepeatedField::new())
     }
 
     // optional .google.protobuf.compiler.Version compiler_version = 3;
@@ -490,7 +490,7 @@ impl crate::Message for CodeGeneratorRequest {
                 },
             };
         }
-        ::std::result::Result::Ok(())
+        ::core::result::Result::Ok(())
     }
 
     // Compute sizes of nested messages
@@ -534,7 +534,7 @@ impl crate::Message for CodeGeneratorRequest {
             v.write_to_with_cached_sizes(os)?;
         }
         os.write_unknown_fields(self.get_unknown_fields())?;
-        ::std::result::Result::Ok(())
+        ::core::result::Result::Ok(())
     }
 
     fn get_cached_size(&self) -> u32 {
@@ -549,13 +549,13 @@ impl crate::Message for CodeGeneratorRequest {
         &mut self.unknown_fields
     }
 
-    fn as_any(&self) -> &dyn (::std::any::Any) {
-        self as &dyn (::std::any::Any)
+    fn as_any(&self) -> &dyn (::core::any::Any) {
+        self as &dyn (::core::any::Any)
     }
-    fn as_any_mut(&mut self) -> &mut dyn (::std::any::Any) {
-        self as &mut dyn (::std::any::Any)
+    fn as_any_mut(&mut self) -> &mut dyn (::core::any::Any) {
+        self as &mut dyn (::core::any::Any)
     }
-    fn into_any(self: ::std::boxed::Box<Self>) -> ::std::boxed::Box<dyn (::std::any::Any)> {
+    fn into_any(self: ::alloc::boxed::Box<Self>) -> ::alloc::boxed::Box<dyn (::core::any::Any)> {
         self
     }
 
@@ -570,7 +570,7 @@ impl crate::Message for CodeGeneratorRequest {
     fn descriptor_static() -> &'static crate::reflect::MessageDescriptor {
         static descriptor: crate::rt::LazyV2<crate::reflect::MessageDescriptor> = crate::rt::LazyV2::INIT;
         descriptor.get(|| {
-            let mut fields = ::std::vec::Vec::new();
+            let mut fields = ::alloc::vec::Vec::new();
             fields.push(crate::reflect::accessor::make_repeated_field_accessor::<_, crate::types::ProtobufTypeString>(
                 "file_to_generate",
                 |m: &CodeGeneratorRequest| { &m.file_to_generate },
@@ -615,8 +615,8 @@ impl crate::Clear for CodeGeneratorRequest {
     }
 }
 
-impl ::std::fmt::Debug for CodeGeneratorRequest {
-    fn fmt(&self, f: &mut ::std::fmt::Formatter<'_>) -> ::std::fmt::Result {
+impl ::core::fmt::Debug for CodeGeneratorRequest {
+    fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
         crate::text_format::fmt(self, f)
     }
 }
@@ -631,8 +631,8 @@ impl crate::reflect::ProtobufValue for CodeGeneratorRequest {
 #[cfg_attr(feature = "with-serde", derive(::serde::Serialize, ::serde::Deserialize))]
 pub struct CodeGeneratorResponse {
     // message fields
-    error: crate::SingularField<::std::string::String>,
-    supported_features: ::std::option::Option<u64>,
+    error: crate::SingularField<::alloc::string::String>,
+    supported_features: ::core::option::Option<u64>,
     pub file: crate::RepeatedField<CodeGeneratorResponse_File>,
     // special fields
     #[cfg_attr(feature = "with-serde", serde(skip))]
@@ -641,7 +641,7 @@ pub struct CodeGeneratorResponse {
     pub cached_size: crate::CachedSize,
 }
 
-impl<'a> ::std::default::Default for &'a CodeGeneratorResponse {
+impl<'a> ::core::default::Default for &'a CodeGeneratorResponse {
     fn default() -> &'a CodeGeneratorResponse {
         <CodeGeneratorResponse as crate::Message>::default_instance()
     }
@@ -649,7 +649,7 @@ impl<'a> ::std::default::Default for &'a CodeGeneratorResponse {
 
 impl CodeGeneratorResponse {
     pub fn new() -> CodeGeneratorResponse {
-        ::std::default::Default::default()
+        ::core::default::Default::default()
     }
 
     // optional string error = 1;
@@ -670,13 +670,13 @@ impl CodeGeneratorResponse {
     }
 
     // Param is passed by value, moved
-    pub fn set_error(&mut self, v: ::std::string::String) {
+    pub fn set_error(&mut self, v: ::alloc::string::String) {
         self.error = crate::SingularField::some(v);
     }
 
     // Mutable pointer to the field.
     // If field is not initialized, it is initialized with default value first.
-    pub fn mut_error(&mut self) -> &mut ::std::string::String {
+    pub fn mut_error(&mut self) -> &mut ::alloc::string::String {
         if self.error.is_none() {
             self.error.set_default();
         }
@@ -684,8 +684,8 @@ impl CodeGeneratorResponse {
     }
 
     // Take field
-    pub fn take_error(&mut self) -> ::std::string::String {
-        self.error.take().unwrap_or_else(|| ::std::string::String::new())
+    pub fn take_error(&mut self) -> ::alloc::string::String {
+        self.error.take().unwrap_or_else(|| ::alloc::string::String::new())
     }
 
     // optional uint64 supported_features = 2;
@@ -695,7 +695,7 @@ impl CodeGeneratorResponse {
         self.supported_features.unwrap_or(0)
     }
     pub fn clear_supported_features(&mut self) {
-        self.supported_features = ::std::option::Option::None;
+        self.supported_features = ::core::option::Option::None;
     }
 
     pub fn has_supported_features(&self) -> bool {
@@ -704,7 +704,7 @@ impl CodeGeneratorResponse {
 
     // Param is passed by value, moved
     pub fn set_supported_features(&mut self, v: u64) {
-        self.supported_features = ::std::option::Option::Some(v);
+        self.supported_features = ::core::option::Option::Some(v);
     }
 
     // repeated .google.protobuf.compiler.CodeGeneratorResponse.File file = 15;
@@ -729,7 +729,7 @@ impl CodeGeneratorResponse {
 
     // Take field
     pub fn take_file(&mut self) -> crate::RepeatedField<CodeGeneratorResponse_File> {
-        ::std::mem::replace(&mut self.file, crate::RepeatedField::new())
+        ::core::mem::replace(&mut self.file, crate::RepeatedField::new())
     }
 }
 
@@ -752,10 +752,10 @@ impl crate::Message for CodeGeneratorResponse {
                 },
                 2 => {
                     if wire_type != crate::wire_format::WireTypeVarint {
-                        return ::std::result::Result::Err(crate::rt::unexpected_wire_type(wire_type));
+                        return ::core::result::Result::Err(crate::rt::unexpected_wire_type(wire_type));
                     }
                     let tmp = is.read_uint64()?;
-                    self.supported_features = ::std::option::Option::Some(tmp);
+                    self.supported_features = ::core::option::Option::Some(tmp);
                 },
                 15 => {
                     crate::rt::read_repeated_message_into(wire_type, is, &mut self.file)?;
@@ -765,7 +765,7 @@ impl crate::Message for CodeGeneratorResponse {
                 },
             };
         }
-        ::std::result::Result::Ok(())
+        ::core::result::Result::Ok(())
     }
 
     // Compute sizes of nested messages
@@ -800,7 +800,7 @@ impl crate::Message for CodeGeneratorResponse {
             v.write_to_with_cached_sizes(os)?;
         };
         os.write_unknown_fields(self.get_unknown_fields())?;
-        ::std::result::Result::Ok(())
+        ::core::result::Result::Ok(())
     }
 
     fn get_cached_size(&self) -> u32 {
@@ -815,13 +815,13 @@ impl crate::Message for CodeGeneratorResponse {
         &mut self.unknown_fields
     }
 
-    fn as_any(&self) -> &dyn (::std::any::Any) {
-        self as &dyn (::std::any::Any)
+    fn as_any(&self) -> &dyn (::core::any::Any) {
+        self as &dyn (::core::any::Any)
     }
-    fn as_any_mut(&mut self) -> &mut dyn (::std::any::Any) {
-        self as &mut dyn (::std::any::Any)
+    fn as_any_mut(&mut self) -> &mut dyn (::core::any::Any) {
+        self as &mut dyn (::core::any::Any)
     }
-    fn into_any(self: ::std::boxed::Box<Self>) -> ::std::boxed::Box<dyn (::std::any::Any)> {
+    fn into_any(self: ::alloc::boxed::Box<Self>) -> ::alloc::boxed::Box<dyn (::core::any::Any)> {
         self
     }
 
@@ -836,7 +836,7 @@ impl crate::Message for CodeGeneratorResponse {
     fn descriptor_static() -> &'static crate::reflect::MessageDescriptor {
         static descriptor: crate::rt::LazyV2<crate::reflect::MessageDescriptor> = crate::rt::LazyV2::INIT;
         descriptor.get(|| {
-            let mut fields = ::std::vec::Vec::new();
+            let mut fields = ::alloc::vec::Vec::new();
             fields.push(crate::reflect::accessor::make_singular_field_accessor::<_, crate::types::ProtobufTypeString>(
                 "error",
                 |m: &CodeGeneratorResponse| { &m.error },
@@ -869,14 +869,14 @@ impl crate::Message for CodeGeneratorResponse {
 impl crate::Clear for CodeGeneratorResponse {
     fn clear(&mut self) {
         self.error.clear();
-        self.supported_features = ::std::option::Option::None;
+        self.supported_features = ::core::option::Option::None;
         self.file.clear();
         self.unknown_fields.clear();
     }
 }
 
-impl ::std::fmt::Debug for CodeGeneratorResponse {
-    fn fmt(&self, f: &mut ::std::fmt::Formatter<'_>) -> ::std::fmt::Result {
+impl ::core::fmt::Debug for CodeGeneratorResponse {
+    fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
         crate::text_format::fmt(self, f)
     }
 }
@@ -891,9 +891,9 @@ impl crate::reflect::ProtobufValue for CodeGeneratorResponse {
 #[cfg_attr(feature = "with-serde", derive(::serde::Serialize, ::serde::Deserialize))]
 pub struct CodeGeneratorResponse_File {
     // message fields
-    name: crate::SingularField<::std::string::String>,
-    insertion_point: crate::SingularField<::std::string::String>,
-    content: crate::SingularField<::std::string::String>,
+    name: crate::SingularField<::alloc::string::String>,
+    insertion_point: crate::SingularField<::alloc::string::String>,
+    content: crate::SingularField<::alloc::string::String>,
     pub generated_code_info: crate::SingularPtrField<crate::descriptor::GeneratedCodeInfo>,
     // special fields
     #[cfg_attr(feature = "with-serde", serde(skip))]
@@ -902,7 +902,7 @@ pub struct CodeGeneratorResponse_File {
     pub cached_size: crate::CachedSize,
 }
 
-impl<'a> ::std::default::Default for &'a CodeGeneratorResponse_File {
+impl<'a> ::core::default::Default for &'a CodeGeneratorResponse_File {
     fn default() -> &'a CodeGeneratorResponse_File {
         <CodeGeneratorResponse_File as crate::Message>::default_instance()
     }
@@ -910,7 +910,7 @@ impl<'a> ::std::default::Default for &'a CodeGeneratorResponse_File {
 
 impl CodeGeneratorResponse_File {
     pub fn new() -> CodeGeneratorResponse_File {
-        ::std::default::Default::default()
+        ::core::default::Default::default()
     }
 
     // optional string name = 1;
@@ -931,13 +931,13 @@ impl CodeGeneratorResponse_File {
     }
 
     // Param is passed by value, moved
-    pub fn set_name(&mut self, v: ::std::string::String) {
+    pub fn set_name(&mut self, v: ::alloc::string::String) {
         self.name = crate::SingularField::some(v);
     }
 
     // Mutable pointer to the field.
     // If field is not initialized, it is initialized with default value first.
-    pub fn mut_name(&mut self) -> &mut ::std::string::String {
+    pub fn mut_name(&mut self) -> &mut ::alloc::string::String {
         if self.name.is_none() {
             self.name.set_default();
         }
@@ -945,8 +945,8 @@ impl CodeGeneratorResponse_File {
     }
 
     // Take field
-    pub fn take_name(&mut self) -> ::std::string::String {
-        self.name.take().unwrap_or_else(|| ::std::string::String::new())
+    pub fn take_name(&mut self) -> ::alloc::string::String {
+        self.name.take().unwrap_or_else(|| ::alloc::string::String::new())
     }
 
     // optional string insertion_point = 2;
@@ -967,13 +967,13 @@ impl CodeGeneratorResponse_File {
     }
 
     // Param is passed by value, moved
-    pub fn set_insertion_point(&mut self, v: ::std::string::String) {
+    pub fn set_insertion_point(&mut self, v: ::alloc::string::String) {
         self.insertion_point = crate::SingularField::some(v);
     }
 
     // Mutable pointer to the field.
     // If field is not initialized, it is initialized with default value first.
-    pub fn mut_insertion_point(&mut self) -> &mut ::std::string::String {
+    pub fn mut_insertion_point(&mut self) -> &mut ::alloc::string::String {
         if self.insertion_point.is_none() {
             self.insertion_point.set_default();
         }
@@ -981,8 +981,8 @@ impl CodeGeneratorResponse_File {
     }
 
     // Take field
-    pub fn take_insertion_point(&mut self) -> ::std::string::String {
-        self.insertion_point.take().unwrap_or_else(|| ::std::string::String::new())
+    pub fn take_insertion_point(&mut self) -> ::alloc::string::String {
+        self.insertion_point.take().unwrap_or_else(|| ::alloc::string::String::new())
     }
 
     // optional string content = 15;
@@ -1003,13 +1003,13 @@ impl CodeGeneratorResponse_File {
     }
 
     // Param is passed by value, moved
-    pub fn set_content(&mut self, v: ::std::string::String) {
+    pub fn set_content(&mut self, v: ::alloc::string::String) {
         self.content = crate::SingularField::some(v);
     }
 
     // Mutable pointer to the field.
     // If field is not initialized, it is initialized with default value first.
-    pub fn mut_content(&mut self) -> &mut ::std::string::String {
+    pub fn mut_content(&mut self) -> &mut ::alloc::string::String {
         if self.content.is_none() {
             self.content.set_default();
         }
@@ -1017,8 +1017,8 @@ impl CodeGeneratorResponse_File {
     }
 
     // Take field
-    pub fn take_content(&mut self) -> ::std::string::String {
-        self.content.take().unwrap_or_else(|| ::std::string::String::new())
+    pub fn take_content(&mut self) -> ::alloc::string::String {
+        self.content.take().unwrap_or_else(|| ::alloc::string::String::new())
     }
 
     // optional .google.protobuf.GeneratedCodeInfo generated_code_info = 16;
@@ -1086,7 +1086,7 @@ impl crate::Message for CodeGeneratorResponse_File {
                 },
             };
         }
-        ::std::result::Result::Ok(())
+        ::core::result::Result::Ok(())
     }
 
     // Compute sizes of nested messages
@@ -1127,7 +1127,7 @@ impl crate::Message for CodeGeneratorResponse_File {
             v.write_to_with_cached_sizes(os)?;
         }
         os.write_unknown_fields(self.get_unknown_fields())?;
-        ::std::result::Result::Ok(())
+        ::core::result::Result::Ok(())
     }
 
     fn get_cached_size(&self) -> u32 {
@@ -1142,13 +1142,13 @@ impl crate::Message for CodeGeneratorResponse_File {
         &mut self.unknown_fields
     }
 
-    fn as_any(&self) -> &dyn (::std::any::Any) {
-        self as &dyn (::std::any::Any)
+    fn as_any(&self) -> &dyn (::core::any::Any) {
+        self as &dyn (::core::any::Any)
     }
-    fn as_any_mut(&mut self) -> &mut dyn (::std::any::Any) {
-        self as &mut dyn (::std::any::Any)
+    fn as_any_mut(&mut self) -> &mut dyn (::core::any::Any) {
+        self as &mut dyn (::core::any::Any)
     }
-    fn into_any(self: ::std::boxed::Box<Self>) -> ::std::boxed::Box<dyn (::std::any::Any)> {
+    fn into_any(self: ::alloc::boxed::Box<Self>) -> ::alloc::boxed::Box<dyn (::core::any::Any)> {
         self
     }
 
@@ -1163,7 +1163,7 @@ impl crate::Message for CodeGeneratorResponse_File {
     fn descriptor_static() -> &'static crate::reflect::MessageDescriptor {
         static descriptor: crate::rt::LazyV2<crate::reflect::MessageDescriptor> = crate::rt::LazyV2::INIT;
         descriptor.get(|| {
-            let mut fields = ::std::vec::Vec::new();
+            let mut fields = ::alloc::vec::Vec::new();
             fields.push(crate::reflect::accessor::make_singular_field_accessor::<_, crate::types::ProtobufTypeString>(
                 "name",
                 |m: &CodeGeneratorResponse_File| { &m.name },
@@ -1208,8 +1208,8 @@ impl crate::Clear for CodeGeneratorResponse_File {
     }
 }
 
-impl ::std::fmt::Debug for CodeGeneratorResponse_File {
-    fn fmt(&self, f: &mut ::std::fmt::Formatter<'_>) -> ::std::fmt::Result {
+impl ::core::fmt::Debug for CodeGeneratorResponse_File {
+    fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
         crate::text_format::fmt(self, f)
     }
 }
@@ -1232,11 +1232,11 @@ impl crate::ProtobufEnum for CodeGeneratorResponse_Feature {
         *self as i32
     }
 
-    fn from_i32(value: i32) -> ::std::option::Option<CodeGeneratorResponse_Feature> {
+    fn from_i32(value: i32) -> ::core::option::Option<CodeGeneratorResponse_Feature> {
         match value {
-            0 => ::std::option::Option::Some(CodeGeneratorResponse_Feature::FEATURE_NONE),
-            1 => ::std::option::Option::Some(CodeGeneratorResponse_Feature::FEATURE_PROTO3_OPTIONAL),
-            _ => ::std::option::Option::None
+            0 => ::core::option::Option::Some(CodeGeneratorResponse_Feature::FEATURE_NONE),
+            1 => ::core::option::Option::Some(CodeGeneratorResponse_Feature::FEATURE_PROTO3_OPTIONAL),
+            _ => ::core::option::Option::None
         }
     }
 
@@ -1256,10 +1256,10 @@ impl crate::ProtobufEnum for CodeGeneratorResponse_Feature {
     }
 }
 
-impl ::std::marker::Copy for CodeGeneratorResponse_Feature {
+impl ::core::marker::Copy for CodeGeneratorResponse_Feature {
 }
 
-impl ::std::default::Default for CodeGeneratorResponse_Feature {
+impl ::core::default::Default for CodeGeneratorResponse_Feature {
     fn default() -> Self {
         CodeGeneratorResponse_Feature::FEATURE_NONE
     }

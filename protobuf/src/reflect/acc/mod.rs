@@ -1,5 +1,6 @@
 #![doc(hidden)]
 
+use alloc::boxed::Box;
 use crate::reflect::acc::v1::FieldAccessorFunctions;
 use crate::reflect::acc::v1::FieldAccessorImpl;
 use crate::reflect::acc::v1::FieldAccessorTrait;

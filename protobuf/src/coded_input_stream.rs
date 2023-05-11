@@ -2,16 +2,17 @@
 
 //! `CodedInputStream` and `CodedOutputStream` implementations
 
-use std::io;
-use std::io::BufRead;
-use std::io::Read;
-use std::mem;
-use std::slice;
+use alloc::string::String;
+use core2::io;
+use core::mem;
+use core::slice;
+use alloc::vec::Vec;
 
 #[cfg(feature = "bytes")]
 use crate::chars::Chars;
 #[cfg(feature = "bytes")]
 use bytes::Bytes;
+use core2::io::{BufRead, Read};
 
 use crate::buf_read_iter::BufReadIter;
 use crate::enums::ProtobufEnum;
@@ -789,11 +790,12 @@ impl<'a> WithCodedInputStream for &'a Bytes {
 
 #[cfg(test)]
 mod test {
-
-    use std::fmt::Debug;
-    use std::io;
-    use std::io::BufRead;
-    use std::io::Read;
+    use alloc::vec::Vec;
+    use core::fmt::Debug;
+    use core2::io;
+    use core2::BufRead;
+    use core2::io::{BufRead, Read};
+    use core2::io::Read;
 
     use crate::error::ProtobufError;
     use crate::error::ProtobufResult;

@@ -1,9 +1,11 @@
 //! Functions used by generated protobuf code.
 //! Should not be used by programs written by hands.
 
-use std::collections::HashMap;
-use std::default::Default;
-use std::hash::Hash;
+use alloc::collections::BTreeMap;
+use alloc::string::String;
+use core::default::Default;
+use core::hash::Hash;
+use alloc::vec::Vec;
 
 #[cfg(feature = "bytes")]
 use crate::chars::Chars;
@@ -835,7 +837,7 @@ pub fn unexpected_wire_type(wire_type: WireType) -> ProtobufError {
 }
 
 /// Compute serialized size of `map` field and cache nested field sizes.
-pub fn compute_map_size<K, V>(field_number: u32, map: &HashMap<K::Value, V::Value>) -> u32
+pub fn compute_map_size<K, V>(field_number: u32, map: &BTreeMap<K::Value, V::Value>) -> u32
 where
     K: ProtobufType,
     V: ProtobufType,
@@ -858,7 +860,7 @@ where
 /// Write map, message sizes must be already known.
 pub fn write_map_with_cached_sizes<K, V>(
     field_number: u32,
-    map: &HashMap<K::Value, V::Value>,
+    map: &BTreeMap<K::Value, V::Value>,
     os: &mut CodedOutputStream,
 ) -> ProtobufResult<()>
 where
@@ -887,12 +889,12 @@ where
 pub fn read_map_into<K, V>(
     wire_type: WireType,
     is: &mut CodedInputStream,
-    target: &mut HashMap<K::Value, V::Value>,
+    target: &mut BTreeMap<K::Value, V::Value>,
 ) -> ProtobufResult<()>
 where
     K: ProtobufType,
     V: ProtobufType,
-    K::Value: Eq + Hash + Default,
+    K::Value: Eq + Hash + Default + Ord,
     V::Value: Default,
 {
     if wire_type != WireType::WireTypeLengthDelimited {

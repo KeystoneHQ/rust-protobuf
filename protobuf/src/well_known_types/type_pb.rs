@@ -23,9 +23,9 @@
 #[cfg_attr(feature = "with-serde", derive(::serde::Serialize, ::serde::Deserialize))]
 pub struct Type {
     // message fields
-    pub name: ::std::string::String,
+    pub name: ::alloc::string::String,
     pub fields: crate::RepeatedField<Field>,
-    pub oneofs: crate::RepeatedField<::std::string::String>,
+    pub oneofs: crate::RepeatedField<::alloc::string::String>,
     pub options: crate::RepeatedField<Option>,
     pub source_context: crate::SingularPtrField<crate::well_known_types::SourceContext>,
     pub syntax: Syntax,
@@ -36,7 +36,7 @@ pub struct Type {
     pub cached_size: crate::CachedSize,
 }
 
-impl<'a> ::std::default::Default for &'a Type {
+impl<'a> ::core::default::Default for &'a Type {
     fn default() -> &'a Type {
         <Type as crate::Message>::default_instance()
     }
@@ -44,7 +44,7 @@ impl<'a> ::std::default::Default for &'a Type {
 
 impl Type {
     pub fn new() -> Type {
-        ::std::default::Default::default()
+        ::core::default::Default::default()
     }
 
     // string name = 1;
@@ -58,19 +58,19 @@ impl Type {
     }
 
     // Param is passed by value, moved
-    pub fn set_name(&mut self, v: ::std::string::String) {
+    pub fn set_name(&mut self, v: ::alloc::string::String) {
         self.name = v;
     }
 
     // Mutable pointer to the field.
     // If field is not initialized, it is initialized with default value first.
-    pub fn mut_name(&mut self) -> &mut ::std::string::String {
+    pub fn mut_name(&mut self) -> &mut ::alloc::string::String {
         &mut self.name
     }
 
     // Take field
-    pub fn take_name(&mut self) -> ::std::string::String {
-        ::std::mem::replace(&mut self.name, ::std::string::String::new())
+    pub fn take_name(&mut self) -> ::alloc::string::String {
+        ::core::mem::replace(&mut self.name, ::alloc::string::String::new())
     }
 
     // repeated .google.protobuf.Field fields = 2;
@@ -95,13 +95,13 @@ impl Type {
 
     // Take field
     pub fn take_fields(&mut self) -> crate::RepeatedField<Field> {
-        ::std::mem::replace(&mut self.fields, crate::RepeatedField::new())
+        ::core::mem::replace(&mut self.fields, crate::RepeatedField::new())
     }
 
     // repeated string oneofs = 3;
 
 
-    pub fn get_oneofs(&self) -> &[::std::string::String] {
+    pub fn get_oneofs(&self) -> &[::alloc::string::String] {
         &self.oneofs
     }
     pub fn clear_oneofs(&mut self) {
@@ -109,18 +109,18 @@ impl Type {
     }
 
     // Param is passed by value, moved
-    pub fn set_oneofs(&mut self, v: crate::RepeatedField<::std::string::String>) {
+    pub fn set_oneofs(&mut self, v: crate::RepeatedField<::alloc::string::String>) {
         self.oneofs = v;
     }
 
     // Mutable pointer to the field.
-    pub fn mut_oneofs(&mut self) -> &mut crate::RepeatedField<::std::string::String> {
+    pub fn mut_oneofs(&mut self) -> &mut crate::RepeatedField<::alloc::string::String> {
         &mut self.oneofs
     }
 
     // Take field
-    pub fn take_oneofs(&mut self) -> crate::RepeatedField<::std::string::String> {
-        ::std::mem::replace(&mut self.oneofs, crate::RepeatedField::new())
+    pub fn take_oneofs(&mut self) -> crate::RepeatedField<::alloc::string::String> {
+        ::core::mem::replace(&mut self.oneofs, crate::RepeatedField::new())
     }
 
     // repeated .google.protobuf.Option options = 4;
@@ -145,7 +145,7 @@ impl Type {
 
     // Take field
     pub fn take_options(&mut self) -> crate::RepeatedField<Option> {
-        ::std::mem::replace(&mut self.options, crate::RepeatedField::new())
+        ::core::mem::replace(&mut self.options, crate::RepeatedField::new())
     }
 
     // .google.protobuf.SourceContext source_context = 5;
@@ -244,7 +244,7 @@ impl crate::Message for Type {
                 },
             };
         }
-        ::std::result::Result::Ok(())
+        ::core::result::Result::Ok(())
     }
 
     // Compute sizes of nested messages
@@ -303,7 +303,7 @@ impl crate::Message for Type {
             os.write_enum(6, crate::ProtobufEnum::value(&self.syntax))?;
         }
         os.write_unknown_fields(self.get_unknown_fields())?;
-        ::std::result::Result::Ok(())
+        ::core::result::Result::Ok(())
     }
 
     fn get_cached_size(&self) -> u32 {
@@ -318,13 +318,13 @@ impl crate::Message for Type {
         &mut self.unknown_fields
     }
 
-    fn as_any(&self) -> &dyn (::std::any::Any) {
-        self as &dyn (::std::any::Any)
+    fn as_any(&self) -> &dyn (::core::any::Any) {
+        self as &dyn (::core::any::Any)
     }
-    fn as_any_mut(&mut self) -> &mut dyn (::std::any::Any) {
-        self as &mut dyn (::std::any::Any)
+    fn as_any_mut(&mut self) -> &mut dyn (::core::any::Any) {
+        self as &mut dyn (::core::any::Any)
     }
-    fn into_any(self: ::std::boxed::Box<Self>) -> ::std::boxed::Box<dyn (::std::any::Any)> {
+    fn into_any(self: ::alloc::boxed::Box<Self>) -> ::alloc::boxed::Box<dyn (::core::any::Any)> {
         self
     }
 
@@ -339,7 +339,7 @@ impl crate::Message for Type {
     fn descriptor_static() -> &'static crate::reflect::MessageDescriptor {
         static descriptor: crate::rt::LazyV2<crate::reflect::MessageDescriptor> = crate::rt::LazyV2::INIT;
         descriptor.get(|| {
-            let mut fields = ::std::vec::Vec::new();
+            let mut fields = ::alloc::vec::Vec::new();
             fields.push(crate::reflect::accessor::make_simple_field_accessor::<_, crate::types::ProtobufTypeString>(
                 "name",
                 |m: &Type| { &m.name },
@@ -396,8 +396,8 @@ impl crate::Clear for Type {
     }
 }
 
-impl ::std::fmt::Debug for Type {
-    fn fmt(&self, f: &mut ::std::fmt::Formatter<'_>) -> ::std::fmt::Result {
+impl ::core::fmt::Debug for Type {
+    fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
         crate::text_format::fmt(self, f)
     }
 }
@@ -415,13 +415,13 @@ pub struct Field {
     pub kind: Field_Kind,
     pub cardinality: Field_Cardinality,
     pub number: i32,
-    pub name: ::std::string::String,
-    pub type_url: ::std::string::String,
+    pub name: ::alloc::string::String,
+    pub type_url: ::alloc::string::String,
     pub oneof_index: i32,
     pub packed: bool,
     pub options: crate::RepeatedField<Option>,
-    pub json_name: ::std::string::String,
-    pub default_value: ::std::string::String,
+    pub json_name: ::alloc::string::String,
+    pub default_value: ::alloc::string::String,
     // special fields
     #[cfg_attr(feature = "with-serde", serde(skip))]
     pub unknown_fields: crate::UnknownFields,
@@ -429,7 +429,7 @@ pub struct Field {
     pub cached_size: crate::CachedSize,
 }
 
-impl<'a> ::std::default::Default for &'a Field {
+impl<'a> ::core::default::Default for &'a Field {
     fn default() -> &'a Field {
         <Field as crate::Message>::default_instance()
     }
@@ -437,7 +437,7 @@ impl<'a> ::std::default::Default for &'a Field {
 
 impl Field {
     pub fn new() -> Field {
-        ::std::default::Default::default()
+        ::core::default::Default::default()
     }
 
     // .google.protobuf.Field.Kind kind = 1;
@@ -496,19 +496,19 @@ impl Field {
     }
 
     // Param is passed by value, moved
-    pub fn set_name(&mut self, v: ::std::string::String) {
+    pub fn set_name(&mut self, v: ::alloc::string::String) {
         self.name = v;
     }
 
     // Mutable pointer to the field.
     // If field is not initialized, it is initialized with default value first.
-    pub fn mut_name(&mut self) -> &mut ::std::string::String {
+    pub fn mut_name(&mut self) -> &mut ::alloc::string::String {
         &mut self.name
     }
 
     // Take field
-    pub fn take_name(&mut self) -> ::std::string::String {
-        ::std::mem::replace(&mut self.name, ::std::string::String::new())
+    pub fn take_name(&mut self) -> ::alloc::string::String {
+        ::core::mem::replace(&mut self.name, ::alloc::string::String::new())
     }
 
     // string type_url = 6;
@@ -522,19 +522,19 @@ impl Field {
     }
 
     // Param is passed by value, moved
-    pub fn set_type_url(&mut self, v: ::std::string::String) {
+    pub fn set_type_url(&mut self, v: ::alloc::string::String) {
         self.type_url = v;
     }
 
     // Mutable pointer to the field.
     // If field is not initialized, it is initialized with default value first.
-    pub fn mut_type_url(&mut self) -> &mut ::std::string::String {
+    pub fn mut_type_url(&mut self) -> &mut ::alloc::string::String {
         &mut self.type_url
     }
 
     // Take field
-    pub fn take_type_url(&mut self) -> ::std::string::String {
-        ::std::mem::replace(&mut self.type_url, ::std::string::String::new())
+    pub fn take_type_url(&mut self) -> ::alloc::string::String {
+        ::core::mem::replace(&mut self.type_url, ::alloc::string::String::new())
     }
 
     // int32 oneof_index = 7;
@@ -589,7 +589,7 @@ impl Field {
 
     // Take field
     pub fn take_options(&mut self) -> crate::RepeatedField<Option> {
-        ::std::mem::replace(&mut self.options, crate::RepeatedField::new())
+        ::core::mem::replace(&mut self.options, crate::RepeatedField::new())
     }
 
     // string json_name = 10;
@@ -603,19 +603,19 @@ impl Field {
     }
 
     // Param is passed by value, moved
-    pub fn set_json_name(&mut self, v: ::std::string::String) {
+    pub fn set_json_name(&mut self, v: ::alloc::string::String) {
         self.json_name = v;
     }
 
     // Mutable pointer to the field.
     // If field is not initialized, it is initialized with default value first.
-    pub fn mut_json_name(&mut self) -> &mut ::std::string::String {
+    pub fn mut_json_name(&mut self) -> &mut ::alloc::string::String {
         &mut self.json_name
     }
 
     // Take field
-    pub fn take_json_name(&mut self) -> ::std::string::String {
-        ::std::mem::replace(&mut self.json_name, ::std::string::String::new())
+    pub fn take_json_name(&mut self) -> ::alloc::string::String {
+        ::core::mem::replace(&mut self.json_name, ::alloc::string::String::new())
     }
 
     // string default_value = 11;
@@ -629,19 +629,19 @@ impl Field {
     }
 
     // Param is passed by value, moved
-    pub fn set_default_value(&mut self, v: ::std::string::String) {
+    pub fn set_default_value(&mut self, v: ::alloc::string::String) {
         self.default_value = v;
     }
 
     // Mutable pointer to the field.
     // If field is not initialized, it is initialized with default value first.
-    pub fn mut_default_value(&mut self) -> &mut ::std::string::String {
+    pub fn mut_default_value(&mut self) -> &mut ::alloc::string::String {
         &mut self.default_value
     }
 
     // Take field
-    pub fn take_default_value(&mut self) -> ::std::string::String {
-        ::std::mem::replace(&mut self.default_value, ::std::string::String::new())
+    pub fn take_default_value(&mut self) -> ::alloc::string::String {
+        ::core::mem::replace(&mut self.default_value, ::alloc::string::String::new())
     }
 }
 
@@ -667,7 +667,7 @@ impl crate::Message for Field {
                 },
                 3 => {
                     if wire_type != crate::wire_format::WireTypeVarint {
-                        return ::std::result::Result::Err(crate::rt::unexpected_wire_type(wire_type));
+                        return ::core::result::Result::Err(crate::rt::unexpected_wire_type(wire_type));
                     }
                     let tmp = is.read_int32()?;
                     self.number = tmp;
@@ -680,14 +680,14 @@ impl crate::Message for Field {
                 },
                 7 => {
                     if wire_type != crate::wire_format::WireTypeVarint {
-                        return ::std::result::Result::Err(crate::rt::unexpected_wire_type(wire_type));
+                        return ::core::result::Result::Err(crate::rt::unexpected_wire_type(wire_type));
                     }
                     let tmp = is.read_int32()?;
                     self.oneof_index = tmp;
                 },
                 8 => {
                     if wire_type != crate::wire_format::WireTypeVarint {
-                        return ::std::result::Result::Err(crate::rt::unexpected_wire_type(wire_type));
+                        return ::core::result::Result::Err(crate::rt::unexpected_wire_type(wire_type));
                     }
                     let tmp = is.read_bool()?;
                     self.packed = tmp;
@@ -706,7 +706,7 @@ impl crate::Message for Field {
                 },
             };
         }
-        ::std::result::Result::Ok(())
+        ::core::result::Result::Ok(())
     }
 
     // Compute sizes of nested messages
@@ -783,7 +783,7 @@ impl crate::Message for Field {
             os.write_string(11, &self.default_value)?;
         }
         os.write_unknown_fields(self.get_unknown_fields())?;
-        ::std::result::Result::Ok(())
+        ::core::result::Result::Ok(())
     }
 
     fn get_cached_size(&self) -> u32 {
@@ -798,13 +798,13 @@ impl crate::Message for Field {
         &mut self.unknown_fields
     }
 
-    fn as_any(&self) -> &dyn (::std::any::Any) {
-        self as &dyn (::std::any::Any)
+    fn as_any(&self) -> &dyn (::core::any::Any) {
+        self as &dyn (::core::any::Any)
     }
-    fn as_any_mut(&mut self) -> &mut dyn (::std::any::Any) {
-        self as &mut dyn (::std::any::Any)
+    fn as_any_mut(&mut self) -> &mut dyn (::core::any::Any) {
+        self as &mut dyn (::core::any::Any)
     }
-    fn into_any(self: ::std::boxed::Box<Self>) -> ::std::boxed::Box<dyn (::std::any::Any)> {
+    fn into_any(self: ::alloc::boxed::Box<Self>) -> ::alloc::boxed::Box<dyn (::core::any::Any)> {
         self
     }
 
@@ -819,7 +819,7 @@ impl crate::Message for Field {
     fn descriptor_static() -> &'static crate::reflect::MessageDescriptor {
         static descriptor: crate::rt::LazyV2<crate::reflect::MessageDescriptor> = crate::rt::LazyV2::INIT;
         descriptor.get(|| {
-            let mut fields = ::std::vec::Vec::new();
+            let mut fields = ::alloc::vec::Vec::new();
             fields.push(crate::reflect::accessor::make_simple_field_accessor::<_, crate::types::ProtobufTypeEnum<Field_Kind>>(
                 "kind",
                 |m: &Field| { &m.kind },
@@ -900,8 +900,8 @@ impl crate::Clear for Field {
     }
 }
 
-impl ::std::fmt::Debug for Field {
-    fn fmt(&self, f: &mut ::std::fmt::Formatter<'_>) -> ::std::fmt::Result {
+impl ::core::fmt::Debug for Field {
+    fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
         crate::text_format::fmt(self, f)
     }
 }
@@ -941,28 +941,28 @@ impl crate::ProtobufEnum for Field_Kind {
         *self as i32
     }
 
-    fn from_i32(value: i32) -> ::std::option::Option<Field_Kind> {
+    fn from_i32(value: i32) -> ::core::option::Option<Field_Kind> {
         match value {
-            0 => ::std::option::Option::Some(Field_Kind::TYPE_UNKNOWN),
-            1 => ::std::option::Option::Some(Field_Kind::TYPE_DOUBLE),
-            2 => ::std::option::Option::Some(Field_Kind::TYPE_FLOAT),
-            3 => ::std::option::Option::Some(Field_Kind::TYPE_INT64),
-            4 => ::std::option::Option::Some(Field_Kind::TYPE_UINT64),
-            5 => ::std::option::Option::Some(Field_Kind::TYPE_INT32),
-            6 => ::std::option::Option::Some(Field_Kind::TYPE_FIXED64),
-            7 => ::std::option::Option::Some(Field_Kind::TYPE_FIXED32),
-            8 => ::std::option::Option::Some(Field_Kind::TYPE_BOOL),
-            9 => ::std::option::Option::Some(Field_Kind::TYPE_STRING),
-            10 => ::std::option::Option::Some(Field_Kind::TYPE_GROUP),
-            11 => ::std::option::Option::Some(Field_Kind::TYPE_MESSAGE),
-            12 => ::std::option::Option::Some(Field_Kind::TYPE_BYTES),
-            13 => ::std::option::Option::Some(Field_Kind::TYPE_UINT32),
-            14 => ::std::option::Option::Some(Field_Kind::TYPE_ENUM),
-            15 => ::std::option::Option::Some(Field_Kind::TYPE_SFIXED32),
-            16 => ::std::option::Option::Some(Field_Kind::TYPE_SFIXED64),
-            17 => ::std::option::Option::Some(Field_Kind::TYPE_SINT32),
-            18 => ::std::option::Option::Some(Field_Kind::TYPE_SINT64),
-            _ => ::std::option::Option::None
+            0 => ::core::option::Option::Some(Field_Kind::TYPE_UNKNOWN),
+            1 => ::core::option::Option::Some(Field_Kind::TYPE_DOUBLE),
+            2 => ::core::option::Option::Some(Field_Kind::TYPE_FLOAT),
+            3 => ::core::option::Option::Some(Field_Kind::TYPE_INT64),
+            4 => ::core::option::Option::Some(Field_Kind::TYPE_UINT64),
+            5 => ::core::option::Option::Some(Field_Kind::TYPE_INT32),
+            6 => ::core::option::Option::Some(Field_Kind::TYPE_FIXED64),
+            7 => ::core::option::Option::Some(Field_Kind::TYPE_FIXED32),
+            8 => ::core::option::Option::Some(Field_Kind::TYPE_BOOL),
+            9 => ::core::option::Option::Some(Field_Kind::TYPE_STRING),
+            10 => ::core::option::Option::Some(Field_Kind::TYPE_GROUP),
+            11 => ::core::option::Option::Some(Field_Kind::TYPE_MESSAGE),
+            12 => ::core::option::Option::Some(Field_Kind::TYPE_BYTES),
+            13 => ::core::option::Option::Some(Field_Kind::TYPE_UINT32),
+            14 => ::core::option::Option::Some(Field_Kind::TYPE_ENUM),
+            15 => ::core::option::Option::Some(Field_Kind::TYPE_SFIXED32),
+            16 => ::core::option::Option::Some(Field_Kind::TYPE_SFIXED64),
+            17 => ::core::option::Option::Some(Field_Kind::TYPE_SINT32),
+            18 => ::core::option::Option::Some(Field_Kind::TYPE_SINT64),
+            _ => ::core::option::Option::None
         }
     }
 
@@ -999,10 +999,10 @@ impl crate::ProtobufEnum for Field_Kind {
     }
 }
 
-impl ::std::marker::Copy for Field_Kind {
+impl ::core::marker::Copy for Field_Kind {
 }
 
-impl ::std::default::Default for Field_Kind {
+impl ::core::default::Default for Field_Kind {
     fn default() -> Self {
         Field_Kind::TYPE_UNKNOWN
     }
@@ -1028,13 +1028,13 @@ impl crate::ProtobufEnum for Field_Cardinality {
         *self as i32
     }
 
-    fn from_i32(value: i32) -> ::std::option::Option<Field_Cardinality> {
+    fn from_i32(value: i32) -> ::core::option::Option<Field_Cardinality> {
         match value {
-            0 => ::std::option::Option::Some(Field_Cardinality::CARDINALITY_UNKNOWN),
-            1 => ::std::option::Option::Some(Field_Cardinality::CARDINALITY_OPTIONAL),
-            2 => ::std::option::Option::Some(Field_Cardinality::CARDINALITY_REQUIRED),
-            3 => ::std::option::Option::Some(Field_Cardinality::CARDINALITY_REPEATED),
-            _ => ::std::option::Option::None
+            0 => ::core::option::Option::Some(Field_Cardinality::CARDINALITY_UNKNOWN),
+            1 => ::core::option::Option::Some(Field_Cardinality::CARDINALITY_OPTIONAL),
+            2 => ::core::option::Option::Some(Field_Cardinality::CARDINALITY_REQUIRED),
+            3 => ::core::option::Option::Some(Field_Cardinality::CARDINALITY_REPEATED),
+            _ => ::core::option::Option::None
         }
     }
 
@@ -1056,10 +1056,10 @@ impl crate::ProtobufEnum for Field_Cardinality {
     }
 }
 
-impl ::std::marker::Copy for Field_Cardinality {
+impl ::core::marker::Copy for Field_Cardinality {
 }
 
-impl ::std::default::Default for Field_Cardinality {
+impl ::core::default::Default for Field_Cardinality {
     fn default() -> Self {
         Field_Cardinality::CARDINALITY_UNKNOWN
     }
@@ -1075,7 +1075,7 @@ impl crate::reflect::ProtobufValue for Field_Cardinality {
 #[cfg_attr(feature = "with-serde", derive(::serde::Serialize, ::serde::Deserialize))]
 pub struct Enum {
     // message fields
-    pub name: ::std::string::String,
+    pub name: ::alloc::string::String,
     pub enumvalue: crate::RepeatedField<EnumValue>,
     pub options: crate::RepeatedField<Option>,
     pub source_context: crate::SingularPtrField<crate::well_known_types::SourceContext>,
@@ -1087,7 +1087,7 @@ pub struct Enum {
     pub cached_size: crate::CachedSize,
 }
 
-impl<'a> ::std::default::Default for &'a Enum {
+impl<'a> ::core::default::Default for &'a Enum {
     fn default() -> &'a Enum {
         <Enum as crate::Message>::default_instance()
     }
@@ -1095,7 +1095,7 @@ impl<'a> ::std::default::Default for &'a Enum {
 
 impl Enum {
     pub fn new() -> Enum {
-        ::std::default::Default::default()
+        ::core::default::Default::default()
     }
 
     // string name = 1;
@@ -1109,19 +1109,19 @@ impl Enum {
     }
 
     // Param is passed by value, moved
-    pub fn set_name(&mut self, v: ::std::string::String) {
+    pub fn set_name(&mut self, v: ::alloc::string::String) {
         self.name = v;
     }
 
     // Mutable pointer to the field.
     // If field is not initialized, it is initialized with default value first.
-    pub fn mut_name(&mut self) -> &mut ::std::string::String {
+    pub fn mut_name(&mut self) -> &mut ::alloc::string::String {
         &mut self.name
     }
 
     // Take field
-    pub fn take_name(&mut self) -> ::std::string::String {
-        ::std::mem::replace(&mut self.name, ::std::string::String::new())
+    pub fn take_name(&mut self) -> ::alloc::string::String {
+        ::core::mem::replace(&mut self.name, ::alloc::string::String::new())
     }
 
     // repeated .google.protobuf.EnumValue enumvalue = 2;
@@ -1146,7 +1146,7 @@ impl Enum {
 
     // Take field
     pub fn take_enumvalue(&mut self) -> crate::RepeatedField<EnumValue> {
-        ::std::mem::replace(&mut self.enumvalue, crate::RepeatedField::new())
+        ::core::mem::replace(&mut self.enumvalue, crate::RepeatedField::new())
     }
 
     // repeated .google.protobuf.Option options = 3;
@@ -1171,7 +1171,7 @@ impl Enum {
 
     // Take field
     pub fn take_options(&mut self) -> crate::RepeatedField<Option> {
-        ::std::mem::replace(&mut self.options, crate::RepeatedField::new())
+        ::core::mem::replace(&mut self.options, crate::RepeatedField::new())
     }
 
     // .google.protobuf.SourceContext source_context = 4;
@@ -1267,7 +1267,7 @@ impl crate::Message for Enum {
                 },
             };
         }
-        ::std::result::Result::Ok(())
+        ::core::result::Result::Ok(())
     }
 
     // Compute sizes of nested messages
@@ -1320,7 +1320,7 @@ impl crate::Message for Enum {
             os.write_enum(5, crate::ProtobufEnum::value(&self.syntax))?;
         }
         os.write_unknown_fields(self.get_unknown_fields())?;
-        ::std::result::Result::Ok(())
+        ::core::result::Result::Ok(())
     }
 
     fn get_cached_size(&self) -> u32 {
@@ -1335,13 +1335,13 @@ impl crate::Message for Enum {
         &mut self.unknown_fields
     }
 
-    fn as_any(&self) -> &dyn (::std::any::Any) {
-        self as &dyn (::std::any::Any)
+    fn as_any(&self) -> &dyn (::core::any::Any) {
+        self as &dyn (::core::any::Any)
     }
-    fn as_any_mut(&mut self) -> &mut dyn (::std::any::Any) {
-        self as &mut dyn (::std::any::Any)
+    fn as_any_mut(&mut self) -> &mut dyn (::core::any::Any) {
+        self as &mut dyn (::core::any::Any)
     }
-    fn into_any(self: ::std::boxed::Box<Self>) -> ::std::boxed::Box<dyn (::std::any::Any)> {
+    fn into_any(self: ::alloc::boxed::Box<Self>) -> ::alloc::boxed::Box<dyn (::core::any::Any)> {
         self
     }
 
@@ -1356,7 +1356,7 @@ impl crate::Message for Enum {
     fn descriptor_static() -> &'static crate::reflect::MessageDescriptor {
         static descriptor: crate::rt::LazyV2<crate::reflect::MessageDescriptor> = crate::rt::LazyV2::INIT;
         descriptor.get(|| {
-            let mut fields = ::std::vec::Vec::new();
+            let mut fields = ::alloc::vec::Vec::new();
             fields.push(crate::reflect::accessor::make_simple_field_accessor::<_, crate::types::ProtobufTypeString>(
                 "name",
                 |m: &Enum| { &m.name },
@@ -1407,8 +1407,8 @@ impl crate::Clear for Enum {
     }
 }
 
-impl ::std::fmt::Debug for Enum {
-    fn fmt(&self, f: &mut ::std::fmt::Formatter<'_>) -> ::std::fmt::Result {
+impl ::core::fmt::Debug for Enum {
+    fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
         crate::text_format::fmt(self, f)
     }
 }
@@ -1423,7 +1423,7 @@ impl crate::reflect::ProtobufValue for Enum {
 #[cfg_attr(feature = "with-serde", derive(::serde::Serialize, ::serde::Deserialize))]
 pub struct EnumValue {
     // message fields
-    pub name: ::std::string::String,
+    pub name: ::alloc::string::String,
     pub number: i32,
     pub options: crate::RepeatedField<Option>,
     // special fields
@@ -1433,7 +1433,7 @@ pub struct EnumValue {
     pub cached_size: crate::CachedSize,
 }
 
-impl<'a> ::std::default::Default for &'a EnumValue {
+impl<'a> ::core::default::Default for &'a EnumValue {
     fn default() -> &'a EnumValue {
         <EnumValue as crate::Message>::default_instance()
     }
@@ -1441,7 +1441,7 @@ impl<'a> ::std::default::Default for &'a EnumValue {
 
 impl EnumValue {
     pub fn new() -> EnumValue {
-        ::std::default::Default::default()
+        ::core::default::Default::default()
     }
 
     // string name = 1;
@@ -1455,19 +1455,19 @@ impl EnumValue {
     }
 
     // Param is passed by value, moved
-    pub fn set_name(&mut self, v: ::std::string::String) {
+    pub fn set_name(&mut self, v: ::alloc::string::String) {
         self.name = v;
     }
 
     // Mutable pointer to the field.
     // If field is not initialized, it is initialized with default value first.
-    pub fn mut_name(&mut self) -> &mut ::std::string::String {
+    pub fn mut_name(&mut self) -> &mut ::alloc::string::String {
         &mut self.name
     }
 
     // Take field
-    pub fn take_name(&mut self) -> ::std::string::String {
-        ::std::mem::replace(&mut self.name, ::std::string::String::new())
+    pub fn take_name(&mut self) -> ::alloc::string::String {
+        ::core::mem::replace(&mut self.name, ::alloc::string::String::new())
     }
 
     // int32 number = 2;
@@ -1507,7 +1507,7 @@ impl EnumValue {
 
     // Take field
     pub fn take_options(&mut self) -> crate::RepeatedField<Option> {
-        ::std::mem::replace(&mut self.options, crate::RepeatedField::new())
+        ::core::mem::replace(&mut self.options, crate::RepeatedField::new())
     }
 }
 
@@ -1530,7 +1530,7 @@ impl crate::Message for EnumValue {
                 },
                 2 => {
                     if wire_type != crate::wire_format::WireTypeVarint {
-                        return ::std::result::Result::Err(crate::rt::unexpected_wire_type(wire_type));
+                        return ::core::result::Result::Err(crate::rt::unexpected_wire_type(wire_type));
                     }
                     let tmp = is.read_int32()?;
                     self.number = tmp;
@@ -1543,7 +1543,7 @@ impl crate::Message for EnumValue {
                 },
             };
         }
-        ::std::result::Result::Ok(())
+        ::core::result::Result::Ok(())
     }
 
     // Compute sizes of nested messages
@@ -1578,7 +1578,7 @@ impl crate::Message for EnumValue {
             v.write_to_with_cached_sizes(os)?;
         };
         os.write_unknown_fields(self.get_unknown_fields())?;
-        ::std::result::Result::Ok(())
+        ::core::result::Result::Ok(())
     }
 
     fn get_cached_size(&self) -> u32 {
@@ -1593,13 +1593,13 @@ impl crate::Message for EnumValue {
         &mut self.unknown_fields
     }
 
-    fn as_any(&self) -> &dyn (::std::any::Any) {
-        self as &dyn (::std::any::Any)
+    fn as_any(&self) -> &dyn (::core::any::Any) {
+        self as &dyn (::core::any::Any)
     }
-    fn as_any_mut(&mut self) -> &mut dyn (::std::any::Any) {
-        self as &mut dyn (::std::any::Any)
+    fn as_any_mut(&mut self) -> &mut dyn (::core::any::Any) {
+        self as &mut dyn (::core::any::Any)
     }
-    fn into_any(self: ::std::boxed::Box<Self>) -> ::std::boxed::Box<dyn (::std::any::Any)> {
+    fn into_any(self: ::alloc::boxed::Box<Self>) -> ::alloc::boxed::Box<dyn (::core::any::Any)> {
         self
     }
 
@@ -1614,7 +1614,7 @@ impl crate::Message for EnumValue {
     fn descriptor_static() -> &'static crate::reflect::MessageDescriptor {
         static descriptor: crate::rt::LazyV2<crate::reflect::MessageDescriptor> = crate::rt::LazyV2::INIT;
         descriptor.get(|| {
-            let mut fields = ::std::vec::Vec::new();
+            let mut fields = ::alloc::vec::Vec::new();
             fields.push(crate::reflect::accessor::make_simple_field_accessor::<_, crate::types::ProtobufTypeString>(
                 "name",
                 |m: &EnumValue| { &m.name },
@@ -1653,8 +1653,8 @@ impl crate::Clear for EnumValue {
     }
 }
 
-impl ::std::fmt::Debug for EnumValue {
-    fn fmt(&self, f: &mut ::std::fmt::Formatter<'_>) -> ::std::fmt::Result {
+impl ::core::fmt::Debug for EnumValue {
+    fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
         crate::text_format::fmt(self, f)
     }
 }
@@ -1669,7 +1669,7 @@ impl crate::reflect::ProtobufValue for EnumValue {
 #[cfg_attr(feature = "with-serde", derive(::serde::Serialize, ::serde::Deserialize))]
 pub struct Option {
     // message fields
-    pub name: ::std::string::String,
+    pub name: ::alloc::string::String,
     pub value: crate::SingularPtrField<crate::well_known_types::Any>,
     // special fields
     #[cfg_attr(feature = "with-serde", serde(skip))]
@@ -1678,7 +1678,7 @@ pub struct Option {
     pub cached_size: crate::CachedSize,
 }
 
-impl<'a> ::std::default::Default for &'a Option {
+impl<'a> ::core::default::Default for &'a Option {
     fn default() -> &'a Option {
         <Option as crate::Message>::default_instance()
     }
@@ -1686,7 +1686,7 @@ impl<'a> ::std::default::Default for &'a Option {
 
 impl Option {
     pub fn new() -> Option {
-        ::std::default::Default::default()
+        ::core::default::Default::default()
     }
 
     // string name = 1;
@@ -1700,19 +1700,19 @@ impl Option {
     }
 
     // Param is passed by value, moved
-    pub fn set_name(&mut self, v: ::std::string::String) {
+    pub fn set_name(&mut self, v: ::alloc::string::String) {
         self.name = v;
     }
 
     // Mutable pointer to the field.
     // If field is not initialized, it is initialized with default value first.
-    pub fn mut_name(&mut self) -> &mut ::std::string::String {
+    pub fn mut_name(&mut self) -> &mut ::alloc::string::String {
         &mut self.name
     }
 
     // Take field
-    pub fn take_name(&mut self) -> ::std::string::String {
-        ::std::mem::replace(&mut self.name, ::std::string::String::new())
+    pub fn take_name(&mut self) -> ::alloc::string::String {
+        ::core::mem::replace(&mut self.name, ::alloc::string::String::new())
     }
 
     // .google.protobuf.Any value = 2;
@@ -1774,7 +1774,7 @@ impl crate::Message for Option {
                 },
             };
         }
-        ::std::result::Result::Ok(())
+        ::core::result::Result::Ok(())
     }
 
     // Compute sizes of nested messages
@@ -1803,7 +1803,7 @@ impl crate::Message for Option {
             v.write_to_with_cached_sizes(os)?;
         }
         os.write_unknown_fields(self.get_unknown_fields())?;
-        ::std::result::Result::Ok(())
+        ::core::result::Result::Ok(())
     }
 
     fn get_cached_size(&self) -> u32 {
@@ -1818,13 +1818,13 @@ impl crate::Message for Option {
         &mut self.unknown_fields
     }
 
-    fn as_any(&self) -> &dyn (::std::any::Any) {
-        self as &dyn (::std::any::Any)
+    fn as_any(&self) -> &dyn (::core::any::Any) {
+        self as &dyn (::core::any::Any)
     }
-    fn as_any_mut(&mut self) -> &mut dyn (::std::any::Any) {
-        self as &mut dyn (::std::any::Any)
+    fn as_any_mut(&mut self) -> &mut dyn (::core::any::Any) {
+        self as &mut dyn (::core::any::Any)
     }
-    fn into_any(self: ::std::boxed::Box<Self>) -> ::std::boxed::Box<dyn (::std::any::Any)> {
+    fn into_any(self: ::alloc::boxed::Box<Self>) -> ::alloc::boxed::Box<dyn (::core::any::Any)> {
         self
     }
 
@@ -1839,7 +1839,7 @@ impl crate::Message for Option {
     fn descriptor_static() -> &'static crate::reflect::MessageDescriptor {
         static descriptor: crate::rt::LazyV2<crate::reflect::MessageDescriptor> = crate::rt::LazyV2::INIT;
         descriptor.get(|| {
-            let mut fields = ::std::vec::Vec::new();
+            let mut fields = ::alloc::vec::Vec::new();
             fields.push(crate::reflect::accessor::make_simple_field_accessor::<_, crate::types::ProtobufTypeString>(
                 "name",
                 |m: &Option| { &m.name },
@@ -1872,8 +1872,8 @@ impl crate::Clear for Option {
     }
 }
 
-impl ::std::fmt::Debug for Option {
-    fn fmt(&self, f: &mut ::std::fmt::Formatter<'_>) -> ::std::fmt::Result {
+impl ::core::fmt::Debug for Option {
+    fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
         crate::text_format::fmt(self, f)
     }
 }
@@ -1896,11 +1896,11 @@ impl crate::ProtobufEnum for Syntax {
         *self as i32
     }
 
-    fn from_i32(value: i32) -> ::std::option::Option<Syntax> {
+    fn from_i32(value: i32) -> ::core::option::Option<Syntax> {
         match value {
-            0 => ::std::option::Option::Some(Syntax::SYNTAX_PROTO2),
-            1 => ::std::option::Option::Some(Syntax::SYNTAX_PROTO3),
-            _ => ::std::option::Option::None
+            0 => ::core::option::Option::Some(Syntax::SYNTAX_PROTO2),
+            1 => ::core::option::Option::Some(Syntax::SYNTAX_PROTO3),
+            _ => ::core::option::Option::None
         }
     }
 
@@ -1920,10 +1920,10 @@ impl crate::ProtobufEnum for Syntax {
     }
 }
 
-impl ::std::marker::Copy for Syntax {
+impl ::core::marker::Copy for Syntax {
 }
 
-impl ::std::default::Default for Syntax {
+impl ::core::default::Default for Syntax {
     fn default() -> Self {
         Syntax::SYNTAX_PROTO2
     }

@@ -4,8 +4,9 @@
 // Avoid deprecation warnings when compiling rust-protobuf
 #![allow(deprecated)]
 
-use std::mem;
-use std::sync;
+use alloc::boxed::Box;
+use core::mem;
+use spin;
 
 /// Lasily initialized data.
 #[deprecated(
@@ -14,7 +15,7 @@ use std::sync;
 )]
 pub struct Lazy<T> {
     #[doc(hidden)]
-    pub lock: sync::Once,
+    pub lock: spin::Once,
     #[doc(hidden)]
     pub ptr: *const T,
 }
@@ -25,7 +26,7 @@ impl<T> Lazy<T> {
     /// The initializer is added in rust-protobuf 2.11, for compatibility with
     /// previously generated code, existing fields are kept public.
     pub const INIT: Lazy<T> = Lazy {
-        lock: sync::Once::new(),
+        lock: spin::Once::new(),
         ptr: 0 as *const T,
     };
 
@@ -39,7 +40,7 @@ impl<T> Lazy<T> {
         // do have to initialize self.ptr in the closure to guarantee
         // the ptr is valid for all calling threads at any point in
         // time)
-        let lock: &sync::Once = unsafe { mem::transmute(&self.lock) };
+        let lock: &spin::Once = unsafe { mem::transmute(&self.lock) };
         lock.call_once(|| unsafe {
             self.ptr = mem::transmute(Box::new(init()));
         });
@@ -52,16 +53,17 @@ impl<T> Lazy<T> {
     since = "2.11",
     note = "Regenerate .proto files to use safer initializer"
 )]
-pub const ONCE_INIT: sync::Once = sync::Once::new();
+pub const ONCE_INIT: spin::Once = spin::Once::new();
 
 #[cfg(test)]
 mod test {
+    use alloc::borrow::ToOwned;
+    use alloc::string::String;
     use super::Lazy;
-    use std::sync::atomic::AtomicIsize;
-    use std::sync::atomic::Ordering;
-    use std::sync::Arc;
-    use std::sync::Barrier;
-    use std::thread;
+    use alloc::sync::atomic::AtomicIsize;
+    use alloc::sync::atomic::Ordering;
+    use alloc::sync::Arc;
+    use alloc::sync::Barrier;
 
     #[test]
     fn many_threads_calling_get() {

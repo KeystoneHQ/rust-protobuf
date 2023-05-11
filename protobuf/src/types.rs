@@ -1,7 +1,9 @@
 //! Implementations of `ProtobufType` for all types.
 
-use std::marker;
-use std::mem;
+use alloc::string::String;
+use core::marker;
+use core::mem;
+use alloc::vec::Vec;
 
 #[cfg(feature = "bytes")]
 use crate::chars::Chars;

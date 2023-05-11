@@ -1,12 +1,12 @@
+use alloc::boxed::Box;
 #[cfg(feature = "with-serde")]
 use serde;
 
-use std::default::Default;
-use std::fmt;
-use std::hash::Hash;
-use std::hash::Hasher;
-use std::mem;
-use std::option;
+use core::default::Default;
+use core::{fmt, option};
+use core::hash::Hash;
+use core::hash::Hasher;
+use core::mem;
 
 use crate::clear::Clear;
 

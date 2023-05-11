@@ -1,4 +1,5 @@
-use std::fmt;
+use alloc::string::String;
+use core::fmt;
 
 #[derive(Clone, Debug, Eq, PartialEq)]
 pub struct JsonNumberLit(pub(crate) String);

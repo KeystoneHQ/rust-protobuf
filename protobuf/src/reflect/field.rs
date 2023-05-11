@@ -1,3 +1,4 @@
+use alloc::string::{String, ToString};
 use crate::descriptor::FieldDescriptorProto;
 use crate::descriptor::FieldDescriptorProto_Label;
 use crate::json::json_name;

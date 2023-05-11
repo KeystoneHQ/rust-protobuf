@@ -1,7 +1,7 @@
 use std::env;
 use std::fs::File;
-use std::io::Read;
-use std::io::Write;
+use core2::io::Read;
+use core2::io::Write;
 use std::path::Path;
 use std::path::PathBuf;
 use std::process;

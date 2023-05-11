@@ -19,12 +19,12 @@
 //! protobuf implementations, including `protoc` command which can decode
 //! and encode messages using text format.
 
+use alloc::string::{String, ToString};
 use crate::message::Message;
 use crate::reflect::ReflectFieldRef;
 use crate::reflect::ReflectValueRef;
-use std;
-use std::fmt;
-use std::fmt::Write;
+use core::fmt;
+use core::fmt::Write;
 
 mod print;
 
@@ -35,6 +35,7 @@ mod print;
 pub mod lexer;
 
 use self::print::print_str_to;
+use alloc::vec::Vec;
 #[doc(hidden)]
 pub use self::print::quote_bytes_to;
 #[doc(hidden)]
@@ -43,7 +44,7 @@ use crate::text_format::print::quote_escape_bytes_to;
 
 #[doc(hidden)]
 pub fn unescape_string(string: &str) -> Vec<u8> {
-    fn parse_if_digit(chars: &mut std::str::Chars) -> u8 {
+    fn parse_if_digit(chars: &mut alloc::str::Chars) -> u8 {
         let mut copy = chars.clone();
         let f = match copy.next() {
             None => return 0,
@@ -57,7 +58,7 @@ pub fn unescape_string(string: &str) -> Vec<u8> {
         d
     }
 
-    fn parse_hex_digit(chars: &mut std::str::Chars) -> u8 {
+    fn parse_hex_digit(chars: &mut alloc::str::Chars) -> u8 {
         match chars.next().unwrap() {
             c @ '0'..='9' => (c as u8) - b'0',
             c @ 'a'..='f' => (c as u8) - b'a' + 10,
@@ -66,7 +67,7 @@ pub fn unescape_string(string: &str) -> Vec<u8> {
         }
     }
 
-    fn parse_escape_rem(chars: &mut std::str::Chars) -> u8 {
+    fn parse_escape_rem(chars: &mut alloc::str::Chars) -> u8 {
         let n = chars.next().unwrap();
         match n {
             'a' => return b'\x07',
@@ -267,6 +268,7 @@ pub fn fmt(m: &dyn Message, f: &mut fmt::Formatter) -> fmt::Result {
 
 #[cfg(test)]
 mod test {
+    use alloc::string::String;
 
     fn escape(data: &[u8]) -> String {
         let mut s = String::with_capacity(data.len() * 4);

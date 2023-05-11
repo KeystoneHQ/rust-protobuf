@@ -32,7 +32,7 @@ pub struct Timestamp {
     pub cached_size: crate::CachedSize,
 }
 
-impl<'a> ::std::default::Default for &'a Timestamp {
+impl<'a> ::core::default::Default for &'a Timestamp {
     fn default() -> &'a Timestamp {
         <Timestamp as crate::Message>::default_instance()
     }
@@ -40,7 +40,7 @@ impl<'a> ::std::default::Default for &'a Timestamp {
 
 impl Timestamp {
     pub fn new() -> Timestamp {
-        ::std::default::Default::default()
+        ::core::default::Default::default()
     }
 
     // int64 seconds = 1;
@@ -85,14 +85,14 @@ impl crate::Message for Timestamp {
             match field_number {
                 1 => {
                     if wire_type != crate::wire_format::WireTypeVarint {
-                        return ::std::result::Result::Err(crate::rt::unexpected_wire_type(wire_type));
+                        return ::core::result::Result::Err(crate::rt::unexpected_wire_type(wire_type));
                     }
                     let tmp = is.read_int64()?;
                     self.seconds = tmp;
                 },
                 2 => {
                     if wire_type != crate::wire_format::WireTypeVarint {
-                        return ::std::result::Result::Err(crate::rt::unexpected_wire_type(wire_type));
+                        return ::core::result::Result::Err(crate::rt::unexpected_wire_type(wire_type));
                     }
                     let tmp = is.read_int32()?;
                     self.nanos = tmp;
@@ -102,7 +102,7 @@ impl crate::Message for Timestamp {
                 },
             };
         }
-        ::std::result::Result::Ok(())
+        ::core::result::Result::Ok(())
     }
 
     // Compute sizes of nested messages
@@ -128,7 +128,7 @@ impl crate::Message for Timestamp {
             os.write_int32(2, self.nanos)?;
         }
         os.write_unknown_fields(self.get_unknown_fields())?;
-        ::std::result::Result::Ok(())
+        ::core::result::Result::Ok(())
     }
 
     fn get_cached_size(&self) -> u32 {
@@ -143,13 +143,13 @@ impl crate::Message for Timestamp {
         &mut self.unknown_fields
     }
 
-    fn as_any(&self) -> &dyn (::std::any::Any) {
-        self as &dyn (::std::any::Any)
+    fn as_any(&self) -> &dyn (::core::any::Any) {
+        self as &dyn (::core::any::Any)
     }
-    fn as_any_mut(&mut self) -> &mut dyn (::std::any::Any) {
-        self as &mut dyn (::std::any::Any)
+    fn as_any_mut(&mut self) -> &mut dyn (::core::any::Any) {
+        self as &mut dyn (::core::any::Any)
     }
-    fn into_any(self: ::std::boxed::Box<Self>) -> ::std::boxed::Box<dyn (::std::any::Any)> {
+    fn into_any(self: ::alloc::boxed::Box<Self>) -> ::alloc::boxed::Box<dyn (::core::any::Any)> {
         self
     }
 
@@ -164,7 +164,7 @@ impl crate::Message for Timestamp {
     fn descriptor_static() -> &'static crate::reflect::MessageDescriptor {
         static descriptor: crate::rt::LazyV2<crate::reflect::MessageDescriptor> = crate::rt::LazyV2::INIT;
         descriptor.get(|| {
-            let mut fields = ::std::vec::Vec::new();
+            let mut fields = ::alloc::vec::Vec::new();
             fields.push(crate::reflect::accessor::make_simple_field_accessor::<_, crate::types::ProtobufTypeInt64>(
                 "seconds",
                 |m: &Timestamp| { &m.seconds },
@@ -197,8 +197,8 @@ impl crate::Clear for Timestamp {
     }
 }
 
-impl ::std::fmt::Debug for Timestamp {
-    fn fmt(&self, f: &mut ::std::fmt::Formatter<'_>) -> ::std::fmt::Result {
+impl ::core::fmt::Debug for Timestamp {
+    fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
         crate::text_format::fmt(self, f)
     }
 }
